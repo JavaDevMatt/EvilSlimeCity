@@ -11,8 +11,18 @@ var initState = {
 		game.load.spritesheet('monster2', 'assets/monster2.png', 30, 23); // http://opengameart.org/content/scifi-creature-tileset-mini-32x32-scifi-creature-icons 
 	},
 
+	init: function () {
+		// playing around with scaling on mobile
+		if (!game.device.desktop){
+			this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+    		this.game.scale.pageAlignHorizontally = true;
+    		this.game.scale.pageAlignVertically = true;
+		}
+	},
+
 	
 	create: function() {
+		
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		
 		game.state.start('menu');
