@@ -27,5 +27,11 @@ class Level1{
                 platforms.create(646, 112, 'tower1');
  	 }
 
+ 	 addLava(lava){
+ 	 	lava.create(141, 332, 'lava');
+        lava.create(254, 332, 'lava2');
+        lava.create(700, 332, 'lava2');
+ 	 }
+
 
 }

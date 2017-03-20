@@ -16,6 +16,7 @@ var playState = {
 		this.initPlayer();
 		this.initPlatforms();
 		this.initEmitters();
+		this.initLava();
 
 		cursors = game.input.keyboard.createCursorKeys();
 
@@ -29,6 +30,9 @@ var playState = {
 
 		// animations
 	 	player.animations.play('stand');
+	 	lava.forEachAlive(function(item) {
+       	 	item.animations.play('stand');
+		}, this);
 
 	 	
 	 	// preventing "free move"
@@ -76,6 +80,16 @@ var playState = {
 	 	emitter = game.add.emitter(0, 0, 100);
    		emitter.makeParticles('particle');
 		emitter.gravity = 200;
+	 },
+
+	 initLava: function(){
+	 	lava = game.add.group();
+        lava.enableBody = true;
+        level.addLava(lava);
+        lava.forEachAlive(function(item) {
+       	 	item.body.immovable = true;
+       	 	item.animations.add('stand', [0, 1], 2, true);
+		}, this);
 	 },
 
 };
