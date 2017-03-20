@@ -1,7 +1,8 @@
 var game = new Phaser.Game(640, 376, Phaser.AUTO, 'gameDiv');
 game.global = {
  gameLevel : 1,
- music : null
+ music : null,
+ rainSound : null
 }
 
 game.state.add('init', initState);
