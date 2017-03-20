@@ -11,6 +11,7 @@ var playState = {
 		collisionsHandler = new CollisionsHandler();
 
 		level.createBackground(game);
+		level.addStartingText(game);
 
 		this.initPlayer();
 		this.initPlatforms();

@@ -5,6 +5,13 @@ class Level1{
 	 	this.playerStartingY = 10; 
  	 }
 
+ 	 addStartingText(game){
+                var loadingLabel = game.add.text(80, 278, 'Kill the evil slime!   -->', {font: '20px Courier', fill: '#fff'});
+                setTimeout(function(){
+                        loadingLabel.kill();
+                }, 5000); 
+    }
+
  	 createBackground(game){
  	 	game.world.setBounds(0, 0, 885, 376);
 
