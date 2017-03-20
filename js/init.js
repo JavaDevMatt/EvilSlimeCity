@@ -6,7 +6,9 @@ var initState = {
 			{font: '40px Courier', fill: '#fff'});
 
 		game.load.audio('music', 'assets/sound/music.mp3'); // http://opengameart.org/content/rise-of-spirit
-		
+		game.load.audio('jump', 'assets/sound/jump.mp3');
+
+
 		game.load.image('menu-background', 'assets/img/menu-background.png'); // http://opengameart.org/content/industrial-parallax-background
 		game.load.image('game-background', 'assets/img/game-background.png'); // http://opengameart.org/content/industrial-parallax-background
 	    game.load.image('platform', 'assets/img/platform.png');
