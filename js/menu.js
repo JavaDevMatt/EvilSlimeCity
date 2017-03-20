@@ -1,8 +1,8 @@
 var menuState = {
 
 	create: function() {
-
 		game.add.sprite(0, 0, 'menu-background');
+		game.sound.play('music');
 
 
 		monster1 = game.add.sprite(160, game.world.height-60, 'monster1');
