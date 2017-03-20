@@ -9,7 +9,9 @@ var initState = {
 		
 		game.load.image('menu-background', 'assets/img/menu-background.png'); // http://opengameart.org/content/industrial-parallax-background
 		game.load.image('game-background', 'assets/img/game-background.png'); // http://opengameart.org/content/industrial-parallax-background
-	
+	    game.load.image('platform', 'assets/img/platform.png');
+		game.load.image('platform2', 'assets/img/platform2.png');
+		game.load.image('tower1', 'assets/img/tower1.png');
 
 		game.load.spritesheet('monster1', 'assets/img/monster1.png', 30, 23); // http://opengameart.org/content/scifi-creature-tileset-mini-32x32-scifi-creature-icons 
 		game.load.spritesheet('monster2', 'assets/img/monster2.png', 30, 23); // http://opengameart.org/content/scifi-creature-tileset-mini-32x32-scifi-creature-icons 

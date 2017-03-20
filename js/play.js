@@ -8,10 +8,12 @@ var playState = {
 
 	create: function() {	
 		level = this.chooseLevel();
+		collisionsHandler = new CollisionsHandler();
 
 		level.createBackground(game);
 
 		this.initPlayer();
+		this.initPlatforms();
 
 		cursors = game.input.keyboard.createCursorKeys();
 
@@ -19,6 +21,10 @@ var playState = {
 	},
 
 	update: function() {  
+
+		// collisios
+	 	collisionsHandler.update();
+
 		// animations
 	 	player.animations.play('stand');
 
@@ -39,6 +45,15 @@ var playState = {
 		player.body.bounce.y = 0.2;
    		player.body.gravity.y = 300;
         player.body.collideWorldBounds = true;
+	 },
+
+	 initPlatforms: function(){
+		platforms = game.add.group();
+        platforms.enableBody = true;
+        level.addPlatforms(platforms);
+        platforms.forEachAlive(function(item) {
+        	item.body.immovable = true;
+		}, this);
 	 },
 
 };
