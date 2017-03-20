@@ -14,6 +14,7 @@ var playState = {
 
 		this.initPlayer();
 		this.initPlatforms();
+		this.initEmitters();
 
 		cursors = game.input.keyboard.createCursorKeys();
 
@@ -45,9 +46,9 @@ var playState = {
 	    	game.sound.play('jump');
 	        player.body.velocity.y = -150;
 
-	        //emitter.x = player.x;
-    		//emitter.y = player.y + 5;
-			//emitter.start(true, 2000, null, 20);
+	        emitter.x = player.x;
+    		emitter.y = player.y + 5;
+			emitter.start(true, 2000, null, 20);
 	    }
 	},
 
@@ -68,6 +69,12 @@ var playState = {
         platforms.forEachAlive(function(item) {
         	item.body.immovable = true;
 		}, this);
+	 },
+
+	 initEmitters: function(){
+	 	emitter = game.add.emitter(0, 0, 100);
+   		emitter.makeParticles('particle');
+		emitter.gravity = 200;
 	 },
 
 };
