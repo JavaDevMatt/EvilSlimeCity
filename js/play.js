@@ -1,5 +1,10 @@
 var playState = {
 
+	resetState: function(){
+	 	isDead = false;
+	 	hasWon = false;
+	 },
+
 	chooseLevel: function(){
 		if(game.global.gameLevel == 1){
 			return new Level1(); 
@@ -8,6 +13,7 @@ var playState = {
 
 	create: function() {	
 		level = this.chooseLevel();
+		this.resetState();
 		collisionsHandler = new CollisionsHandler();
 
 		level.createBackground(game);
@@ -55,7 +61,30 @@ var playState = {
     		emitter.y = player.y + 5;
 			emitter.start(true, 2000, null, 20);
 	    }
+
+	    // overlaps
+	    game.physics.arcade.overlap(player, lava, this.killPlayer, null, this);
 	},
+
+	killPlayer: function(){
+	 	if(!hasWon){
+	 		this.shakeCamera();
+	 		emitter2.x = player.x + 15;
+    		emitter2.y = player.y + 25;
+			emitter2.start(true, 600, null, 600);
+
+	 		isDead = true;
+		 	game.sound.play('splash-death');
+		 	player.kill();
+		 	setTimeout(function(){
+		 		game.state.start('play');
+			}, 600);
+	 	}
+	 },
+
+	 shakeCamera: function(){
+	 	game.camera.shake(0.01, 300);
+	 },
 
 	initPlayer: function(){
 		player = game.add.sprite(level.playerStartingX, level.playerStartingY, 'monster1');
@@ -80,6 +109,11 @@ var playState = {
 	 	emitter = game.add.emitter(0, 0, 100);
    		emitter.makeParticles('particle');
 		emitter.gravity = 200;
+
+		emitter2 = game.add.emitter(0, 0, 100);
+   		emitter2.makeParticles('particle2');
+		emitter2.gravity = 50;
+		emitter2.setScale(1.0, 0, 1.0, 0, 2000);
 	 },
 
 	 initLava: function(){
