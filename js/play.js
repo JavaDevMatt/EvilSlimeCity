@@ -67,6 +67,7 @@ var playState = {
 
 	    // overlaps
 	    game.physics.arcade.overlap(player, lava, this.killPlayer, null, this);
+		game.physics.arcade.overlap(player, trampolines, this.trampolinePlayer, null, this);
 	},
 
 	killPlayer: function(){
@@ -165,6 +166,11 @@ var playState = {
 		rainEmitter.maxRotation = 0;
 
 		rainEmitter.start(false, 800, 5, 0);
+	 },
+
+	 trampolinePlayer: function(){
+	 	player.body.velocity.y -= 200;
+	 	game.sound.play('trampoline_jump');
 	 },
 
 };
