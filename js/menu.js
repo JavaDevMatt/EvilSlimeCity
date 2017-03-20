@@ -20,6 +20,9 @@ var menuState = {
 			var startLabel = game.add.text(200, game.world.height-60, 'Press Space to start',{font: '25px Arial', fill: '#ffffff'});
 		}
 		
+
+		var spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+		spaceKey.onDown.addOnce(this.startGame, this);
 	},
 
 	update: function() {
@@ -29,6 +32,8 @@ var menuState = {
 
 	startGame: function(){
 		game.global.music.volume = 0.3;
+
+		game.state.start('play');
 	},
 
 };

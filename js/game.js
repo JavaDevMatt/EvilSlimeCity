@@ -6,5 +6,6 @@ game.global = {
 
 game.state.add('init', initState);
 game.state.add('menu', menuState);
+game.state.add('play', playState);
 
 game.state.start('init');
