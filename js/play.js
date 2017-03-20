@@ -20,8 +20,8 @@ var playState = {
 		level.addStartingText(game);
 
 		this.initPlayer();
-		this.initPlatforms();
 		this.initLava();
+		this.initPlatforms();
 		this.initFallers();
 		this.initEmitters();
 		this.initRain();
