@@ -16,6 +16,7 @@ var initState = {
 	    game.load.image('platform', 'assets/img/platform.png');
 		game.load.image('platform2', 'assets/img/platform2.png');
 		game.load.image('tower1', 'assets/img/tower1.png');
+		game.load.image('faller', 'assets/img/faller.png'); 
 		game.load.spritesheet('lava', 'assets/img/lava.png', 56, 32);
 		game.load.spritesheet('lava2', 'assets/img/lava2.png', 252, 32); 
 

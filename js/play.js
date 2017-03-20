@@ -22,6 +22,7 @@ var playState = {
 		this.initPlayer();
 		this.initPlatforms();
 		this.initLava();
+		this.initFallers();
 		this.initEmitters();
 		this.initRain();
 
@@ -115,6 +116,12 @@ var playState = {
    		emitter2.makeParticles('particle2');
 		emitter2.gravity = 50;
 		emitter2.setScale(1.0, 0, 1.0, 0, 2000);
+	 },
+
+	 initFallers: function(){
+	 	fallers = game.add.group();
+		fallers.enableBody = true;
+        level.addFallers(fallers);
 	 },
 
 	 initLava: function(){

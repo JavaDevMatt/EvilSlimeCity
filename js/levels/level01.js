@@ -27,6 +27,10 @@ class Level1{
                 platforms.create(646, 112, 'tower1');
  	 }
 
+ 	 addFallers(fallers){
+ 	 	fallers.create(340, 282, 'faller');
+ 	 }
+
  	 addLava(lava){
  	 	lava.create(141, 332, 'lava');
         lava.create(254, 332, 'lava2');
