@@ -31,6 +31,10 @@ class Level1{
  	 	fallers.create(340, 282, 'faller');
  	 }
 
+ 	 addTrampolines(trampolines){
+ 	 	trampolines.create(600, 270, 'trampoline');
+ 	 }
+
  	 addLava(lava){
  	 	lava.create(141, 332, 'lava');
         lava.create(254, 332, 'lava2');

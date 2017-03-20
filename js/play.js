@@ -21,6 +21,7 @@ var playState = {
 
 		this.initPlayer();
 		this.initLava();
+		this.initTrampolines();
 		this.initPlatforms();
 		this.initFallers();
 		this.initEmitters();
@@ -104,6 +105,18 @@ var playState = {
         level.addPlatforms(platforms);
         platforms.forEachAlive(function(item) {
         	item.body.immovable = true;
+		}, this);
+	 },
+
+	 initTrampolines: function(){
+		trampolines = game.add.group();
+        trampolines.enableBody = true;
+        game.physics.arcade.enable(trampolines);
+        level.addTrampolines(trampolines);
+   		trampolines.forEachAlive(function(item) {
+   			item.body.bounce.y = 0.2;
+   			item.body.gravity.y = 300;
+   			item.body.collideWorldBounds = true;
 		}, this);
 	 },
 

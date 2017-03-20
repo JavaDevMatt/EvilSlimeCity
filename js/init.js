@@ -7,6 +7,8 @@ var initState = {
 
 		game.load.audio('music', 'assets/sound/music.mp3'); // http://opengameart.org/content/rise-of-spirit
 		game.load.audio('jump', 'assets/sound/jump.mp3');
+		game.load.audio('trampoline_jump', 'assets/sound/trampoline_jump.mp3'); // http://freesound.org/people/arteffect/sounds/349854/
+		
 		game.load.audio('splash-death', 'assets/sound/splash-death.mp3'); // http://freesound.org/people/Setuniman/sounds/135774/
 		game.load.audio('rain', 'assets/sound/rain.mp3'); // http://freesound.org/people/jmbphilmes/sounds/200272/
 
@@ -17,6 +19,7 @@ var initState = {
 		game.load.image('platform2', 'assets/img/platform2.png');
 		game.load.image('tower1', 'assets/img/tower1.png');
 		game.load.image('faller', 'assets/img/faller.png'); 
+		game.load.image('trampoline', 'assets/img/trampoline.png');
 		game.load.spritesheet('lava', 'assets/img/lava.png', 56, 32);
 		game.load.spritesheet('lava2', 'assets/img/lava2.png', 252, 32); 
 
