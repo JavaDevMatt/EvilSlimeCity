@@ -21,8 +21,8 @@ var playState = {
 
 		this.initPlayer();
 		this.initPlatforms();
-		this.initEmitters();
 		this.initLava();
+		this.initEmitters();
 		this.initRain();
 
 		cursors = game.input.keyboard.createCursorKeys();
