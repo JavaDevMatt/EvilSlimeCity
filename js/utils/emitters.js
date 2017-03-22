@@ -29,13 +29,13 @@ class RainEmitter{
 class JuiceEmitters{
 
 	spawnJumpEmitters(){
-		this.emitter = game.add.emitter(0, 0, 100);
-   		this.emitter.makeParticles('particle');
-		this.emitter.gravity = 200;
+		this.emitter1 = game.add.emitter(0, 0, 100);
+   		this.emitter1.makeParticles('particle');
+		this.emitter1.gravity = 200;
 
-		this.emitter.x = player.x;
-    	this.emitter.y = player.y + 5;
-		this.emitter.start(true, 2000, null, 20);
+		this.emitter1.x = player.x;
+    	this.emitter1.y = player.y + 5;
+		this.emitter1.start(true, 2000, null, 20);
 	}
 
   	spawnPlayerKillEmitters(){
