@@ -16,7 +16,6 @@ var playState = {
 		this.resetState();
 
 		collisionsHandler = new CollisionsHandler();
-		
 
 		level.createBackground(game);
 		level.addStartingText(game);
@@ -27,8 +26,6 @@ var playState = {
 		this.initPlatforms();
 		this.initFallers();
 		this.initRain();
-
-		//emitters = new JuiceEmitters();
 
 		cursors = game.input.keyboard.createCursorKeys();
 
@@ -62,8 +59,6 @@ var playState = {
 
 	    	game.sound.play('jump');
 	        player.body.velocity.y = -150;
-
-	        //emitters.spawnJumpEmitters(player.x, player.y);
 	    }
 
 	    // overlaps
@@ -74,9 +69,6 @@ var playState = {
 	killPlayer: function(){
 	 	if(!hasWon){
 	 		this.shakeCamera();
-	 		//emitter2.x = player.x + 15;
-    		//emitter2.y = player.y + 25;
-			//emitter2.start(true, 600, null, 600);
 
 	 		isDead = true;
 		 	game.sound.play('splash-death');
