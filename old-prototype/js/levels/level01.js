@@ -47,7 +47,6 @@ class Level1{
  	 	killers.create(141, 332, 'lava');
         killers.create(254, 332, 'lava2');
         killers.create(700, 332, 'lava2');
-
  	 }
 
  	 addArrows(arrows){
