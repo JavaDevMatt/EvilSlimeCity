@@ -64,5 +64,8 @@ class Level1{
     handleRidersLogic(){
     }
 
+    checkForCoolKillText(){
+     } 
+
 
 }

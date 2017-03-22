@@ -79,5 +79,14 @@ class Level2{
         } 
      }
  	 
+     checkForCoolKillText(){
+        if(redSlimes.countLiving() == 1){
+                var infoLabel = game.add.text(310, 278, 'One more!', 
+                        {font: '20px Courier', fill: '#fff'});
+                setTimeout(function(){
+                        infoLabel.kill();
+                }, 3000);
+            }
+    } 
 
 }

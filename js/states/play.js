@@ -122,6 +122,8 @@ var playState = {
 		 	this.shakeCamera();
 		 	redSlime.kill();
 
+		 	level.checkForCoolKillText();
+
 		 	if(redSlimes.countLiving() <= 0){
 		 		level.addEndingText(game, player);
 		 		hasPlayerWon = true;
