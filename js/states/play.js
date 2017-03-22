@@ -14,7 +14,9 @@ var playState = {
 	create: function() {	
 		level = this.chooseLevel();
 		this.resetState();
+
 		collisionsHandler = new CollisionsHandler();
+		
 
 		level.createBackground(game);
 		level.addStartingText(game);
@@ -24,8 +26,9 @@ var playState = {
 		this.initTrampolines();
 		this.initPlatforms();
 		this.initFallers();
-		this.initEmitters();
 		this.initRain();
+
+		//emitters = new JuiceEmitters();
 
 		cursors = game.input.keyboard.createCursorKeys();
 
@@ -60,10 +63,7 @@ var playState = {
 	    	game.sound.play('jump');
 	        player.body.velocity.y = -150;
 
-	       // emitters.spawnJumpEmitters(player.x, player.y);
-	  //       emitter.x = player.x;
-   //  		emitter.y = player.y + 5;
-			// emitter.start(true, 2000, null, 20);
+	        //emitters.spawnJumpEmitters(player.x, player.y);
 	    }
 
 	    // overlaps
@@ -73,7 +73,7 @@ var playState = {
 
 	killPlayer: function(){
 	 	if(!hasWon){
-	 		//this.shakeCamera();
+	 		this.shakeCamera();
 	 		//emitter2.x = player.x + 15;
     		//emitter2.y = player.y + 25;
 			//emitter2.start(true, 600, null, 600);
@@ -120,19 +120,6 @@ var playState = {
    			item.body.gravity.y = 300;
    			item.body.collideWorldBounds = true;
 		}, this);
-	 },
-
-	 initEmitters: function(){
-	 	//emitters = new JuiceEmitters();
-
-	 // 	emitter = game.add.emitter(0, 0, 100);
-  //  		emitter.makeParticles('particle');
-		// emitter.gravity = 200;
-
-		// emitter2 = game.add.emitter(0, 0, 100);
-  //  		emitter2.makeParticles('particle2');
-		// emitter2.gravity = 50;
-		// emitter2.setScale(1.0, 0, 1.0, 0, 2000);
 	 },
 
 	 initFallers: function(){

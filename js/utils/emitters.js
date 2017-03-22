@@ -27,20 +27,28 @@ class RainEmitter{
 }
 
 // class JuiceEmitters(){
-// 	initEmitters(){
-// 		emitter1 = game.add.emitter(0, 0, 100);
-//    		emitter1.makeParticles('particle');
-// 		emitter1.gravity = 200;
 
-// 		emitter2 = game.add.emitter(0, 0, 100);
-//    		emitter2.makeParticles('particle2');
-// 		emitter2.gravity = 50;
-// 		emitter2.setScale(1.0, 0, 1.0, 0, 2000);
+// 	constructor() {
+//     	this.emitter1 = game.add.emitter(0, 0, 100);
+//     	this.emitter2 = game.add.emitter(0, 0, 100);
+//     	this.initEmitters();
+//   	}
+
+//   	initEmitters(){
+// 		this.emitter1 = game.add.emitter(0, 0, 100);
+//    		this.emitter1.makeParticles('particle');
+// 		this.emitter1.gravity = 200;
+
+// 		this.emitter2 = game.add.emitter(0, 0, 100);
+//    		this.emitter2.makeParticles('particle2');
+// 		this.emitter2.gravity = 50;
+// 		this.emitter2.setScale(1.0, 0, 1.0, 0, 2000);
 // 	}
 
 // 	spawnJumpEmitters(x, y){
-// 			emitter1.x = x;
-//     		emitter1.y = y + 5;
-// 			emitter1.start(true, 2000, null, 20);
+// 		this.emitter1.x = x;
+//     	this.emitter1.y = y + 5;
+// 		this.emitter1.start(true, 2000, null, 20);
 // 	}
+  	
 // }
