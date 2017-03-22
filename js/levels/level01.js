@@ -45,5 +45,12 @@ class Level1{
         lava.create(700, 332, 'lava2');
  	 }
 
+ 	 addEndingText(game, player){
+        game.add.text(player.x - 200, 100, 'Great!', 
+                {font: '40px Courier', fill: '#fff'});
+                game.add.text(player.x - 200, 136, 'Time for the next one....', 
+                {font: '20px Courier', fill: '#fff'});
+    }
+
 
 }

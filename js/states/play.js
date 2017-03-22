@@ -95,6 +95,12 @@ var playState = {
 		 	game.sound.play('splash-death');
 		 	this.shakeCamera();
 		 	redSlime.kill();
+
+		 	if(redSlimes.countLiving() <= 0){
+		 		level.addEndingText(game, player);
+			 	
+		 		hasPlayerWon = true;
+			}
 	 	}
 	 	
 	 },
