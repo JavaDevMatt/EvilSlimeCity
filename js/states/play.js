@@ -85,6 +85,7 @@ var playState = {
 	    // overlaps
 	    game.physics.arcade.overlap(player, lava, this.killPlayer, null, this);
 		game.physics.arcade.overlap(player, trampolines, this.trampolinePlayer, null, this);
+		game.physics.arcade.overlap(redSlimes, trampolines, this.trampolineSlime, null, this);
 		game.physics.arcade.overlap(redSlimes, lava, this.killRedSlime, null, this);
 
 		level.handleRidersLogic();
@@ -220,6 +221,11 @@ var playState = {
 
 	 	rainEmitter = new RainEmitter();
 		rainEmitter.start();
+	 },
+
+	 trampolineSlime: function(redSlime){
+	 	redSlime.body.velocity.y -= 200;
+	 	game.sound.play('trampoline_jump');
 	 },
 
 	 trampolinePlayer: function(){
