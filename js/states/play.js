@@ -25,6 +25,7 @@ var playState = {
 		this.initTrampolines();
 		this.initPlatforms();
 		this.initFallers();
+		this.initEmitters();
 		this.initRain();
 
 		cursors = game.input.keyboard.createCursorKeys();
@@ -69,6 +70,9 @@ var playState = {
 	killPlayer: function(){
 	 	if(!hasWon){
 	 		this.shakeCamera();
+	 		emitter2.x = player.x + 15;
+    		emitter2.y = player.y + 25;
+			emitter2.start(true, 600, null, 600);
 
 	 		isDead = true;
 		 	game.sound.play('splash-death');
@@ -140,6 +144,17 @@ var playState = {
 	 trampolinePlayer: function(){
 	 	player.body.velocity.y -= 200;
 	 	game.sound.play('trampoline_jump');
+	 },
+
+	 initEmitters: function(){
+	 	emitter = game.add.emitter(0, 0, 100);
+   		emitter.makeParticles('particle');
+		emitter.gravity = 200;
+
+		emitter2 = game.add.emitter(0, 0, 100);
+   		emitter2.makeParticles('particle2');
+		emitter2.gravity = 50;
+		emitter2.setScale(1.0, 0, 1.0, 0, 2000);
 	 },
 
 };
