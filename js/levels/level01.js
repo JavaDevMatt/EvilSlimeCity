@@ -27,6 +27,10 @@ class Level1{
         platforms.create(646, 112, 'tower1');
  	 }
 
+ 	 addRedSlimes(redSlimes){
+        redSlimes.create(670, 10, 'monster2');
+     }
+
  	 addFallers(){
  	 	fallers.create(340, 282, 'faller');
  	 }

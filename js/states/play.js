@@ -22,6 +22,7 @@ var playState = {
 		level.addStartingText(game);
 
 		this.initPlayer();
+		this.initRedSlimes();
 		this.initLava();
 		this.initTrampolines();
 		this.initPlatforms();
@@ -41,6 +42,9 @@ var playState = {
 		// animations
 	 	player.animations.play('stand');
 	 	lava.forEachAlive(function(item) {
+       	 	item.animations.play('stand');
+		}, this);
+		redSlimes.forEachAlive(function(item) {
        	 	item.animations.play('stand');
 		}, this);
 
@@ -114,6 +118,22 @@ var playState = {
    			item.body.bounce.y = 0.2;
    			item.body.gravity.y = 300;
    			item.body.collideWorldBounds = true;
+		}, this);
+	 },
+
+	 initRedSlimes: function(){
+	 	redSlimes = game.add.group();
+
+	 	redSlimes.enableBody = true;
+        game.physics.arcade.enable(redSlimes);
+
+		level.addRedSlimes(redSlimes);
+		redSlimes.forEachAlive(function(item) {
+   			item.body.bounce.y = 0.2;
+			item.body.bounce.x = 1.0;
+   			item.body.gravity.y = 300;
+        	item.body.collideWorldBounds = true;
+        	item.animations.add('stand', [0, 1, 2], 5, true);
 		}, this);
 	 },
 
