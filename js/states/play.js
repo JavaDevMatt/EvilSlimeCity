@@ -60,9 +60,10 @@ var playState = {
 	    	game.sound.play('jump');
 	        player.body.velocity.y = -150;
 
-	        emitter.x = player.x;
-    		emitter.y = player.y + 5;
-			emitter.start(true, 2000, null, 20);
+	       // emitters.spawnJumpEmitters(player.x, player.y);
+	  //       emitter.x = player.x;
+   //  		emitter.y = player.y + 5;
+			// emitter.start(true, 2000, null, 20);
 	    }
 
 	    // overlaps
@@ -72,10 +73,10 @@ var playState = {
 
 	killPlayer: function(){
 	 	if(!hasWon){
-	 		this.shakeCamera();
-	 		emitter2.x = player.x + 15;
-    		emitter2.y = player.y + 25;
-			emitter2.start(true, 600, null, 600);
+	 		//this.shakeCamera();
+	 		//emitter2.x = player.x + 15;
+    		//emitter2.y = player.y + 25;
+			//emitter2.start(true, 600, null, 600);
 
 	 		isDead = true;
 		 	game.sound.play('splash-death');
@@ -122,14 +123,16 @@ var playState = {
 	 },
 
 	 initEmitters: function(){
-	 	emitter = game.add.emitter(0, 0, 100);
-   		emitter.makeParticles('particle');
-		emitter.gravity = 200;
+	 	//emitters = new JuiceEmitters();
 
-		emitter2 = game.add.emitter(0, 0, 100);
-   		emitter2.makeParticles('particle2');
-		emitter2.gravity = 50;
-		emitter2.setScale(1.0, 0, 1.0, 0, 2000);
+	 // 	emitter = game.add.emitter(0, 0, 100);
+  //  		emitter.makeParticles('particle');
+		// emitter.gravity = 200;
+
+		// emitter2 = game.add.emitter(0, 0, 100);
+  //  		emitter2.makeParticles('particle2');
+		// emitter2.gravity = 50;
+		// emitter2.setScale(1.0, 0, 1.0, 0, 2000);
 	 },
 
 	 initFallers: function(){
@@ -151,9 +154,7 @@ var playState = {
 	 initRain: function(){
 		game.global.rainSound.play();
 
-	 	rainEmitter= new RainEmitter();
-	 	rainEmitter.initEmitter();
-
+	 	rainEmitter = new RainEmitter();
 		rainEmitter.start();
 	 },
 
