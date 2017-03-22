@@ -1,8 +1,8 @@
 var playState = {
 
 	resetState: function(){
-	 	isDead = false;
-	 	hasWon = false;
+	 	isPlayerDead = false;
+	 	hasPlayerWon = false;
 	 },
 
 	chooseLevel: function(){
@@ -70,20 +70,33 @@ var playState = {
 	    // overlaps
 	    game.physics.arcade.overlap(player, lava, this.killPlayer, null, this);
 		game.physics.arcade.overlap(player, trampolines, this.trampolinePlayer, null, this);
+		game.physics.arcade.overlap(redSlimes, lava, this.killRedSlime, null, this);
 	},
 
 	killPlayer: function(){
-	 	if(!hasWon){
+	 	if(!hasPlayerWon){
 	 		this.shakeCamera();
 			juiceEmitters.spawnPlayerKillEmitters();
 
-	 		isDead = true;
+	 		isPlayerDead = true;
 		 	game.sound.play('splash-death');
 		 	player.kill();
 		 	setTimeout(function(){
 		 		game.state.start('play');
 			}, 600);
 	 	}
+	 },
+
+	 killRedSlime: function(redSlime){
+	 	if(!isPlayerDead){
+	 	
+	 		juiceEmitters.spawnKillRedSlimeEmitters(redSlime);
+	 		
+		 	game.sound.play('splash-death');
+		 	this.shakeCamera();
+		 	redSlime.kill();
+	 	}
+	 	
 	 },
 
 	 shakeCamera: function(){

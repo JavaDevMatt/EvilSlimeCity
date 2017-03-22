@@ -38,6 +38,16 @@ class JuiceEmitters{
 		this.emitter1.start(true, 2000, null, 20);
 	}
 
+	spawnKillRedSlimeEmitters(redSlime){
+		this.emitterRed = game.add.emitter(0, 0, 100);
+   		this.emitterRed.makeParticles('red-particle');
+		this.emitterRed.gravity = 50;
+		this.emitterRed.setScale(1.0, 0, 1.0, 0, 1500);
+   		this.emitterRed.x = redSlime.x + 15;
+    	this.emitterRed.y = redSlime.y + 25;
+		this.emitterRed.start(true, 3000, null, 20);
+	}
+
   	spawnPlayerKillEmitters(){
   		this.emitter2 = game.add.emitter(0, 0, 100);
    		this.emitter2.makeParticles('particle2');
