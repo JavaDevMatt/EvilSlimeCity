@@ -8,6 +8,8 @@ var playState = {
 	chooseLevel: function(){
 		if(game.global.gameLevel == 1){
 			return new Level1(); 
+		} else if(game.global.gameLevel == 2){
+			return new Level2(); 
 		}
 	},
 
@@ -98,8 +100,14 @@ var playState = {
 
 		 	if(redSlimes.countLiving() <= 0){
 		 		level.addEndingText(game, player);
-			 	
 		 		hasPlayerWon = true;
+			 	game.global.gameLevel++;
+
+		 		setTimeout(function(){
+			 		
+			 		game.state.start('play');
+			 		
+				}, 3000);
 			}
 	 	}
 	 	
