@@ -16,6 +16,7 @@ var playState = {
 		this.resetState();
 
 		collisionsHandler = new CollisionsHandler();
+		juiceEmitters = new JuiceEmitters();
 
 		level.createBackground(game);
 		level.addStartingText(game);
@@ -25,7 +26,6 @@ var playState = {
 		this.initTrampolines();
 		this.initPlatforms();
 		this.initFallers();
-		this.initEmitters();
 		this.initRain();
 
 		cursors = game.input.keyboard.createCursorKeys();
@@ -58,6 +58,7 @@ var playState = {
 	    if (cursors.up.isDown && player.body.touching.down){
 	    	game.add.tween(player).to( { angle: 360 }, 600, Phaser.Easing.Linear.None, true);
 
+	    	juiceEmitters.spawnJumpEmitters();
 	    	game.sound.play('jump');
 	        player.body.velocity.y = -150;
 	    }
@@ -70,9 +71,7 @@ var playState = {
 	killPlayer: function(){
 	 	if(!hasWon){
 	 		this.shakeCamera();
-	 		emitter2.x = player.x + 15;
-    		emitter2.y = player.y + 25;
-			emitter2.start(true, 600, null, 600);
+			juiceEmitters.spawnPlayerKillEmitters();
 
 	 		isDead = true;
 		 	game.sound.play('splash-death');
@@ -146,15 +145,5 @@ var playState = {
 	 	game.sound.play('trampoline_jump');
 	 },
 
-	 initEmitters: function(){
-	 	emitter = game.add.emitter(0, 0, 100);
-   		emitter.makeParticles('particle');
-		emitter.gravity = 200;
-
-		emitter2 = game.add.emitter(0, 0, 100);
-   		emitter2.makeParticles('particle2');
-		emitter2.gravity = 50;
-		emitter2.setScale(1.0, 0, 1.0, 0, 2000);
-	 },
 
 };
