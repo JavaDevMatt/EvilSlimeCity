@@ -27,6 +27,7 @@ var playState = {
 		this.initRedSlimes();
 		this.initLava();
 		this.initTrampolines();
+		this.initSlowFallers();
 		this.initPlatforms();
 		this.initFallers();
 		this.initRain();
@@ -53,6 +54,17 @@ var playState = {
 	 	
 	 	// preventing "free move"
 	    player.body.velocity.x = 0;
+	    trampolines.forEachAlive(function(item) {
+	    	item.body.velocity.x = 0;
+		}, this);
+		fallers.forEachAlive(function(item) {
+	    	item.body.velocity.x = 0;
+		}, this);
+		slowFallers.forEachAlive(function(item) {
+	    	item.body.velocity.x = 0;
+	 		item.body.velocity.y = 0;
+		}, this);
+		
 	    // controls
 	    if (cursors.left.isDown){
 	        player.body.velocity.x = -150;
@@ -169,6 +181,13 @@ var playState = {
 		fallers.enableBody = true;
         level.addFallers(fallers);
 	 },
+
+	 initSlowFallers: function(){
+	 	slowFallers = game.add.group();
+		slowFallers.enableBody = true;
+        level.addSlowFallers(slowFallers);
+	 },
+
 
 	 initLava: function(){
 	 	lava = game.add.group();
