@@ -67,7 +67,15 @@ class Level2{
         lava.create(1510, 352, 'lava2');
  	 }
 
- 	 
+     addRiders(){
+        this.rider1 = riders.create(490, 200, 'faller');
+     }
 
+     handleRidersLogic(){
+        if(this.rider1.x > 650){
+            this.rider1.body.velocity.x = -100;
+        } 
+     }
+ 	 
 
 }

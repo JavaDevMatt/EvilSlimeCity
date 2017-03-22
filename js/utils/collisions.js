@@ -2,6 +2,7 @@ class CollisionsHandler{
  
 	update(){
 		game.physics.arcade.collide(player, platforms);
+		game.physics.arcade.collide(player, riders); 
 		game.physics.arcade.collide(player, fallers); 
 		game.physics.arcade.collide(player, trampolines);
 		game.physics.arcade.collide(player, slowFallers);
@@ -14,6 +15,7 @@ class CollisionsHandler{
 	 	game.physics.arcade.collide(platforms, redSlimes);
 	 	game.physics.arcade.collide(redSlimes, slowFallers);
 	 	game.physics.arcade.collide(slowFallers, trampolines);
+	 	game.physics.arcade.collide(redSlimes, riders);
 	}
 
 }

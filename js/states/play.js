@@ -29,6 +29,7 @@ var playState = {
 		this.initTrampolines();
 		this.initSlowFallers();
 		this.initPlatforms();
+		this.initRiders();
 		this.initFallers();
 		this.initRain();
 
@@ -64,7 +65,7 @@ var playState = {
 	    	item.body.velocity.x = 0;
 	 		item.body.velocity.y = 0;
 		}, this);
-		
+
 	    // controls
 	    if (cursors.left.isDown){
 	        player.body.velocity.x = -150;
@@ -85,6 +86,8 @@ var playState = {
 	    game.physics.arcade.overlap(player, lava, this.killPlayer, null, this);
 		game.physics.arcade.overlap(player, trampolines, this.trampolinePlayer, null, this);
 		game.physics.arcade.overlap(redSlimes, lava, this.killRedSlime, null, this);
+
+		level.handleRidersLogic();
 	},
 
 	killPlayer: function(){
@@ -157,6 +160,19 @@ var playState = {
    			item.body.bounce.y = 0.2;
    			item.body.gravity.y = 300;
    			item.body.collideWorldBounds = true;
+		}, this);
+	 },
+
+	 initRiders: function(){
+	 	riders = game.add.group();
+        riders.enableBody = true;
+        game.physics.arcade.enable(riders);
+        level.addRiders(riders);
+        riders.forEachAlive(function(item) {
+        	item.body.immovable = true;
+        	item.body.bounce.setTo(1, 1);
+       		item.body.collideWorldBounds = true;
+        	item.body.velocity.setTo(-100, 0);
 		}, this);
 	 },
 
