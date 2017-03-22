@@ -1,13 +1,14 @@
 var playState = {
 
 	resetState: function(){
+		canBoostFlag = true;
 	 	isPlayerDead = false;
 	 	hasPlayerWon = false;
 	 },
 
 	chooseLevel: function(){
 		if(game.global.gameLevel == 1){
-			return new Level1(); 
+			return new Level1();
 		} else if(game.global.gameLevel == 2){
 			return new Level2(); 
 		}
@@ -31,6 +32,7 @@ var playState = {
 		this.initPlatforms();
 		this.initRiders();
 		this.initFallers();
+		this.initArrows();
 		this.initRain();
 
 		cursors = game.input.keyboard.createCursorKeys();
@@ -85,11 +87,50 @@ var playState = {
 	    // overlaps
 	    game.physics.arcade.overlap(player, lava, this.killPlayer, null, this);
 		game.physics.arcade.overlap(player, trampolines, this.trampolinePlayer, null, this);
+		game.physics.arcade.overlap(player, arrows, this.arrowBoost, null, this);
 		game.physics.arcade.overlap(redSlimes, trampolines, this.trampolineSlime, null, this);
 		game.physics.arcade.overlap(redSlimes, lava, this.killRedSlime, null, this);
 
 		level.handleRidersLogic();
 	},
+
+	arrowBoost: function(player, arrow){
+	 	if(canBoostFlag){
+	 		boostTween = game.add.tween(player).to( { alpha: 0 }, 50, Phaser.Easing.Linear.None, true, 0, 1000, true);
+	 		game.sound.play('ding')
+	 		canBoostFlag = false;
+	 		arrow.kill();
+
+	 		var l1 = game.add.text(player.x - 8, player.y - 30, '3!', 
+                {font: '20px Courier', fill: '#fff'});
+
+	 		var l2, l3;
+
+	 		setTimeout(function(){
+	 			l1.kill();
+	 			l2 = game.add.text(player.x - 8, player.y - 30, '2!', 
+                {font: '20px Courier', fill: '#fff'});
+			}, 1000);
+
+			setTimeout(function(){
+	 			l2.kill();
+	 			l3 = game.add.text(player.x - 8, player.y - 30, '1!', 
+                {font: '20px Courier', fill: '#fff'});
+			}, 2000);
+
+		 	setTimeout(function(){
+		 		boostTween.stop();
+	    		game.add.tween(player).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true);
+
+		 		l3.kill();
+		 		juiceEmitters.spawnPlayerBoostEmitters();
+
+		 		canBoostFlag = true;
+		 		player.body.velocity.y = -500;
+			}, 3000);
+	 	}
+	 	 
+	 },
 
 	killPlayer: function(){
 	 	if(!hasPlayerWon){
@@ -149,6 +190,15 @@ var playState = {
         level.addPlatforms(platforms);
         platforms.forEachAlive(function(item) {
         	item.body.immovable = true;
+		}, this);
+	 },
+
+	 initArrows: function(){
+	 	arrows = game.add.group();
+	 	arrows.enableBody = true;
+	 	level.addArrows(arrows);
+   		arrows.forEachAlive(function(item) {
+       	 	item.body.immovable = true;
 		}, this);
 	 },
 

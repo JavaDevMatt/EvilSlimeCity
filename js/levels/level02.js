@@ -1,7 +1,7 @@
 class Level2{
 
 	 constructor() {
-	 	this.playerStartingX = 10;
+	 	this.playerStartingX = 900;
 	 	this.playerStartingY = 10; 
  	 }
 
@@ -39,7 +39,9 @@ class Level2{
         platforms.create(1410, 112, 'tower1');
      }
 
- 
+    addArrows(arrows){
+        arrows.create(1230, 240, 'arrow');
+     } 
 
  	 addRedSlimes(){
         redSlimes.create(1470, 10, 'monster2');
