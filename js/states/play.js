@@ -151,21 +151,10 @@ var playState = {
 	 initRain: function(){
 		game.global.rainSound.play();
 
-	 	rainEmitter = game.add.emitter(game.world.centerX, 0, 400);
-        rainEmitter.width = game.world.width;
-        rainEmitter.angle = -3;
-        rainEmitter.makeParticles('rain');
+	 	rainEmitter= new RainEmitter();
+	 	rainEmitter.initEmitter();
 
-		rainEmitter.minParticleScale = 0.1;
-		rainEmitter.maxParticleScale = 0.5;
-
-		rainEmitter.setYSpeed(300, 500);
-		rainEmitter.setXSpeed(-5, 5);
-
-		rainEmitter.minRotation = 0;
-		rainEmitter.maxRotation = 0;
-
-		rainEmitter.start(false, 800, 5, 0);
+		rainEmitter.start();
 	 },
 
 	 trampolinePlayer: function(){
