@@ -1,6 +1,7 @@
 class ArrowBooster{
 
 	boost(arrow){
+		if(canBoostFlag){
 			var boostTween = game.add.tween(player).to( { alpha: 0 }, 50, Phaser.Easing.Linear.None, true, 0, 1000, true);
 	 	
 			game.sound.play('ding')
@@ -34,7 +35,7 @@ class ArrowBooster{
 		 		canBoostFlag = true;
 		 		player.body.velocity.y = -500;
 			}, 3000);
-
+		 }	
 	}
 	
 }
