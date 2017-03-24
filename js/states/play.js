@@ -36,6 +36,7 @@ var playState = {
 		this.initRiders();
 		this.initFallers();
 		this.initArrows();
+		this.initSwitchFallers();
 		this.initRain();
 
 		cursors = game.input.keyboard.createCursorKeys();
@@ -212,6 +213,26 @@ var playState = {
         	item.body.collideWorldBounds = true;
         	item.animations.add('stand', [0, 1, 2], 5, true);
 		}, this);
+	 },
+
+	 initSwitchFallers: function(){
+		switchFallers = game.add.group();
+	 	if(game.global.gameLevel == 3){
+	        switchFallers.enableBody = true;
+	        game.physics.arcade.enable(switchFallers);
+	        switchFallers.create(136, 242, 'faller'); 
+	        switchFallers.create(330, 112, 'faller');
+
+	        switchFallers.create(208, 242, 'platform');
+	        switchFallers.create(349, 289, 'faller');
+	        switchFallers.create(493, 289, 'faller');
+	        switchFallers.create(565, 289, 'faller');
+	        switchFallers.create(530, 32, 'tower1');
+
+	   		switchFallers.forEachAlive(function(item) {
+	        	item.body.immovable = true;
+			}, this);
+	 	}
 	 },
 
 	 initFallers: function(){
