@@ -51,6 +51,9 @@ class Level1{
         lava.create(700, 332, 'lava2');
  	 }
 
+     addSwitchFallers(){
+     }
+
  	 addEndingText(){
         game.add.text(player.x - 200, 100, 'Great!', 
                 {font: '40px Courier', fill: '#fff'});

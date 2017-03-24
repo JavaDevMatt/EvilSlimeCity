@@ -73,6 +73,9 @@ class Level2{
         this.rider1 = riders.create(490, 200, 'faller');
      }
 
+     addSwitchFallers(){
+     }
+
      handleRidersLogic(){
         if(this.rider1.x > 650){
             this.rider1.body.velocity.x = -100;

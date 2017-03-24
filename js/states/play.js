@@ -217,22 +217,14 @@ var playState = {
 
 	 initSwitchFallers: function(){
 		switchFallers = game.add.group();
-	 	if(game.global.gameLevel == 3){
-	        switchFallers.enableBody = true;
-	        game.physics.arcade.enable(switchFallers);
-	        switchFallers.create(136, 242, 'faller'); 
-	        switchFallers.create(330, 112, 'faller');
+	 	switchFallers.enableBody = true;
 
-	        switchFallers.create(208, 242, 'platform');
-	        switchFallers.create(349, 289, 'faller');
-	        switchFallers.create(493, 289, 'faller');
-	        switchFallers.create(565, 289, 'faller');
-	        switchFallers.create(530, 32, 'tower1');
+	 	level.addSwitchFallers();
+        game.physics.arcade.enable(switchFallers);
 
-	   		switchFallers.forEachAlive(function(item) {
-	        	item.body.immovable = true;
-			}, this);
-	 	}
+   		switchFallers.forEachAlive(function(item) {
+        	item.body.immovable = true;
+		}, this);
 	 },
 
 	 initFallers: function(){

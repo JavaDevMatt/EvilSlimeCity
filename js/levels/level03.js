@@ -58,6 +58,17 @@ class Level3{
         lava.create(506, 332, 'lava2');
  	 }
 
+     addSwitchFallers(){
+        switchFallers.create(136, 242, 'faller'); 
+        switchFallers.create(330, 112, 'faller');
+
+        switchFallers.create(208, 242, 'platform');
+        switchFallers.create(349, 289, 'faller');
+        switchFallers.create(493, 289, 'faller');
+        switchFallers.create(565, 289, 'faller');
+        switchFallers.create(530, 32, 'tower1');
+     }
+
      addRiders(){
      }
 
