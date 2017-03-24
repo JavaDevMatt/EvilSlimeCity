@@ -11,6 +11,8 @@ var playState = {
 			return new Level1();
 		} else if(game.global.gameLevel == 2){
 			return new Level2(); 
+		} else if(game.global.gameLevel == 3){
+			return new Level3(); 
 		}
 	},
 
