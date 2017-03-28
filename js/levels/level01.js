@@ -61,6 +61,9 @@ class Level1{
                 {font: '20px Courier', fill: '#fff'});
     }
 
+    addTnt(){
+    }
+
     addRiders(){
     }
 

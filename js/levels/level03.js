@@ -72,6 +72,14 @@ class Level3{
      addRiders(){
      }
 
+     addTnt(){
+        tnt = game.add.sprite(360, 150, 'tnt');
+        game.physics.arcade.enable(tnt);
+        tnt.body.bounce.y = 0.2;
+        tnt.body.gravity.y = 300;
+        tnt.body.collideWorldBounds = true;
+     }
+
      handleRidersLogic(){
      }
  	 

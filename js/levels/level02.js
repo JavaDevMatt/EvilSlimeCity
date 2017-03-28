@@ -76,6 +76,9 @@ class Level2{
      addSwitchFallers(){
      }
 
+     addTnt(){
+     }
+
      handleRidersLogic(){
         if(this.rider1.x > 650){
             this.rider1.body.velocity.x = -100;

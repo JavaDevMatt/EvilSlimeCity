@@ -27,6 +27,7 @@ var playState = {
 
 		level.createBackground(game);
 		level.addStartingText(game);
+		
 
 		this.initTnt();
 		this.initPlayer();
@@ -107,15 +108,8 @@ var playState = {
 	 },
 
 	 initTnt: function(){
-	 	if(game.global.gameLevel == 3){
-			tnt = game.add.sprite(360, 150, 'tnt');
-			game.physics.arcade.enable(tnt);
-			tnt.body.bounce.y = 0.2;
-	   		tnt.body.gravity.y = 300;
-	        tnt.body.collideWorldBounds = true;
-	 	} else {
-	 		tnt = null;
-	 	}
+	 	tnt = null;
+	 	level.addTnt();
 	 },
 
 	 tntExplode: function(){
