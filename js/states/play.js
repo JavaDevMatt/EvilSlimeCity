@@ -2,6 +2,7 @@ var playState = {
 
 	resetState: function(){
 		canBoostFlag = true;
+		canTntExplode = true;
 	 	isPlayerDead = false;
 	 	hasPlayerWon = false;
 	 },
@@ -27,6 +28,7 @@ var playState = {
 		level.createBackground(game);
 		level.addStartingText(game);
 
+		this.initTnt();
 		this.initPlayer();
 		this.initRedSlimes();
 		this.initLava();
@@ -94,12 +96,65 @@ var playState = {
 		game.physics.arcade.overlap(player, arrows, this.arrowBoost, null, this);
 		game.physics.arcade.overlap(redSlimes, trampolines, this.trampolineSlime, null, this);
 		game.physics.arcade.overlap(redSlimes, lava, this.killRedSlime, null, this);
+		game.physics.arcade.overlap(player, tnt, this.tntExplode, null, this);
+	    game.physics.arcade.overlap(redSlimes, tnt, this.tntExplode, null, this);
 
 		level.handleRidersLogic();
 	},
 
 	arrowBoost: function(player, arrow){
 	 	arrowBooster.boost(arrow);
+	 },
+
+	 initTnt: function(){
+	 	if(game.global.gameLevel == 3){
+			tnt = game.add.sprite(360, 150, 'tnt');
+			game.physics.arcade.enable(tnt);
+			tnt.body.bounce.y = 0.2;
+	   		tnt.body.gravity.y = 300;
+	        tnt.body.collideWorldBounds = true;
+	 	} else {
+	 		tnt = null;
+	 	}
+	 },
+
+	 tntExplode: function(){
+	 	if(canTntExplode){
+	 		game.add.tween(tnt).to( { alpha: 0 }, 700, Phaser.Easing.Linear.None, true, 0, 1000, true);
+	 		game.sound.play('tnt')
+	 		canTntExplode = false;
+	 		var l1 = game.add.text(tnt.x + 11, tnt.y - 30, '3!', 
+                {font: '20px Courier', fill: '#fff'});
+
+	 		var l2, l3;
+
+	 		setTimeout(function(){
+	 			l1.kill();
+	 			l2 = game.add.text(tnt.x + 11, tnt.y - 30, '2!', 
+                {font: '20px Courier', fill: '#fff'});
+			}, 1000);
+
+			setTimeout(function(){
+	 			l2.kill();
+	 			l3 = game.add.text(tnt.x + 11, tnt.y - 30, '1!', 
+                {font: '20px Courier', fill: '#fff'});
+			}, 2000);
+
+		 	setTimeout(function(){
+		 		game.camera.shake(0.04, 2000, true);
+		 		l3.kill();
+
+				setTimeout(function(){
+		 			tnt.kill();
+				}, 1000);
+
+		 		switchFallers.forEachAlive(function(item) {
+        			item.body.immovable = false;
+				}, this);
+
+			}, 3000);
+	 	}
+	 		
 	 },
 
 	killPlayer: function(){
