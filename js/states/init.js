@@ -12,6 +12,9 @@ var initState = {
 		game.load.audio('splash-death', 'assets/sound/splash-death.mp3'); // http://freesound.org/people/Setuniman/sounds/135774/
 		game.load.audio('rain', 'assets/sound/rain.mp3'); // http://freesound.org/people/jmbphilmes/sounds/200272/
 		game.load.audio('ding', 'assets/sound/ding.mp3'); // http://freesound.org/people/gloriaeffect/sounds/108428/
+		game.load.audio('tnt', 'assets/sound/tnt.mp3'); // http://freesound.org/people/ryansnook/sounds/110111/
+		// http://freesound.org/people/theneedle.tv/sounds/316682/
+
 
 		game.load.image('menu-background', 'assets/img/menu-background.png'); // http://opengameart.org/content/industrial-parallax-background
 		game.load.image('game-background', 'assets/img/game-background.png'); // http://opengameart.org/content/industrial-parallax-background
@@ -21,6 +24,7 @@ var initState = {
 		game.load.image('faller', 'assets/img/faller.png'); 
 		game.load.image('trampoline', 'assets/img/trampoline.png');
 		game.load.image('arrow', 'assets/img/arrow.png');
+		game.load.image('tnt', 'assets/img/tnt.png');
 		game.load.spritesheet('lava', 'assets/img/lava.png', 56, 32);
 		game.load.spritesheet('lava2', 'assets/img/lava2.png', 252, 32); 
 
