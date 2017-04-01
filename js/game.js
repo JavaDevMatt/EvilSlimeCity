@@ -1,6 +1,6 @@
 var game = new Phaser.Game(640, 376, Phaser.AUTO, 'gameDiv');
 game.global = {
- gameLevel : 1,
+ gameLevel : 0,
  music : null,
  rainSound : null
 }

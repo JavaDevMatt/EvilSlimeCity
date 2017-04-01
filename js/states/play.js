@@ -8,13 +8,8 @@ var playState = {
 	 },
 
 	chooseLevel: function(){
-		if(game.global.gameLevel == 1){
-			return new Level1();
-		} else if(game.global.gameLevel == 2){
-			return new Level2(); 
-		} else if(game.global.gameLevel == 3){
-			return new Level3(); 
-		}
+		const levels = [new Level1(), new Level2(), new Level3()];
+		return levels[game.global.gameLevel];
 	},
 
 	create: function() {	
