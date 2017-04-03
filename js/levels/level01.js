@@ -1,15 +1,15 @@
-class Level1{
+export class Level1{
 
 	 constructor() {
 	 	this.playerStartingX = 10;
-	 	this.playerStartingY = 10; 
+	 	this.playerStartingY = 10;
  	 }
 
  	 addStartingText(){
                 var loadingLabel = game.add.text(80, 278, 'Kill the evil slime!   -->', {font: '20px Courier', fill: '#fff'});
                 setTimeout(function(){
                         loadingLabel.kill();
-                }, 5000); 
+                }, 5000);
     }
 
  	 createBackground(){
@@ -39,7 +39,7 @@ class Level1{
  	 }
 
  	 addSlowFallers(){
-     } 
+     }
 
  	 addTrampolines(){
  	 	trampolines.create(600, 270, 'trampoline');
@@ -55,9 +55,9 @@ class Level1{
      }
 
  	 addEndingText(){
-        game.add.text(player.x - 200, 100, 'Great!', 
+        game.add.text(player.x - 200, 100, 'Great!',
                 {font: '40px Courier', fill: '#fff'});
-                game.add.text(player.x - 200, 136, 'Time for the next one....', 
+                game.add.text(player.x - 200, 136, 'Time for the next one....',
                 {font: '20px Courier', fill: '#fff'});
     }
 
@@ -71,7 +71,7 @@ class Level1{
     }
 
     checkForCoolKillText(){
-     } 
+     }
 
 
 }

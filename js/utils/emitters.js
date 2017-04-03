@@ -1,10 +1,10 @@
-class RainEmitter{
+export class RainEmitter{
 
 	constructor() {
     	this.emitter = game.add.emitter(game.world.centerX, 0, 400);
     	this.initEmitter();
   	}
- 
+
 	initEmitter(){
         this.emitter.width = game.world.width;
         this.emitter.angle = -3;
@@ -26,7 +26,7 @@ class RainEmitter{
 
 }
 
-class JuiceEmitters{
+export class JuiceEmitters{
 
 	spawnJumpEmitters(){
 		this.emitter1 = game.add.emitter(0, 0, 100);

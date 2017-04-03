@@ -1,12 +1,12 @@
-class Level2{
+export class Level2{
 
 	 constructor() {
 	 	this.playerStartingX = 10;
-	 	this.playerStartingY = 10; 
+	 	this.playerStartingY = 10;
  	 }
 
  	 addStartingText(){
-                var levelLabel = game.add.text(110, 278, 'Kill 2 red evil slimes!', 
+                var levelLabel = game.add.text(110, 278, 'Kill 2 red evil slimes!',
                         {font: '20px Courier', fill: '#fff'});
                 setTimeout(function(){
                         levelLabel.kill();
@@ -14,9 +14,9 @@ class Level2{
     }
 
     addEndingText(){
-        game.add.text(player.x - 200, 100, 'Nice!', 
+        game.add.text(player.x - 200, 100, 'Nice!',
                 {font: '40px Courier', fill: '#fff'});
-                game.add.text(player.x - 200, 136, 'Get ready for more...', 
+                game.add.text(player.x - 200, 136, 'Get ready for more...',
                 {font: '20px Courier', fill: '#fff'});
     }
 
@@ -41,7 +41,7 @@ class Level2{
 
     addArrows(arrows){
         arrows.create(1230, 240, 'arrow');
-     } 
+     }
 
  	 addRedSlimes(){
         redSlimes.create(1470, 10, 'monster2');
@@ -58,7 +58,7 @@ class Level2{
 
      addSlowFallers(){
                 slowFallers.create(20, 282, 'faller');
-     } 
+     }
 
 
  	 addLava(){
@@ -82,17 +82,17 @@ class Level2{
      handleRidersLogic(){
         if(this.rider1.x > 650){
             this.rider1.body.velocity.x = -100;
-        } 
+        }
      }
- 	 
+
      checkForCoolKillText(){
         if(redSlimes.countLiving() == 1){
-                var infoLabel = game.add.text(310, 278, 'One more!', 
+                var infoLabel = game.add.text(310, 278, 'One more!',
                         {font: '20px Courier', fill: '#fff'});
                 setTimeout(function(){
                         infoLabel.kill();
                 }, 3000);
             }
-    } 
+    }
 
 }

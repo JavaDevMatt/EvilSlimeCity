@@ -1,12 +1,12 @@
-class Level3{
+export class Level3{
 
 	 constructor() {
 	 	this.playerStartingX = 10;
-	 	this.playerStartingY = 10; 
+	 	this.playerStartingY = 10;
  	 }
 
  	 addStartingText(){
-                var levelLabel = game.add.text(0, 0, 'Time to blow some shit up!', 
+                var levelLabel = game.add.text(0, 0, 'Time to blow some shit up!',
                         {font: '20px Courier', fill: '#fff'});
                 setTimeout(function(){
                         levelLabel.kill();
@@ -14,9 +14,9 @@ class Level3{
     }
 
     addEndingText(){
-        game.add.text(200, 100, 'Survived!', 
+        game.add.text(200, 100, 'Survived!',
                 {font: '40px Courier', fill: '#fff'});
-                game.add.text(200, 136, 'You lucky son of a slime!', 
+                game.add.text(200, 136, 'You lucky son of a slime!',
                 {font: '20px Courier', fill: '#fff'});
     }
 
@@ -27,13 +27,13 @@ class Level3{
      }
 
      addPlatforms(){
-        platforms.create(0, 112, 'tower1'); 
+        platforms.create(0, 112, 'tower1');
         platforms.create(1, 300, 'platform');
         platforms.create(421, 289, 'faller');
      }
 
     addArrows(arrows){
-     } 
+     }
 
  	 addRedSlimes(){
         redSlimes.create(350, 10, 'monster2');
@@ -48,7 +48,7 @@ class Level3{
      }
 
      addSlowFallers(){
-     } 
+     }
 
 
  	 addLava(){
@@ -59,7 +59,7 @@ class Level3{
  	 }
 
      addSwitchFallers(){
-        switchFallers.create(136, 242, 'faller'); 
+        switchFallers.create(136, 242, 'faller');
         switchFallers.create(330, 112, 'faller');
 
         switchFallers.create(208, 242, 'platform');
@@ -82,8 +82,8 @@ class Level3{
 
      handleRidersLogic(){
      }
- 	 
+
      checkForCoolKillText(){
-    } 
+    }
 
 }

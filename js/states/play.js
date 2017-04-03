@@ -1,10 +1,39 @@
+import {Level1} from '../levels/level01'
+import {Level2} from '../levels/level02'
+import {Level3} from '../levels/level03'
+import {ArrowBooster} from '../utils/booster'
+import {CollisionsHandler} from '../utils/collisions'
+import {RainEmitter, JuiceEmitters} from '../utils/emitters'
+import {TntHandler} from '../utils/tnt'
+var level,
+	collisionsHandler,
+	arrowBooster,
+	tntHandler,
+	rainEmitter;
+
+
+// Todo: store those elements in one global object like window.game
+// or pass references of objects between them
+window.juiceEmitters = [];
+window.tnt = {};
+window.player = {};
+window.lava = {};
+window.redSlimes = [];
+window.trampolines = [];
+window.slowFallers = [];
+window.platforms = [];
+window.riders = [];
+window.fallers = [];
+window.arrows = [];
+window.switchFallers = [];
+window.cursors = [];
 var playState = {
 
 	resetState: function(){
-		canBoostFlag = true;
-		canTntExplode = true;
-	 	isPlayerDead = false;
-	 	hasPlayerWon = false;
+		window.canBoostFlag = true;
+		window.canTntExplode = true;
+	 	window.isPlayerDead = false;
+	 	window.hasPlayerWon = false;
 	 },
 
 	chooseLevel: function(){
@@ -12,7 +41,7 @@ var playState = {
 		return levels[game.global.gameLevel];
 	},
 
-	create: function() {	
+	create: function() {
 		level = this.chooseLevel();
 		this.resetState();
 
@@ -23,7 +52,7 @@ var playState = {
 
 		level.createBackground(game);
 		level.addStartingText(game);
-		
+
 
 		this.initTnt();
 		this.initPlayer();
@@ -43,7 +72,7 @@ var playState = {
         game.camera.follow(player);
 	},
 
-	update: function() {  
+	update: function() {
 
 		// collisios
 	 	collisionsHandler.update();
@@ -57,7 +86,7 @@ var playState = {
        	 	item.animations.play('stand');
 		}, this);
 
-	 	
+
 	 	// preventing "free move"
 	    player.body.velocity.x = 0;
 	    trampolines.forEachAlive(function(item) {
@@ -113,11 +142,11 @@ var playState = {
 	 },
 
 	killPlayer: function(){
-	 	if(!hasPlayerWon){
+	 	if(!window.hasPlayerWon){
 	 		this.shakeCamera();
 			juiceEmitters.spawnPlayerKillEmitters();
 
-	 		isPlayerDead = true;
+	 		window.isPlayerDead = true;
 		 	game.sound.play('splash-death');
 		 	player.kill();
 		 	setTimeout(function(){
@@ -127,10 +156,10 @@ var playState = {
 	 },
 
 	 killRedSlime: function(redSlime){
-	 	if(!isPlayerDead){
-	 	
+	 	if(!window.isPlayerDead){
+
 	 		juiceEmitters.spawnKillRedSlimeEmitters(redSlime);
-	 		
+
 		 	game.sound.play('splash-death');
 		 	this.shakeCamera();
 		 	redSlime.kill();
@@ -139,17 +168,17 @@ var playState = {
 
 		 	if(redSlimes.countLiving() <= 0){
 		 		level.addEndingText(game, player);
-		 		hasPlayerWon = true;
+		 		window.hasPlayerWon = true;
 			 	game.global.gameLevel++;
 
 		 		setTimeout(function(){
-			 		
+
 			 		game.state.start('play');
-			 		
+
 				}, 3000);
 			}
 	 	}
-	 	
+
 	 },
 
 	 shakeCamera: function(){
@@ -279,3 +308,4 @@ var playState = {
 
 
 };
+module.exports = playState;
