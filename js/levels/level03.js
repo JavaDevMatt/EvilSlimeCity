@@ -1,4 +1,7 @@
+import {GameState} from '../gameState'
+let gState = new GameState().state;
 export class Level3{
+
 
 	 constructor() {
 	 	this.playerStartingX = 10;
@@ -26,24 +29,24 @@ export class Level3{
         game.add.sprite(0, 0, 'game-background');
      }
 
-     addPlatforms(){
-        platforms.create(0, 112, 'tower1');
-        platforms.create(1, 300, 'platform');
-        platforms.create(421, 289, 'faller');
+     addplatforms(){
+        gState.envObjects.platforms.create(0, 112, 'tower1');
+        gState.envObjects.platforms.create(1, 300, 'platform');
+        gState.envObjects.platforms.create(421, 289, 'faller');
      }
 
-    addArrows(arrows){
+    addArrows( arrows){
      }
 
- 	 addRedSlimes(){
-        redSlimes.create(350, 10, 'monster2');
-        redSlimes.create(560, 10, 'monster2');
+ 	 addredSlimes(){
+        gState.envObjects.redSlimes.create(350, 10, 'monster2');
+        gState.envObjects.redSlimes.create(560, 10, 'monster2');
      }
 
  	 addFallers(){
  	 }
 
- 	 addTrampolines(trampolines){
+ 	 addTrampolines( trampolines){
          trampolines.create(160, 10, 'trampoline');
      }
 
@@ -52,21 +55,21 @@ export class Level3{
 
 
  	 addLava(){
-        lava.create(142, 332, 'lava');
-        lava.create(198, 332, 'lava');
-        lava.create(254, 332, 'lava2');
-        lava.create(506, 332, 'lava2');
+        gState.envObjects.lava.create(142, 332, 'lava');
+        gState.envObjects.lava.create(198, 332, 'lava');
+        gState.envObjects.lava.create(254, 332, 'lava2');
+        gState.envObjects.lava.create(506, 332, 'lava2');
  	 }
 
      addSwitchFallers(){
-        switchFallers.create(136, 242, 'faller');
-        switchFallers.create(330, 112, 'faller');
+		 gState.envObjects.switchFallers.create(136, 242, 'faller');
+         gState.envObjects.switchFallers.create(330, 112, 'faller');
 
-        switchFallers.create(208, 242, 'platform');
-        switchFallers.create(349, 289, 'faller');
-        switchFallers.create(493, 289, 'faller');
-        switchFallers.create(565, 289, 'faller');
-        switchFallers.create(530, 32, 'tower1');
+         gState.envObjects.switchFallers.create(208, 242, 'platform');
+         gState.envObjects.switchFallers.create(349, 289, 'faller');
+         gState.envObjects.switchFallers.create(493, 289, 'faller');
+         gState.envObjects.switchFallers.create(565, 289, 'faller');
+         gState.envObjects.switchFallers.create(530, 32, 'tower1');
      }
 
      addRiders(){

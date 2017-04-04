@@ -5,35 +5,24 @@ import {ArrowBooster} from '../utils/booster'
 import {CollisionsHandler} from '../utils/collisions'
 import {RainEmitter, JuiceEmitters} from '../utils/emitters'
 import {TntHandler} from '../utils/tnt'
+import {GameState} from '../gameState'
 var level,
 	collisionsHandler,
 	arrowBooster,
-	tntHandler,
-	rainEmitter;
+	tntHandler;
 
 
 // Todo: store those elements in one global object like window.game
 // or pass references of objects between them
-window.juiceEmitters = [];
-window.tnt = {};
-window.player = {};
-window.lava = {};
-window.redSlimes = [];
-window.trampolines = [];
-window.slowFallers = [];
-window.platforms = [];
-window.riders = [];
-window.fallers = [];
-window.arrows = [];
-window.switchFallers = [];
-window.cursors = [];
+
+let gState = new GameState().state;
 var playState = {
 
 	resetState: function(){
-		window.canBoostFlag = true;
-		window.canTntExplode = true;
-	 	window.isPlayerDead = false;
-	 	window.hasPlayerWon = false;
+		gState.flags.canBoostFlag = true;
+		gState.flags.canTntExplode = true;
+	 	gState.flags.isPlayerDead = false;
+	 	gState.flags.hasPlayerWon = false;
 	 },
 
 	chooseLevel: function(){
@@ -46,7 +35,7 @@ var playState = {
 		this.resetState();
 
 		collisionsHandler = new CollisionsHandler();
-		juiceEmitters = new JuiceEmitters();
+		gState.emitters.juiceEmitters = new JuiceEmitters();
 		arrowBooster = new ArrowBooster();
 		tntHandler = new TntHandler();
 
@@ -67,9 +56,9 @@ var playState = {
 		this.initSwitchFallers();
 		this.initRain();
 
-		cursors = game.input.keyboard.createCursorKeys();
+		gState.envObjects.cursors = game.input.keyboard.createCursorKeys();
 
-        game.camera.follow(player);
+        game.camera.follow( gState.player);
 	},
 
 	update: function() {
@@ -78,52 +67,54 @@ var playState = {
 	 	collisionsHandler.update();
 
 		// animations
-	 	player.animations.play('stand');
-	 	lava.forEachAlive(function(item) {
+	 	gState.player.animations.play('stand');
+	 	gState.envObjects.lava.forEachAlive(function(item) {
        	 	item.animations.play('stand');
 		}, this);
-		redSlimes.forEachAlive(function(item) {
+		gState.enemies.redSlimes.forEachAlive(function(item) {
        	 	item.animations.play('stand');
 		}, this);
 
 
 	 	// preventing "free move"
-	    player.body.velocity.x = 0;
-	    trampolines.forEachAlive(function(item) {
+	    gState.player.body.velocity.x = 0;
+	    gState.envObjects.trampolines.forEachAlive(function(item) {
 	    	item.body.velocity.x = 0;
 		}, this);
-		fallers.forEachAlive(function(item) {
+		gState.envObjects.fallers.forEachAlive(function(item) {
 	    	item.body.velocity.x = 0;
 		}, this);
-		slowFallers.forEachAlive(function(item) {
+		gState.envObjects.slowFallers.forEachAlive(function(item) {
 	    	item.body.velocity.x = 0;
 	 		item.body.velocity.y = 0;
 		}, this);
 
 	    // controls
-	    if (cursors.left.isDown){
-	        player.body.velocity.x = -150;
+	    if ( gState.envObjects.cursors.left.isDown ){
+	        gState.player.body.velocity.x = -150;
 	    }
-	    else if (cursors.right.isDown){
-	        player.body.velocity.x = 150;
+	    else if ( gState.envObjects.cursors.right.isDown ){
+	        gState.player.body.velocity.x = 150;
 	    }
 	    // jump!
-	    if (cursors.up.isDown && player.body.touching.down){
-	    	game.add.tween(player).to( { angle: 360 }, 600, Phaser.Easing.Linear.None, true);
+	    if ( gState.envObjects.cursors.up.isDown && gState.player.body.touching.down){
+	    	game.add.tween( gState.player).to( { angle: 360 }, 600, Phaser.Easing.Linear.None, true);
 
-	    	juiceEmitters.spawnJumpEmitters();
+	    	gState.emitters.juiceEmitters.spawnJumpEmitters();
 	    	game.sound.play('jump');
-	        player.body.velocity.y = -150;
+	        gState.player.body.velocity.y = -150;
 	    }
 
 	    // overlaps
-	    game.physics.arcade.overlap(player, lava, this.killPlayer, null, this);
-		game.physics.arcade.overlap(player, trampolines, this.trampolinePlayer, null, this);
-		game.physics.arcade.overlap(player, arrows, this.arrowBoost, null, this);
-		game.physics.arcade.overlap(redSlimes, trampolines, this.trampolineSlime, null, this);
-		game.physics.arcade.overlap(redSlimes, lava, this.killRedSlime, null, this);
-		game.physics.arcade.overlap(player, tnt, this.tntExplode, null, this);
-	    game.physics.arcade.overlap(redSlimes, tnt, this.tntExplode, null, this);
+		let arcadePhysics = game.physics.arcade; // pass reference
+
+	    arcadePhysics.overlap( gState.player, gState.envObjects.lava, this.killPlayer, null, this);
+		arcadePhysics.overlap( gState.player, gState.envObjects.trampolines, this.trampolinePlayer, null, this);
+		arcadePhysics.overlap( gState.player, gState.envObjects.arrows, this.arrowBoost, null, this);
+		arcadePhysics.overlap( gState.enemies.redSlimes, gState.envObjects.trampolines, this.trampolineSlime, null, this);
+		arcadePhysics.overlap( gState.enemies.redSlimes, gState.envObjects.lava, this.killRedSlime, null, this);
+		arcadePhysics.overlap( gState.player, gState.envObjects.tnt, this.tntExplode, null, this);
+	    arcadePhysics.overlap( gState.enemies.redSlimes, gState.envObjects.tnt, this.tntExplode, null, this);
 
 		level.handleRidersLogic();
 	},
@@ -133,22 +124,22 @@ var playState = {
 	 },
 
 	 initTnt: function(){
-	 	tnt = null;
+	 	gState.envObjects.tnt = null;
 	 	level.addTnt();
 	 },
 
 	 tntExplode: function(){
-	 		tntHandler.explode(tnt);
+	 		tntHandler.explode( gState.envObjects.tnt);
 	 },
 
 	killPlayer: function(){
-	 	if(!window.hasPlayerWon){
+	 	if(!gState.flags.hasPlayerWon){
 	 		this.shakeCamera();
-			juiceEmitters.spawnPlayerKillEmitters();
+			gState.emitters.juiceEmitters.spawnPlayerKillEmitters();
 
-	 		window.isPlayerDead = true;
+	 		gState.flags.isPlayerDead = true;
 		 	game.sound.play('splash-death');
-		 	player.kill();
+		 	gState.player.kill();
 		 	setTimeout(function(){
 		 		game.state.start('play');
 			}, 600);
@@ -156,9 +147,9 @@ var playState = {
 	 },
 
 	 killRedSlime: function(redSlime){
-	 	if(!window.isPlayerDead){
+	 	if(!gState.flags.isPlayerDead){
 
-	 		juiceEmitters.spawnKillRedSlimeEmitters(redSlime);
+	 		gState.emitters.juiceEmitters.spawnKillRedSlimeEmitters(redSlime);
 
 		 	game.sound.play('splash-death');
 		 	this.shakeCamera();
@@ -166,9 +157,9 @@ var playState = {
 
 		 	level.checkForCoolKillText();
 
-		 	if(redSlimes.countLiving() <= 0){
-		 		level.addEndingText(game, player);
-		 		window.hasPlayerWon = true;
+		 	if(gState.enemies.redSlimes.countLiving() <= 0){
+		 		level.addEndingText(game, gState.player );
+		 		gState.flags.hasPlayerWon = true;
 			 	game.global.gameLevel++;
 
 		 		setTimeout(function(){
@@ -186,39 +177,43 @@ var playState = {
 	 },
 
 	initPlayer: function(){
-		player = game.add.sprite(level.playerStartingX, level.playerStartingY, 'monster1');
-		player.anchor.setTo(0.5,0.5);
-		player.animations.add('stand', [0, 1, 2], 5, true);
-		game.physics.arcade.enable(player);
-		player.body.bounce.y = 0.2;
-   		player.body.gravity.y = 300;
-        player.body.collideWorldBounds = true;
+		let g = gState;
+		g.player = game.add.sprite(level.playerStartingX, level.playerStartingY, 'monster1');
+		g.player.anchor.setTo(0.5,0.5);
+		g.player.animations.add('stand', [0, 1, 2], 5, true);
+		game.physics.arcade.enable( g.player );
+		g.player.body.bounce.y = 0.2;
+   		g.player.body.gravity.y = 300;
+        g.player.body.collideWorldBounds = true;
 	 },
 
 	 initPlatforms: function(){
-		platforms = game.add.group();
-        platforms.enableBody = true;
-        level.addPlatforms(platforms);
-        platforms.forEachAlive(function(item) {
+		let env = gState.envObjects;
+		env.platforms = game.add.group();
+        env.platforms.enableBody = true;
+        level.addPlatforms( env.platforms );
+        env.platforms.forEachAlive(function(item) {
         	item.body.immovable = true;
 		}, this);
 	 },
 
 	 initArrows: function(){
-	 	arrows = game.add.group();
-	 	arrows.enableBody = true;
-	 	level.addArrows(arrows);
-   		arrows.forEachAlive(function(item) {
+		let env = gState.envObjects;
+	 	env.arrows = game.add.group();
+	 	env.arrows.enableBody = true;
+	 	level.addArrows( env.arrows );
+   		env.arrows.forEachAlive(function(item) {
        	 	item.body.immovable = true;
 		}, this);
 	 },
 
 	 initTrampolines: function(){
-		trampolines = game.add.group();
-        trampolines.enableBody = true;
-        game.physics.arcade.enable(trampolines);
-        level.addTrampolines(trampolines);
-   		trampolines.forEachAlive(function(item) {
+		let env = gState.envObjects;
+		env.trampolines = game.add.group();
+        env.trampolines.enableBody = true;
+        game.physics.arcade.enable( env.trampolines );
+        level.addTrampolines( env.trampolines );
+   		env.trampolines.forEachAlive(function(item) {
    			item.body.bounce.y = 0.2;
    			item.body.gravity.y = 300;
    			item.body.collideWorldBounds = true;
@@ -226,11 +221,12 @@ var playState = {
 	 },
 
 	 initRiders: function(){
-	 	riders = game.add.group();
-        riders.enableBody = true;
-        game.physics.arcade.enable(riders);
-        level.addRiders(riders);
-        riders.forEachAlive(function(item) {
+		let env = gState.envObjects;
+	 	env.riders = game.add.group();
+        env.riders.enableBody = true;
+        game.physics.arcade.enable( env.riders );
+        level.addRiders( env.riders );
+        env.riders.forEachAlive(function(item) {
         	item.body.immovable = true;
         	item.body.bounce.setTo(1, 1);
        		item.body.collideWorldBounds = true;
@@ -239,13 +235,13 @@ var playState = {
 	 },
 
 	 initRedSlimes: function(){
-	 	redSlimes = game.add.group();
+		let e = gState.enemies; //pass reference
+	 	e.redSlimes = game.add.group();
+	 	e.redSlimes.enableBody = true;
+        game.physics.arcade.enable( e.redSlimes );
 
-	 	redSlimes.enableBody = true;
-        game.physics.arcade.enable(redSlimes);
-
-		level.addRedSlimes(redSlimes);
-		redSlimes.forEachAlive(function(item) {
+		level.addRedSlimes( e.redSlimes);
+		e.redSlimes.forEachAlive( function( item ) {
    			item.body.bounce.y = 0.2;
 			item.body.bounce.x = 1.0;
    			item.body.gravity.y = 300;
@@ -255,35 +251,39 @@ var playState = {
 	 },
 
 	 initSwitchFallers: function(){
-		switchFallers = game.add.group();
-	 	switchFallers.enableBody = true;
+		let env = gState.envObjects;
+		env.switchFallers = game.add.group();
+	 	env.switchFallers.enableBody = true;
 
 	 	level.addSwitchFallers();
-        game.physics.arcade.enable(switchFallers);
+        game.physics.arcade.enable( env.switchFallers );
 
-   		switchFallers.forEachAlive(function(item) {
+   		env.switchFallers.forEachAlive(function( item ) {
         	item.body.immovable = true;
 		}, this);
 	 },
 
 	 initFallers: function(){
-	 	fallers = game.add.group();
-		fallers.enableBody = true;
-        level.addFallers(fallers);
+		let env = gState.envObjects;
+	 	env.fallers = game.add.group();
+		env.fallers.enableBody = true;
+        level.addFallers( env.fallers );
 	 },
 
 	 initSlowFallers: function(){
-	 	slowFallers = game.add.group();
-		slowFallers.enableBody = true;
-        level.addSlowFallers(slowFallers);
+		let env = gState.envObjects;
+	 	env.slowFallers = game.add.group();
+		env.slowFallers.enableBody = true;
+        level.addSlowFallers( env.slowFallers );
 	 },
 
 
 	 initLava: function(){
-	 	lava = game.add.group();
-        lava.enableBody = true;
-        level.addLava(lava);
-        lava.forEachAlive(function(item) {
+		let env = gState.envObjects;
+	 	env.lava = game.add.group();
+        env.lava.enableBody = true;
+        level.addLava( env.lava);
+        env.lava.forEachAlive(function(item) {
        	 	item.body.immovable = true;
        	 	item.animations.add('stand', [0, 1], 2, true);
 		}, this);
@@ -292,17 +292,17 @@ var playState = {
 	 initRain: function(){
 		game.global.rainSound.play();
 
-	 	rainEmitter = new RainEmitter();
-		rainEmitter.start();
+	 	gState.emitters.rainEmitter = new RainEmitter();
+		gState.emitters.rainEmitter.start();
 	 },
 
-	 trampolineSlime: function(redSlime){
+	 trampolineSlime: function( redSlime ){
 	 	redSlime.body.velocity.y -= 200;
 	 	game.sound.play('trampoline_jump');
 	 },
 
 	 trampolinePlayer: function(){
-	 	player.body.velocity.y -= 200;
+	 	gState.player.body.velocity.y -= 200;
 	 	game.sound.play('trampoline_jump');
 	 },
 

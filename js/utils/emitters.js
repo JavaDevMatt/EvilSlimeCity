@@ -1,3 +1,5 @@
+import {GameState} from '../gameState'
+let g = new GameState().state;
 export class RainEmitter{
 
 	constructor() {
@@ -33,8 +35,8 @@ export class JuiceEmitters{
    		this.emitter1.makeParticles('particle');
 		this.emitter1.gravity = 200;
 
-		this.emitter1.x = player.x;
-    	this.emitter1.y = player.y + 5;
+		this.emitter1.x = g.player.x;
+    	this.emitter1.y = g.player.y + 5;
 		this.emitter1.start(true, 2000, null, 20);
 	}
 
@@ -54,8 +56,8 @@ export class JuiceEmitters{
 		this.emitter3.gravity = 50;
 		this.emitter3.setScale(1.0, 0, 1.0, 0, 2000);
 
-  		this.emitter3.x = player.x;
-    	this.emitter3.y = player.y;
+  		this.emitter3.x = g.player.x;
+    	this.emitter3.y = g.player.y;
 		this.emitter3.start(true, 5000, null, 500);
 	}
 
@@ -65,8 +67,8 @@ export class JuiceEmitters{
 		this.emitter2.gravity = 50;
 		this.emitter2.setScale(1.0, 0, 1.0, 0, 2000);
 
-  		this.emitter2.x = player.x + 15;
-    	this.emitter2.y = player.y + 25;
+  		this.emitter2.x = g.player.x + 15;
+    	this.emitter2.y = g.player.y + 25;
 		this.emitter2.start(true, 600, null, 600);
   	}
 }
