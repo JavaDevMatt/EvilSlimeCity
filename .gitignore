@@ -1,4 +1,3 @@
 mongoose-free-6.5.exe
 node_modules
-dist/*
-dist
+dist/js/app.js
