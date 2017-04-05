@@ -34,7 +34,6 @@ export class Level2{
      addPlatforms(){
         gState.envObjects.platforms.create(754, 172, 'tower1');
         gState.envObjects.platforms.create(887, 300, 'platform');
-        gState.envObjects.platforms.create(1028, 300, 'platform');
         gState.envObjects.platforms.create(1169, 300, 'platform');
         gState.envObjects.platforms.create(1169, 272, 'tower1');
         gState.envObjects.platforms.create(1310, 300, 'platform');
@@ -56,7 +55,7 @@ export class Level2{
 
  	 addTrampolines( trampolines){
         trampolines.create(50, 270, 'trampoline');
-        trampolines.create(900, 270, 'trampoline');
+        trampolines.create(950, 270, 'trampoline');
      }
 
      addSlowFallers(){
@@ -69,6 +68,7 @@ export class Level2{
         gState.envObjects.lava.create(252, 332, 'lava2');
         gState.envObjects.lava.create(502, 332, 'lava2');
         gState.envObjects.lava.create(754, 332, 'lava2');
+        gState.envObjects.lava.create(1000, 332, 'lava2');
         gState.envObjects.lava.create(1510, 352, 'lava2');
  	 }
 
