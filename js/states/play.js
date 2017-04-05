@@ -119,8 +119,8 @@ var playState = {
 		level.handleRidersLogic();
 	},
 
-	arrowBoost: function(player, arrow){
-	 	arrowBooster.boost(arrow);
+	arrowBoost: function( player, arrow ){
+	 	arrowBooster.boost( arrow );
 	 },
 
 	 initTnt: function(){
