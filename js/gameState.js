@@ -22,7 +22,8 @@ let defaultState = {
 		canBoostFlag : true,
 		canTntExplode : true,
 		isPlayerDead : false,
-		hasPlayerWon : false
+		hasPlayerWon : false,
+		rightMobileDown : false,
 	}
 }
 let instance = null;

@@ -59,6 +59,15 @@ var playState = {
 		gState.envObjects.cursors = game.input.keyboard.createCursorKeys();
 
         game.camera.follow( gState.player);
+
+        //mobile button
+        if (!game.device.desktop){
+        	let buttonRight = game.add.button(160, 80, 'mobile', null, this, 2, 1, 0);
+ 			buttonRight.fixedToCamera = true;
+ 			buttonRight.isDown = false;
+ 			buttonRight.events.onInputDown.add(function () { gState.flags.rightMobileDown = true; });
+ 			buttonRight.events.onInputUp.add(function () { gState.flags.rightMobileDown = false; });
+        }
 	},
 
 	update: function() {
@@ -90,10 +99,10 @@ var playState = {
 		}, this);
 
 	    // controls
-	    if ( gState.envObjects.cursors.left.isDown ){
+	    if ( gState.envObjects.cursors.left.isDown){
 	        gState.player.body.velocity.x = -150;
 	    }
-	    else if ( gState.envObjects.cursors.right.isDown ){
+	    else if ( gState.envObjects.cursors.right.isDown || gState.flags.rightMobileDown){
 	        gState.player.body.velocity.x = 150;
 	    }
 	    // jump!
