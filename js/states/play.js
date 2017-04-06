@@ -60,13 +60,25 @@ var playState = {
 
         game.camera.follow( gState.player);
 
-        //mobile button
+        //temp mobile buttons
         if (!game.device.desktop){
         	let buttonRight = game.add.button(160, 80, 'mobile', null, this, 2, 1, 0);
  			buttonRight.fixedToCamera = true;
  			buttonRight.isDown = false;
- 			buttonRight.events.onInputDown.add(function () { gState.flags.rightMobileDown = true; });
- 			buttonRight.events.onInputUp.add(function () { gState.flags.rightMobileDown = false; });
+ 			buttonRight.events.onInputDown.add(function () { gState.mControlsFlags.rightDown = true; });
+ 			buttonRight.events.onInputUp.add(function () { gState.mControlsFlags.rightDown = false; });
+
+ 			let buttonLeft = game.add.button(0, 80, 'mobile', null, this, 2, 1, 0);
+ 			buttonLeft.fixedToCamera = true;
+ 			buttonLeft.isDown = false;
+ 			buttonLeft.events.onInputDown.add(function () { gState.mControlsFlags.leftDown = true; });
+ 			buttonLeft.events.onInputUp.add(function () { gState.mControlsFlags.leftDown = false; });
+
+ 			let buttonJump = game.add.button(465, 80, 'mobile', null, this, 2, 1, 0);
+ 			buttonJump.fixedToCamera = true;
+ 			buttonJump.isDown = false;
+ 			buttonJump.events.onInputDown.add(function () { gState.mControlsFlags.jumpDown = true; });
+ 			buttonJump.events.onInputUp.add(function () { gState.mControlsFlags.jumpDown = false; });
         }
 	},
 
@@ -99,14 +111,14 @@ var playState = {
 		}, this);
 
 	    // controls
-	    if ( gState.envObjects.cursors.left.isDown){
+	    if ( gState.envObjects.cursors.left.isDown || gState.mControlsFlags.leftDown){
 	        gState.player.body.velocity.x = -150;
 	    }
-	    else if ( gState.envObjects.cursors.right.isDown || gState.flags.rightMobileDown){
+	    else if ( gState.envObjects.cursors.right.isDown || gState.mControlsFlags.rightDown){
 	        gState.player.body.velocity.x = 150;
 	    }
 	    // jump!
-	    if ( gState.envObjects.cursors.up.isDown && gState.player.body.touching.down){
+	    if ( (gState.envObjects.cursors.up.isDown || gState.mControlsFlags.jumpDown) && gState.player.body.touching.down){
 	    	game.add.tween( gState.player).to( { angle: 360 }, 600, Phaser.Easing.Linear.None, true);
 
 	    	gState.emitters.juiceEmitters.spawnJumpEmitters();

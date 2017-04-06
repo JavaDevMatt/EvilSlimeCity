@@ -22,8 +22,12 @@ let defaultState = {
 		canBoostFlag : true,
 		canTntExplode : true,
 		isPlayerDead : false,
-		hasPlayerWon : false,
-		rightMobileDown : false,
+		hasPlayerWon : false
+	},
+	mControlsFlags: {
+		rightDown : false,
+		leftDown : false,
+		jumpDown : false
 	}
 }
 let instance = null;
