@@ -1,11 +1,50 @@
 import {GameState} from '../gameState'
+import {LevelPrototype} from './levelPrototype'
 let gState = new GameState().state;
-export class Level2{
+
+let lvl = {
+	platforms: [
+		{x: 754, y: 172, type: 'tower1' },
+		{x: 887, y: 300, type: 'platform' },
+		{x: 1169, y: 300, type: 'platform' },
+		{x: 1169, y: 272, type: 'tower1' },
+		{x: 1310, y: 300, type: 'platform' },
+		{x: 1451, y: 300, type: 'platform' },
+		{x: 1410, y: 112, type: 'tower1' }
+	],
+	redSlimes: [
+		{x: 1470, y: 10, type: 'monster2' },
+		{x: 390, y: 70, type: 'monster2' }
+	],
+	fallers: [
+	],
+	slowFallers: [
+		{x: 20, y: 282, type: 'faller' }
+	],
+	trampolines: [
+		{x: 50, y: 270, type: 'trampoline' },
+		{x: 950, y: 270, type: 'trampoline' }
+	],
+	lava: [
+		{x: 0, y: 332, type: 'lava2' },
+		{x: 252, y: 332, type: 'lava2' },
+		{x: 502, y: 332, type: 'lava2' },
+		{x: 754, y: 332, type: 'lava2' },
+		{x: 1000, y: 332, type: 'lava2' },
+		{x: 1510, y: 352, type: 'lava2' }
+	],
+	tnt: [],
+	riders: [],
+	arrows: [ {x: 1230, y: 240, type: 'arrow' } ],
+	switchFallers: []
+}
+
+export class Level2 extends LevelPrototype{
 
 
 	 constructor() {
-	 	this.playerStartingX = 10;
-	 	this.playerStartingY = 10;
+	 	super();
+		this.levelObj = lvl
  	 }
 
  	 addStartingText(){
@@ -31,56 +70,11 @@ export class Level2{
         game.add.sprite(1280, 0, 'game-background');
      }
 
-     addPlatforms(){
-        gState.envObjects.platforms.create(754, 172, 'tower1');
-        gState.envObjects.platforms.create(887, 300, 'platform');
-        gState.envObjects.platforms.create(1169, 300, 'platform');
-        gState.envObjects.platforms.create(1169, 272, 'tower1');
-        gState.envObjects.platforms.create(1310, 300, 'platform');
-        gState.envObjects.platforms.create(1451, 300, 'platform');
-        gState.envObjects.platforms.create(1410, 112, 'tower1');
-     }
-
-    addArrows( arrows ){
-        arrows.create(1230, 240, 'arrow');
-     }
-
- 	 addRedSlimes(){
-        gState.enemies.redSlimes.create(1470, 10, 'monster2');
-        gState.enemies.redSlimes.create(390, 70, 'monster2');
-     }
-
- 	 addFallers(){
- 	 }
-
- 	 addTrampolines( trampolines){
-        trampolines.create(50, 270, 'trampoline');
-        trampolines.create(950, 270, 'trampoline');
-     }
-
-     addSlowFallers(){
-                gState.envObjects.slowFallers.create(20, 282, 'faller');
-     }
-
-
- 	 addLava(){
-        gState.envObjects.lava.create(0, 332, 'lava2');
-        gState.envObjects.lava.create(252, 332, 'lava2');
-        gState.envObjects.lava.create(502, 332, 'lava2');
-        gState.envObjects.lava.create(754, 332, 'lava2');
-        gState.envObjects.lava.create(1000, 332, 'lava2');
-        gState.envObjects.lava.create(1510, 352, 'lava2');
- 	 }
 
      addRiders(){
         this.rider1 = gState.envObjects.riders.create(490, 200, 'faller');
      }
 
-     addSwitchFallers(){
-	 }
-
-     addTnt(){
-     }
 
      handleRidersLogic(){
         if(this.rider1.x > 650){
