@@ -32,6 +32,11 @@ export class Level1 extends LevelPrototype {
 	constructor() {
 		super();
 		let protoLevel = _.cloneDeep( this.prototypeLevel );
-		this.levelObj = _.merge( protoLevel, lvl );
+		if( !window.editMode ) {
+			this.levelObj = _.merge( protoLevel, lvl );
+		} else {
+			this.levelObj = _.merge( protoLevel, JSON.parse( document.querySelector( '#codeDiv' ).value ) );
+		}
+        window.level = this.levelObj;
 	}
 }

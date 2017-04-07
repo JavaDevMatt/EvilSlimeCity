@@ -32,6 +32,7 @@ export class GameState {
     if( !instance ) {
         instance = this;
         instance.state = defaultState;
+		window.state = instance.state;
     }
     return instance;
     }
