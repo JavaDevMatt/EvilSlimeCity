@@ -96,14 +96,14 @@ var playState = {
 		}, this);
 
 	    // controls
-	    if ( gState.envObjects.cursors.left.isDown || gState.mControlsFlags.leftDown){
+	    if ( gState.envObjects.cursors.left.isDown || mobileControlsHandler.isLeftDown()){
 	        gState.player.body.velocity.x = -150;
 	    }
-	    else if ( gState.envObjects.cursors.right.isDown || gState.mControlsFlags.rightDown){
+	    else if ( gState.envObjects.cursors.right.isDown || mobileControlsHandler.isRightDown()){
 	        gState.player.body.velocity.x = 150;
 	    }
 	    // jump!
-	    if ( (gState.envObjects.cursors.up.isDown || gState.mControlsFlags.jumpDown) && gState.player.body.touching.down){
+	    if ( (gState.envObjects.cursors.up.isDown || mobileControlsHandler.isJumpDown()) && gState.player.body.touching.down){
 	    	game.add.tween( gState.player).to( { angle: 360 }, 600, Phaser.Easing.Linear.None, true);
 
 	    	gState.emitters.juiceEmitters.spawnJumpEmitters();

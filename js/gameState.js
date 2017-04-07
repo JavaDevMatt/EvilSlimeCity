@@ -23,11 +23,6 @@ let defaultState = {
 		canTntExplode : true,
 		isPlayerDead : false,
 		hasPlayerWon : false
-	},
-	mControlsFlags: {
-		rightDown : false,
-		leftDown : false,
-		jumpDown : false
 	}
 }
 let instance = null;
