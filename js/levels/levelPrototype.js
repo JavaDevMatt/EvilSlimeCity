@@ -2,8 +2,7 @@ import {GameState} from '../gameState'
 let gState = new GameState().state;
 //set local pointers;
 
-
-
+let lvl = require( './levelStruct' );
 export class LevelPrototype{
 
     _create( type, props ) {
@@ -13,6 +12,7 @@ export class LevelPrototype{
     }
 
 	constructor( ) {
+        this.prototypeLevel = lvl;
 		this.playerStartingX = 10;
 		this.playerStartingY = 10;
  	}
@@ -25,9 +25,19 @@ export class LevelPrototype{
     }
 
  	 createBackground(){
- 	 	game.world.setBounds(0, 0, 885, 376);
- 	 	game.add.sprite(0, 0, 'game-background');
-	 	game.add.sprite(640, 0, 'game-background');
+        game.world.setBounds(
+            this.levelObj.world.bounds.x1,
+            this.levelObj.world.bounds.y1,
+            this.levelObj.world.bounds.x2,
+            this.levelObj.world.bounds.y2
+        );
+        for (var i in this.levelObj.world.sprites ) {
+            game.add.sprite(
+                this.levelObj.world.sprites[ i ].x,
+                this.levelObj.world.sprites[ i ].y,
+                this.levelObj.world.sprites[ i ].type,
+            )
+        }
  	 }
 
  	 addPlatforms(){

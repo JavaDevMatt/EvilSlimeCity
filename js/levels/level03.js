@@ -1,8 +1,15 @@
 import {GameState} from '../gameState'
 import {LevelPrototype} from './levelPrototype'
 let g = new GameState().state;
+let _ = require( "lodash" );
 
 let lvl = {
+	world: {
+		bounds: { x1: 0, y1:0, x2: 640, y2: 376 },
+		sprites: [
+		   { x: 0, y: 0, type: 'game-background'}
+		]
+	},
 	platforms: [
 		{x: 0, y: 112, type: 'tower1' },
 		{x: 1, y: 300, type: 'platform' },
@@ -36,11 +43,10 @@ let lvl = {
 }
 
 export class Level3 extends LevelPrototype{
-
-
 	 constructor() {
-		 super();
-		 this.levelObj = lvl;
+		super();
+ 		let protoLevel = _.cloneDeep( this.prototypeLevel );
+ 		this.levelObj = _.merge( protoLevel, lvl );
  	 }
 
  	 addStartingText(){
@@ -57,12 +63,6 @@ export class Level3 extends LevelPrototype{
                 game.add.text(200, 136, 'You lucky son of a slime!',
                 {font: '20px Courier', fill: '#fff'});
     }
-
- 	 createBackground(){
-        game.world.setBounds(0, 0, 640, 376);
-        game.add.sprite(0, 0, 'game-background');
-     }
-
 
  	 addTrampolines( trampolines){
          trampolines.create(160, 10, 'trampoline');
