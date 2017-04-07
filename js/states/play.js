@@ -3,13 +3,15 @@ import {Level2} from '../levels/level02'
 import {Level3} from '../levels/level03'
 import {ArrowBooster} from '../utils/booster'
 import {CollisionsHandler} from '../utils/collisions'
+import {MobileControlsHandler} from '../utils/mobilecontrols'
 import {RainEmitter, JuiceEmitters} from '../utils/emitters'
 import {TntHandler} from '../utils/tnt'
 import {GameState} from '../gameState'
 var level,
 	collisionsHandler,
 	arrowBooster,
-	tntHandler;
+	tntHandler,
+	mobileControlsHandler;
 
 
 // Todo: store those elements in one global object like window.game
@@ -35,6 +37,7 @@ var playState = {
 		this.resetState();
 
 		collisionsHandler = new CollisionsHandler();
+		mobileControlsHandler = new MobileControlsHandler();
 		gState.emitters.juiceEmitters = new JuiceEmitters();
 		arrowBooster = new ArrowBooster();
 		tntHandler = new TntHandler();
@@ -55,31 +58,13 @@ var playState = {
 		this.initArrows();
 		this.initSwitchFallers();
 		this.initRain();
+		this.initMobileControls();
 
 		gState.envObjects.cursors = game.input.keyboard.createCursorKeys();
 
         game.camera.follow( gState.player);
 
-        //temp mobile buttons
-        if (!game.device.desktop){
-        	let buttonRight = game.add.button(160, 80, 'mobile', null, this, 2, 1, 0);
- 			buttonRight.fixedToCamera = true;
- 			buttonRight.isDown = false;
- 			buttonRight.events.onInputDown.add(function () { gState.mControlsFlags.rightDown = true; });
- 			buttonRight.events.onInputUp.add(function () { gState.mControlsFlags.rightDown = false; });
-
- 			let buttonLeft = game.add.button(0, 80, 'mobile', null, this, 2, 1, 0);
- 			buttonLeft.fixedToCamera = true;
- 			buttonLeft.isDown = false;
- 			buttonLeft.events.onInputDown.add(function () { gState.mControlsFlags.leftDown = true; });
- 			buttonLeft.events.onInputUp.add(function () { gState.mControlsFlags.leftDown = false; });
-
- 			let buttonJump = game.add.button(465, 80, 'mobile', null, this, 2, 1, 0);
- 			buttonJump.fixedToCamera = true;
- 			buttonJump.isDown = false;
- 			buttonJump.events.onInputDown.add(function () { gState.mControlsFlags.jumpDown = true; });
- 			buttonJump.events.onInputUp.add(function () { gState.mControlsFlags.jumpDown = false; });
-        }
+       
 	},
 
 	update: function() {
@@ -327,6 +312,11 @@ var playState = {
 	 	game.sound.play('trampoline_jump');
 	 },
 
+	 initMobileControls: function(){
+        if (!game.device.desktop){
+ 			mobileControlsHandler.initButtons();
+        }
+	},
 
 };
 module.exports = playState;
