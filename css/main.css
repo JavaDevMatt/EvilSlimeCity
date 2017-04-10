@@ -10,3 +10,21 @@ word-wrap: break-word;
 width: 350px;
 height:438px;
 }
+
+
+#editModeUI {
+    position: fixed;
+    top:0;
+    right:0;
+    height:100%;
+    width:200px;
+    background: #FFF;
+}
+#editModeUI div {
+    width:100px;
+    height:25px;
+    background: #dadada;
+    cursor:pointer;
+    margin-bottom:4px;
+    
+}

@@ -14,8 +14,22 @@ var level,
 	mobileControlsHandler;
 
 
+
 // Todo: store those elements in one global object like window.game
 // or pass references of objects between them
+
+function editable( items ) {
+	items.forEachAlive( function( item ) {
+		item.inputEnabled = true;
+		item.input.enableDrag(false, true);
+		item.events.onDragStop.add(onDragStart, item);
+		function onDragStart() {
+			this.levelRef.x = this.body.x;
+			this.levelRef.y = this.body.y;
+			window.refresh();
+		}
+	}, this );
+}
 
 let gState = new GameState().state;
 var playState = {
@@ -64,7 +78,7 @@ var playState = {
 
         game.camera.follow( gState.player);
 
-       
+
 	},
 
 	update: function() {
@@ -201,6 +215,7 @@ var playState = {
         env.platforms.forEachAlive(function(item) {
         	item.body.immovable = true;
 		}, this);
+		editable( env.platforms );
 	 },
 
 	 initArrows: function(){
@@ -211,6 +226,7 @@ var playState = {
    		env.arrows.forEachAlive(function(item) {
        	 	item.body.immovable = true;
 		}, this);
+		editable( env.arrows );
 	 },
 
 	 initTrampolines: function(){
@@ -224,6 +240,7 @@ var playState = {
    			item.body.gravity.y = 300;
    			item.body.collideWorldBounds = true;
 		}, this);
+		editable( env.trampolines );
 	 },
 
 	 initRiders: function(){
@@ -238,6 +255,7 @@ var playState = {
        		item.body.collideWorldBounds = true;
         	item.body.velocity.setTo(-100, 0);
 		}, this);
+		editable( env.riders );
 	 },
 
 	 initRedSlimes: function(){
@@ -254,6 +272,7 @@ var playState = {
         	item.body.collideWorldBounds = true;
         	item.animations.add('stand', [0, 1, 2], 5, true);
 		}, this);
+		editable( e.redSlimes );
 	 },
 
 	 initSwitchFallers: function(){
@@ -267,6 +286,7 @@ var playState = {
    		env.switchFallers.forEachAlive(function( item ) {
         	item.body.immovable = true;
 		}, this);
+		editable( env.switchFallers );
 	 },
 
 	 initFallers: function(){
@@ -274,6 +294,7 @@ var playState = {
 	 	env.fallers = game.add.group();
 		env.fallers.enableBody = true;
         level.addFallers( env.fallers );
+		editable( env.fallers );
 	 },
 
 	 initSlowFallers: function(){
@@ -281,6 +302,7 @@ var playState = {
 	 	env.slowFallers = game.add.group();
 		env.slowFallers.enableBody = true;
         level.addSlowFallers( env.slowFallers );
+		editable( env.slowFallers );
 	 },
 
 
@@ -293,6 +315,7 @@ var playState = {
        	 	item.body.immovable = true;
        	 	item.animations.add('stand', [0, 1], 2, true);
 		}, this);
+		editable( env.lava );
 	 },
 
 	 initRain: function(){

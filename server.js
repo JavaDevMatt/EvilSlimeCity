@@ -13,28 +13,37 @@ request.on('data', function(chunk) {
   body = Buffer.concat(body).toString();
 
   try {
+  console.log( 'try' );
+  console.log( body );
   var bodyJson = JSON.parse( body );
+  console.log( 'body' );
+  console.log( bodyJson );
   var filePath = bodyJson.path;
   var content = bodyJson.content;
 } catch( err ) {
-  response.writeHead(500, {"Content-Type": "application/json"});
+  response.writeHead(500,
+       {
+           "Content-Type": "application/json",
+           "Access-Control-Allow-Origin" : "*"
+       });
   response.write(  JSON.stringify({
             "sucess": false,
             "msg": "Unsupproted json format",
           }) );
   response.end();
+  return 0;
 }
 console.log( filePath );
-  fs.writeFile( filePath, JSON.stringify( content ), function(err) {
+  fs.writeFile( filePath, JSON.stringify( content, null, 4 ), function(err) {
     if(err) {
-        response.writeHead(500, {"Content-Type": "application/json"});
+        response.writeHead(500, {"Content-Type": "application/json", "Access-Control-Allow-Origin" : "*"});
         response.write(  JSON.stringify({
                   "sucess": false,
                   "msg": "cannot save a file",
                 }) );
         return console.log(err);
     }
-    response.writeHead(200, {"Content-Type": "application/json"});
+    response.writeHead(200, {"Content-Type": "application/json", "Access-Control-Allow-Origin" : "*"});
     response.write(  JSON.stringify({
               "sucess": true,
               "msg": "file saved",

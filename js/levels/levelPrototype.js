@@ -4,10 +4,11 @@ let gState = new GameState().state;
 
 let lvl = require( './levelStruct' );
 export class LevelPrototype{
-
     _create( type, props ) {
     	for ( var i in props ) {
-    		type.create( props[ i ].x, props[ i ].y, props[ i ].type );
+    		var tmpObj = type.create( props[ i ].x, props[ i ].y, props[ i ].type );
+            tmpObj.levelRef = props[ i ];
+            props[ i ].id = Math.ceil( Date.now() * Math.random() );
     	}
     }
 

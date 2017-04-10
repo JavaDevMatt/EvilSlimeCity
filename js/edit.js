@@ -12,5 +12,31 @@ window.enterEditMode = function() {
     refresh();
     window.editMode = true;
 }
-
 window.reload = function() { game.state.start( 'play' ); }
+
+var editDom = document.querySelector( "#edit" );
+var saveDom = document.querySelector( "#save" );
+var lavelName = document.querySelector( "#levelName" );
+
+editDom.addEventListener( 'click', function() {
+    enterEditMode();
+} );
+
+saveDom.addEventListener( 'click', function() {
+var xhr = new XMLHttpRequest();
+
+ // send the collected data as JSON
+ var data = {
+    path: levelName.value,
+    content: window.level
+ }
+
+ data = JSON.stringify( data );
+
+ xhr.open( 'POST', 'http://localhost:8888', true);
+ xhr.send( data );
+
+ xhr.onloadend = function ( msg ) {
+   console.log( msg );
+ };
+} );
