@@ -19,16 +19,18 @@ var level,
 // or pass references of objects between them
 
 function editable( items ) {
-	items.forEachAlive( function( item ) {
-		item.inputEnabled = true;
-		item.input.enableDrag(false, true);
-		item.events.onDragStop.add(onDragStart, item);
-		function onDragStart() {
-			this.levelRef.x = this.body.x;
-			this.levelRef.y = this.body.y;
-			window.refresh();
-		}
-	}, this );
+	if ( window.editMode ===  true ) {
+		items.forEachAlive( function( item ) {
+			item.inputEnabled = true;
+			item.input.enableDrag(false, true);
+			item.events.onDragStop.add(onDragStart, item);
+			function onDragStart() {
+				this.levelRef.x = this.body.x;
+				this.levelRef.y = this.body.y;
+				window.refresh();
+			}
+		}, this );
+	}
 }
 
 let gState = new GameState().state;

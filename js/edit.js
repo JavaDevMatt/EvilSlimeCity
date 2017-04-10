@@ -11,6 +11,8 @@ window.refresh = function() {
 window.enterEditMode = function() {
     refresh();
     window.editMode = true;
+    document.querySelector( "#editModeUI" ).style.display = "block";
+    document.querySelector( "#codeDiv" ).style.display = "block";
 }
 window.reload = function() { game.state.start( 'play' ); }
 

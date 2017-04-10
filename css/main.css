@@ -9,6 +9,7 @@ color: black;
 word-wrap: break-word;
 width: 350px;
 height:438px;
+display:none;
 }
 
 
@@ -19,6 +20,7 @@ height:438px;
     height:100%;
     width:200px;
     background: #FFF;
+    display:none;
 }
 #editModeUI div {
     width:100px;
@@ -26,5 +28,5 @@ height:438px;
     background: #dadada;
     cursor:pointer;
     margin-bottom:4px;
-    
+
 }
