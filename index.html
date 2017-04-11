@@ -11,9 +11,20 @@
     	<div id="gameDiv"> </div>
         <textarea id="codeDiv"> {} </textarea>
         <div id="editModeUI">
-            <div id="edit"> edit </div>
-            <div id="save"> save </div>
-            <input type="text" id="levelName"> </input>
+            <div id="save"> save level </div>
+            levelName: <input type="text" id="levelName"> </input>
+            <ul>
+                <li data-element = 'platform1' onclick="addElementClick( event)"> platfrom1 </li>
+                <li data-element = 'platform2' onclick="addElementClick( event)"> platform2 </li>
+                <li data-element = 'tower' onclick="addElementClick( event)"> tower </li>
+                <li data-element = 'slime' onclick="addElementClick( event)"> redSlime </li>
+                <li data-element = 'lava' onclick="addElementClick( event)"> lava </li>
+                <li data-element = 'lava2' onclick="addElementClick( event)"> lava2 </li>
+                <li data-element = 'arrow' onclick="addElementClick( event)"> arrow </li>
+                <li data-element = 'faller' onclick="addElementClick( event)"> faller </li>
+                <li data-element = 'trampoline' onclick="addElementClick( event)"> trampoline </li>
+                <li data-element = 'tnt' onclick="addElementClick( event)"> tnt </li>
+            </ul>
         </div>
     </body>
 

@@ -30,3 +30,7 @@ display:none;
     margin-bottom:4px;
 
 }
+
+#editModeUI ul li {
+    cursor: pointer;
+}

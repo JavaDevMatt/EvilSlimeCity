@@ -38,44 +38,97 @@ window.enterEditMode = function() {
     }
 }
 
-
-
 function addObj( x, y, type, assetName, immovable ) {
     var tmpObj = gState.envObjects[ type ].create( x , y, assetName );
     tmpObj.body.immovable = immovable;
     tmpObj.levelRef = window.level[ type ][ window.level[ type ].push( {x:x, y:y, type: type } ) - 1 ];
     editItem( tmpObj );
+	refresh();
+
 }
 
 
-window.addPlatform1 = function( x, y ) {
-    addObj( x, y, 'platforms', 'platform', true );
+
+var elementMap = {
+	platform1: {
+		belongsTo: 'platforms',
+		asset: 'platform',
+		immovable: true
+	},
+	platform2: {
+		belongsTo: 'platforms',
+		asset: 'platform2',
+		immovable: true
+	},
+	tower: {
+		belongsTo: 'platforms',
+		asset: 'tower1',
+		immovable: true
+	},
+	slime:  {
+		belongsTo: 'redSlimes',
+		asset: 'monster2',
+		immovable: false
+	},
+	lava: {
+		belongsTo: 'lava',
+		asset: 'lava',
+		immovable: true
+	},
+	lava2: {
+		belongsTo: 'lava',
+		asset: 'lava2',
+		immovable: true
+	},
+	arrow: {
+		belongsTo: 'arrows',
+		asset: 'arrow',
+		immovable: true
+	},
+	faller: {
+		belongsTo: 'fallers',
+		asset: 'faller',
+		immovable: true
+	},
+	trampoline: {
+		belongsTo: 'trampolines',
+		asset: 'trampoline',
+		immovable: true
+	},
+	tnt: {
+		belongsTo: 'tnt',
+		asset: 'tnt',
+		immovable: true
+	}
 }
 
-window.addPlatform2 = function( x,y ) {
-    addObj( x, y, 'platforms', 'platform2', true );
+
+window.addElementClick = function( event ) {
+	var canvas = document.querySelector( 'canvas' );
+	var body = document.querySelector( 'body' );
+	var type = event.target.dataset.element;
+	body.style.cursor = 'crosshair';
+	function addElementAfterClick(){
+		body.style.cursor = '';
+		addObj(
+			game.input.activePointer.worldX,
+			game.input.activePointer.worldY,
+			elementMap[ type ].belongsTo,
+			elementMap[ type ].asset,
+			elementMap[ type ].immovable
+		);
+		canvas.removeEventListener( 'click', addElementAfterClick );
+	}
+	canvas.addEventListener( 'click', addElementAfterClick );
 }
-
-window.addTower = function( x,y ) {
-    addObj( x, y, 'platforms', 'tower1', true );
-}
-
-window.addSlime = function( x, y ) {
-    addObj( x, y, 'redSlimes', 'monster2', false );
-}
-
-
 
 
 window.reload = function() { game.state.start( 'play' ); }
 
-var editDom = document.querySelector( "#edit" );
 var saveDom = document.querySelector( "#save" );
 var lavelName = document.querySelector( "#levelName" );
 
-editDom.addEventListener( 'click', function() {
-    enterEditMode();
-} );
+
 
 saveDom.addEventListener( 'click', function() {
 var xhr = new XMLHttpRequest();
