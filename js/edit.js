@@ -7,15 +7,19 @@ var a, b;
 
 function editable( items ) {
 	items.forEachAlive( function( item ) {
-		item.inputEnabled = true;
-		item.input.enableDrag(false, true);
-		item.events.onDragStop.add(onDragStart, item);
-		function onDragStart() {
-			this.levelRef.x = this.body.x;
-			this.levelRef.y = this.body.y;
-			window.refresh();
-		}
+        editItem( item );
 	}, this );
+}
+
+function editItem( item ) {
+    item.inputEnabled = true;
+    item.input.enableDrag(false, true);
+    item.events.onDragStop.add(onDragStart, item);
+    function onDragStart() {
+        this.levelRef.x = this.body.x;
+        this.levelRef.y = this.body.y;
+        window.refresh();
+    }
 }
 
 window.refresh = function() {
@@ -33,6 +37,36 @@ window.enterEditMode = function() {
         editable( gState.envObjects[ i ] );
     }
 }
+
+
+
+function addObj( x, y, type, assetName, immovable ) {
+    var tmpObj = gState.envObjects[ type ].create( x , y, assetName );
+    tmpObj.body.immovable = immovable;
+    tmpObj.levelRef = window.level[ type ][ window.level[ type ].push( {x:x, y:y, type: type } ) - 1 ];
+    editItem( tmpObj );
+}
+
+
+window.addPlatform1 = function( x, y ) {
+    addObj( x, y, 'platforms', 'platform', true );
+}
+
+window.addPlatform2 = function( x,y ) {
+    addObj( x, y, 'platforms', 'platform2', true );
+}
+
+window.addTower = function( x,y ) {
+    addObj( x, y, 'platforms', 'tower1', true );
+}
+
+window.addSlime = function( x, y ) {
+    addObj( x, y, 'redSlimes', 'monster2', false );
+}
+
+
+
+
 window.reload = function() { game.state.start( 'play' ); }
 
 var editDom = document.querySelector( "#edit" );
