@@ -48,9 +48,7 @@ var initState = {
 
 		// playing around with scaling on mobile
 		if (!game.device.desktop){
-			//game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
-
-			game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+			game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
         	game.scale.pageAlignHorizontally = true;
         	game.scale.pageAlignVertically = true;
 		}
