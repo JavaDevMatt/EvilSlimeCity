@@ -1,8 +1,5 @@
 let defaultState = {
 	player: {},
-	enemies: {
-		redSlimes: []
-	},
 	emitters: {
 		juiceEmitters: [],
 		rainEmitter: {}
@@ -16,14 +13,15 @@ let defaultState = {
 		fallers: {},
 		arrows: {},
 		switchFallers: {},
-		cursors: {}
+		redSlimes: []
 	},
 	flags: {
 		canBoostFlag : true,
 		canTntExplode : true,
 		isPlayerDead : false,
 		hasPlayerWon : false
-	}
+	},
+	cursors: {},
 }
 let instance = null;
 

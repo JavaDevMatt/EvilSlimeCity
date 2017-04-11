@@ -41,6 +41,7 @@ let lvl = {
 		{x: 1510, y: 352, type: 'lava2' }
 	],
 	arrows: [ {x: 1230, y: 240, type: 'arrow' } ],
+	riders: [ {x: 490, y: 200, type: 'faller' } ]
 }
 
 export class Level2 extends LevelPrototype{
@@ -67,19 +68,18 @@ export class Level2 extends LevelPrototype{
                 {font: '20px Courier', fill: '#fff'});
     }
 
-     addRiders(){
-        this.rider1 = gState.envObjects.riders.create(490, 200, 'faller');
-     }
+
 
 
      handleRidersLogic(){
+		this.rider1 = gState.envObjects.riders.children[0];
         if(this.rider1.x > 650){
             this.rider1.body.velocity.x = -100;
         }
      }
 
      checkForCoolKillText(){
-        if( gState.enemies.redSlimes.countLiving() == 1 ){
+        if( gState.envObjects.redSlimes.countLiving() == 1 ){
                 var infoLabel = game.add.text(310, 278, 'One more!',
                         {font: '20px Courier', fill: '#fff'});
                 setTimeout(function(){

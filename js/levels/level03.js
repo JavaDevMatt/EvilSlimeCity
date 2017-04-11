@@ -22,14 +22,14 @@ let lvl = {
 	fallers: [
 	],
 	slowFallers: [],
-	trampolines: [  ],
+	trampolines: [  {x: 160, y:10, type: 'trampoline'} ],
 	lava: [
 		{x: 142, y: 332, type: 'lava' },
 		{x: 198, y: 332, type: 'lava' },
 		{x: 254, y: 332, type: 'lava2' },
 		{x: 506, y: 332, type: 'lava2' }
 	],
-	tnt: [],
+	tnt: [ { x:360, y:150, type: 'tnt' } ],
 	switchFallers: [
 		{x: 136, y: 242, type: 'faller' },
 		{x: 330, y: 112, type: 'faller' },
@@ -64,17 +64,6 @@ export class Level3 extends LevelPrototype{
                 {font: '20px Courier', fill: '#fff'});
     }
 
- 	 addTrampolines( trampolines){
-         trampolines.create(160, 10, 'trampoline');
-     }
-
-     addTnt(){
-        g.envObjects.tnt = game.add.sprite(360, 150, 'tnt');
-        game.physics.arcade.enable( g.envObjects.tnt );
-        g.envObjects.tnt.body.bounce.y = 0.2;
-        g.envObjects.tnt.body.gravity.y = 300;
-        g.envObjects.tnt.body.collideWorldBounds = true;
-     }
 
      handleRidersLogic(){
      }
