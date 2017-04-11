@@ -48,16 +48,17 @@ var initState = {
 
 		// playing around with scaling on mobile
 		if (!game.device.desktop){
-			//this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-    	    //this.game.scale.pageAlignHorizontally = true;
-    		//this.game.scale.pageAlignVertically = true;
+			//game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+
+			game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+        	game.scale.pageAlignHorizontally = true;
+        	game.scale.pageAlignVertically = true;
 		}
 	},
 
 
 	create: function() {
 		this.init();
-
 		game.state.start('menu');
 	}
 
