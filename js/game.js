@@ -4,7 +4,7 @@ var game = new Phaser.Game(640, 376, Phaser.AUTO, 'gameDiv'),
     menuState = require( './states/menu' );
 
 game.global = {
- gameLevel : 2,
+ gameLevel : 0,
  music : null,
  rainSound : null
 }
