@@ -1,11 +1,52 @@
 import {GameState} from '../gameState'
+import {LevelPrototype} from './levelPrototype'
 let g = new GameState().state;
-export class Level3{
+let _ = require( "lodash" );
 
+let lvl = {
+	world: {
+		bounds: { x1: 0, y1:0, x2: 640, y2: 376 },
+		sprites: [
+		   { x: 0, y: 0, type: 'game-background'}
+		]
+	},
+	platforms: [
+		{x: 0, y: 112, type: 'tower1' },
+		{x: 1, y: 300, type: 'platform' },
+		{x: 421, y: 289, type: 'faller' }
+	],
+	redSlimes: [
+        {x: 350, y: 10, type: 'monster2' },
+        {x: 560, y: 10, type: 'monster2' }
+	],
+	fallers: [
+	],
+	slowFallers: [],
+	trampolines: [  ],
+	lava: [
+		{x: 142, y: 332, type: 'lava' },
+		{x: 198, y: 332, type: 'lava' },
+		{x: 254, y: 332, type: 'lava2' },
+		{x: 506, y: 332, type: 'lava2' }
+	],
+	tnt: [],
+	switchFallers: [
+		{x: 136, y: 242, type: 'faller' },
+		{x: 330, y: 112, type: 'faller' },
+		{x: 208, y: 242, type: 'platform' },
+		{x: 349, y: 289, type: 'faller' },
+		{x: 493, y: 289, type: 'faller' },
+		{x: 565, y: 289, type: 'faller' },
+		{x: 530, y: 32, type: 'tower1' }
+	],
+	riders: []
+}
 
+export class Level3 extends LevelPrototype{
 	 constructor() {
-	 	this.playerStartingX = 10;
-	 	this.playerStartingY = 10;
+		super();
+ 		let protoLevel = _.cloneDeep( this.prototypeLevel );
+ 		this.levelObj = _.merge( protoLevel, lvl );
  	 }
 
  	 addStartingText(){
@@ -23,56 +64,8 @@ export class Level3{
                 {font: '20px Courier', fill: '#fff'});
     }
 
- 	 createBackground(){
-        game.world.setBounds(0, 0, 640, 376);
-
-        game.add.sprite(0, 0, 'game-background');
-     }
-
-     addPlatforms(){
-        g.envObjects.platforms.create(0, 112, 'tower1');
-        g.envObjects.platforms.create(1, 300, 'platform');
-        g.envObjects.platforms.create(421, 289, 'faller');
-     }
-
-    addArrows( arrows){
-     }
-
- 	 addRedSlimes(){
-        g.enemies.redSlimes.create(350, 10, 'monster2');
-        g.enemies.redSlimes.create(560, 10, 'monster2');
-     }
-
- 	 addFallers(){
- 	 }
-
  	 addTrampolines( trampolines){
          trampolines.create(160, 10, 'trampoline');
-     }
-
-     addSlowFallers(){
-     }
-
-
- 	 addLava(){
-        g.envObjects.lava.create(142, 332, 'lava');
-        g.envObjects.lava.create(198, 332, 'lava');
-        g.envObjects.lava.create(254, 332, 'lava2');
-        g.envObjects.lava.create(506, 332, 'lava2');
- 	 }
-
-     addSwitchFallers(){
-		 g.envObjects.switchFallers.create(136, 242, 'faller');
-         g.envObjects.switchFallers.create(330, 112, 'faller');
-
-         g.envObjects.switchFallers.create(208, 242, 'platform');
-         g.envObjects.switchFallers.create(349, 289, 'faller');
-         g.envObjects.switchFallers.create(493, 289, 'faller');
-         g.envObjects.switchFallers.create(565, 289, 'faller');
-         g.envObjects.switchFallers.create(530, 32, 'tower1');
-     }
-
-     addRiders(){
      }
 
      addTnt(){
