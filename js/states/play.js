@@ -132,7 +132,7 @@ var playState = {
 	 	level.addTnt();
 	 },
 
-	 tntExplode: function( tnt ){
+	 tntExplode: function( slime, tnt){
 	 		tntHandler.explode( tnt );
 	 },
 
