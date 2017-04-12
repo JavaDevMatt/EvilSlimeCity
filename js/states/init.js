@@ -25,7 +25,8 @@ var initState = {
 		game.load.image('trampoline', 'assets/img/trampoline.png');
 		game.load.image('arrow', 'assets/img/arrow.png');
 		game.load.image('tnt', 'assets/img/tnt.png');
-		game.load.image('mobile', 'assets/img/mobile.png');
+		game.load.image('mobile_direction', 'assets/img/mobile_direction.png');
+		game.load.image('mobile_jump', 'assets/img/mobile_jump.png');
 		game.load.spritesheet('lava', 'assets/img/lava.png', 56, 32);
 		game.load.spritesheet('lava2', 'assets/img/lava2.png', 252, 32);
 
