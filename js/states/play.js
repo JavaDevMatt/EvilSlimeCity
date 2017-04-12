@@ -64,10 +64,10 @@ var playState = {
 
 
         // setting gyroscope update frequency
-        gyro.frequency = 10;
-        gyro.startTracking(function(o) {
+        if (!game.device.desktop){
+        	 gyro.frequency = 10;
+       		 gyro.startTracking(function(o) {
                // updating player velocity
-               //gState.player.body.velocity.x -= o.y;
                if(o.y < -0.4){
                		gState.player.body.velocity.x = 150;
                } else if(o.y > 0.4){
@@ -76,6 +76,8 @@ var playState = {
                		gState.player.body.velocity.x = 0;
                }
           });
+        }
+        
 	},
 
 	update: function() {
