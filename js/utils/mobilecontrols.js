@@ -15,7 +15,7 @@ export class MobileControlsHandler{
 		// this.buttonRight.events.onInputDown.add(function () { rightDown = true; });
 		// this.buttonRight.events.onInputUp.add(function () { rightDown = false; });
 
-		this.buttonJump = game.add.button(465, 80, 'mobile_jump', null, this, 2, 1, 0);
+		this.buttonJump = game.add.button(0, 0, 'mobile_jump', null, this, 2, 1, 0);
  		this.buttonJump.fixedToCamera = true;
  		this.buttonJump.isDown = false;
  		this.buttonJump.events.onInputDown.add(function () { jumpDown = true; });
