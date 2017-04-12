@@ -24,7 +24,8 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "scripts": {
-    "start": "./node_modules/.bin/gulp serve"
+    "start": "./node_modules/.bin/gulp serve",
+    "editMode" : "./node_modules/.bin/gulp serve && node server.js"
   },
   "repository": {
     "type": "git",
@@ -45,6 +46,13 @@
       "website": "https://github.com/JavaDevMatt"
     }
   ],
+  "contributors": [
+    {
+      "name": "Tomasz Rekawek",
+      "website": "https://github.com/tomasz-rekawek",
+      "email": "tomasz@rekawek.com"
+    }
+],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/JavaDevMatt/EvilSlimeCity/issues"
