@@ -1,7 +1,7 @@
 module.exports =  {
         world: {
             bounds: {
-                x1: 0, x2: 885,
+                x1: 0, x2: 985,
                 y1: 0, y2: 376
             },
             sprites: [
