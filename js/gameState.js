@@ -1,5 +1,6 @@
 let defaultState = {
 	player: {},
+	mobileBoundsLeft: {},
 	emitters: {
 		juiceEmitters: [],
 		rainEmitter: {}

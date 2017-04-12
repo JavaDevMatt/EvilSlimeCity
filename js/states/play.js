@@ -63,6 +63,10 @@ var playState = {
         game.camera.follow( gState.player);
 
 
+        gState.mobileBoundsLeft = game.add.sprite(0, 50, 'mobile');
+        gState.mobileBoundsLeft.fixedToCamera = true;
+        game.physics.arcade.enable( gState.mobileBoundsLeft );
+        gState.mobileBoundsLeft.body.immovable = true;
 	},
 
 	update: function() {
