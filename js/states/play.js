@@ -1,6 +1,4 @@
-import {Level1} from '../levels/level01'
-import {Level2} from '../levels/level02'
-import {Level3} from '../levels/level03'
+import {Level1, Level2, Level3, Level4 } from '../levels'
 import {ArrowBooster} from '../utils/booster'
 import {CollisionsHandler} from '../utils/collisions'
 import {MobileControlsHandler} from '../utils/mobilecontrols'
@@ -25,7 +23,7 @@ var playState = {
 	 },
 
 	chooseLevel: function(){
-		const levels = [new Level1(), new Level2(), new Level3()];
+		const levels = [new Level1(), new Level2(), new Level3(), new Level4()];
 		return levels[game.global.gameLevel];
 	},
 
