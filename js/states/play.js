@@ -63,6 +63,19 @@ var playState = {
         game.camera.follow( gState.player);
 
 
+        // setting gyroscope update frequency
+        gyro.frequency = 10;
+        gyro.startTracking(function(o) {
+               // updating player velocity
+               //gState.player.body.velocity.x -= o.y;
+               if(o.y < -0.4){
+               		gState.player.body.velocity.x = 150;
+               } else if(o.y > 0.4){
+               		gState.player.body.velocity.x = -150;
+               } else {
+               		gState.player.body.velocity.x = 0;
+               }
+          });
 	},
 
 	update: function() {
@@ -81,7 +94,9 @@ var playState = {
 
 
 	 	// preventing "free move"
-	    gState.player.body.velocity.x = 0;
+	 	if (game.device.desktop){
+	    	gState.player.body.velocity.x = 0;
+	 	}
 	    gState.envObjects.trampolines.forEachAlive(function(item) {
 	    	item.body.velocity.x = 0;
 		}, this);
