@@ -1,4 +1,4 @@
-var game = new Phaser.Game(640, 376, Phaser.AUTO, 'gameDiv'),
+var game = new Phaser.Game(740, 376, Phaser.AUTO, 'gameDiv'),
     initState = require( './states/init' ),
     playState = require( './states/play' ),
     menuState = require( './states/menu' );

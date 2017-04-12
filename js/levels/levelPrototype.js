@@ -17,12 +17,12 @@ export class LevelPrototype{
 
 	constructor( ) {
         this.prototypeLevel = lvl;
-		this.playerStartingX = 10;
-		this.playerStartingY = 10;
+		this.playerStartingX = 90;
+		this.playerStartingY = 60;
  	}
 
  	addStartingText(){
-        var loadingLabel = window.game.add.text(80, 278, 'Kill the evil slime!   -->', {font: '20px Courier', fill: '#fff'});
+        var loadingLabel = window.game.add.text(130, 278, 'Kill the evil slime!   -->', {font: '20px Courier', fill: '#fff'});
         setTimeout(function(){
                 loadingLabel.kill();
         }, 5000);

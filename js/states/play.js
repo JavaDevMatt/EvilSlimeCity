@@ -292,7 +292,7 @@ var playState = {
 	 },
 
 	 initMobileControls: function(){
-        if (!game.device.desktop){
+        if (game.device.desktop){
  			mobileControlsHandler.initButtons();
         }
 	},

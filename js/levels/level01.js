@@ -5,24 +5,24 @@ let _ = require( "lodash" );
 
 let lvl = {
 	platforms: [
-		{ x:0, y: 300, type: 'platform' },
-		{ x:197, y: 300, type: 'platform2' },
-		{ x:506, y: 300, type: 'platform' },
-		{ x:646, y: 300, type: 'platform' },
-		{ x:646, y: 112, type: 'tower1' }
+		{ x:50, y: 300, type: 'platform' },
+		{ x:247, y: 300, type: 'platform2' },
+		{ x:556, y: 300, type: 'platform' },
+		{ x:696, y: 300, type: 'platform' },
+		{ x:696, y: 112, type: 'tower1' }
 	],
 	redSlimes: [
-		{ x: 670,y: 10, type: 'monster2' }
+		{ x: 720,y: 10, type: 'monster2' }
 	],
 	fallers: [
-		{ x: 340, y: 282, type: 'faller' }
+		{ x: 390, y: 282, type: 'faller' }
 	],
 	slowFallers: [],
-	trampolines: [ { x: 600, y: 270, type: 'trampoline' } ],
+	trampolines: [ { x: 650, y: 270, type: 'trampoline' } ],
 	lava: [
-		{ x:141, y: 332, type: 'lava' },
-		{ x:254, y: 332, type: 'lava2' },
-		{ x:700, y: 332, type: 'lava2' }
+		{ x:191, y: 332, type: 'lava' },
+		{ x:304, y: 332, type: 'lava2' },
+		{ x:750, y: 332, type: 'lava2' }
 	],
 	tnt: [],
 	riders: [],
