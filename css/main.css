@@ -4,3 +4,33 @@ canvas {
     top:50%;
     margin:-188px 0 0 -320px;
 }
+#codeDiv {
+color: black;
+word-wrap: break-word;
+width: 350px;
+height:438px;
+display:none;
+}
+
+
+#editModeUI {
+    position: fixed;
+    top:0;
+    right:0;
+    height:100%;
+    width:200px;
+    background: #FFF;
+    display:none;
+}
+#editModeUI div {
+    width:100px;
+    height:25px;
+    background: #dadada;
+    cursor:pointer;
+    margin-bottom:4px;
+
+}
+
+#editModeUI ul li {
+    cursor: pointer;
+}
