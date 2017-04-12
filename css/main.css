@@ -1,9 +1,12 @@
+/*
+todo: remove this css only on mobile;
 canvas {
     position:absolute;
     left:50%;
     top:50%;
     margin:-188px 0 0 -320px;
 }
+*/
 #codeDiv {
 color: black;
 word-wrap: break-word;
