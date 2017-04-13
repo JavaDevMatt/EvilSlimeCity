@@ -59,23 +59,6 @@ var playState = {
 		gState.cursors = game.input.keyboard.createCursorKeys();
 
         game.camera.follow( gState.player);
-
-
-        // setting gyroscope update frequency
-        if (!game.device.desktop){
-        	 gyro.frequency = 10;
-       		 gyro.startTracking(function(o) {
-               // updating player velocity
-               if(o.y < -0.4){
-               		gState.player.body.velocity.x = 150;
-               } else if(o.y > 0.4){
-               		gState.player.body.velocity.x = -150;
-               } else {
-               		gState.player.body.velocity.x = 0;
-               }
-          });
-        }
-        
 	},
 
 	update: function() {
@@ -309,6 +292,19 @@ var playState = {
 	 initMobileControls: function(){
         if (!game.device.desktop){
  			mobileControlsHandler.initButtons();
+
+ 			// setting gyroscope update frequency
+        	gyro.frequency = 10;
+       		gyro.startTracking(function(o) {
+               // updating player velocity
+               if(o.y < -0.4){
+               		gState.player.body.velocity.x = 150;
+               } else if(o.y > 0.4){
+               		gState.player.body.velocity.x = -150;
+               } else {
+               		gState.player.body.velocity.x = 0;
+               }
+            });
         }
 	},
 
