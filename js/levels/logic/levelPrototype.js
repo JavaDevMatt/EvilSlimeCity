@@ -17,7 +17,7 @@ export class LevelPrototype{
 
 	constructor( ) {
         this.prototypeLevel = lvl;
-		this.playerStartingX = 10;
+		this.playerStartingX = 40;
 		this.playerStartingY = 10;
  	}
 
