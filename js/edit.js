@@ -41,7 +41,7 @@ window.enterEditMode = function() {
 function addObj( x, y, type, assetName, immovable ) {
     var tmpObj = gState.envObjects[ type ].create( x , y, assetName );
     tmpObj.body.immovable = immovable;
-    tmpObj.levelRef = window.level[ type ][ window.level[ type ].push( {x:x, y:y, type: type } ) - 1 ];
+    tmpObj.levelRef = window.level[ type ][ window.level[ type ].push( {x:x, y:y, type: assetName } ) - 1 ];
     editItem( tmpObj );
 	refresh();
 

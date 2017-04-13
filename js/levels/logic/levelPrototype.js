@@ -1,8 +1,8 @@
-import {GameState} from '../gameState'
+import {GameState} from '../../gameState'
 let gState = new GameState().state;
 //set local pointers;
 
-let lvl = require( './levelStruct' );
+let lvl = require( '../structures/levelStruct' );
 export class LevelPrototype{
     _create( type, props ) {
         gState.envObjects[ type ] = window.game.add.group();
