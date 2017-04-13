@@ -14,7 +14,8 @@ module.exports = {
 		{x: 1169, y: 272, type: 'tower1' },
 		{x: 1310, y: 300, type: 'platform' },
 		{x: 1451, y: 300, type: 'platform' },
-		{x: 1410, y: 112, type: 'tower1' }
+		{x: 1410, y: 112, type: 'tower1' },
+		{x: 400, y: 288, type: 'tower1' }
 	],
 	redSlimes: [
 		{x: 1470, y: 10, type: 'monster2' },
@@ -25,7 +26,8 @@ module.exports = {
 	],
 	trampolines: [
 		{x: 50, y: 270, type: 'trampoline' },
-		{x: 950, y: 270, type: 'trampoline' }
+		{x: 950, y: 270, type: 'trampoline' },
+		{x: 453, y: 261, type: 'trampoline'}
 	],
 	lava: [
 		{x: 0, y: 332, type: 'lava2' },
