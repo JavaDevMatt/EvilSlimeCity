@@ -109,10 +109,10 @@ var playState = {
 		}, this);
 
 	    // controls
-	    if ( gState.cursors.left.isDown || mobileControlsHandler.isLeftDown()){
+	    if ( gState.cursors.left.isDown ){
 	        gState.player.body.velocity.x = -150;
 	    }
-	    else if ( gState.cursors.right.isDown || mobileControlsHandler.isRightDown()){
+	    else if ( gState.cursors.right.isDown ){
 	        gState.player.body.velocity.x = 150;
 	    }
 	    // jump!
