@@ -33,6 +33,7 @@ var menuState = {
 	},
 
 	startGame: function(){
+		game.sound.play('splash');
 		game.global.music.volume = 0.3;
 
 		game.state.start('play');
