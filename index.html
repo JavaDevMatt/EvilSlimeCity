@@ -35,11 +35,16 @@
     	    <div id="gameDiv"></div>
         </main>
 
-        <textarea id="codeDiv">{}</textarea>
+        <!-- Level Editor -->
+        <textarea id="editor-code"></textarea>
 
-        <div id="editModeUI">
-            <div id="save"> save level </div>
-            levelName: <input type="text" id="levelName">
+        <div id="editor-side">
+            <div class="button">Save level</div>
+            <div class="inputs">
+                <label for="levelName">Level name:</label>
+                <input type="text" id="levelName" placeholder="level name">
+            </div>
+            <div class="header">Objects</div>
             <ul>
                 <li data-element='platform1' onclick="addElementClick(event)">platfrom1</li>
                 <li data-element='platform2' onclick="addElementClick(event)">platform2</li>

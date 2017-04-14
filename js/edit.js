@@ -24,14 +24,14 @@ function editItem( item ) {
 
 window.refresh = function() {
     a = _.cloneDeep( window.level );
-    document.querySelector( '#codeDiv' ).value = JSON.stringify( a , null, 4 );
+    document.querySelector( '#editor-code' ).value = JSON.stringify( a , null, 4 );
 }
 
 window.enterEditMode = function() {
     refresh();
     window.editMode = true;
-    document.querySelector( "#editModeUI" ).style.display = "block";
-    document.querySelector( "#codeDiv" ).style.display = "block";
+    document.querySelector( "#editor-side" ).style.display = "block";
+    document.querySelector( "#editor-code" ).style.display = "block";
 
     for ( var i in gState.envObjects ) {
         editable( gState.envObjects[ i ] );
