@@ -1,38 +1,114 @@
-/* temporary commented out for mobile feature testing */
-/*canvas {
+/*
+    Main Content
+*/
+
+/* temporary commented out for mobile feature testing 
+canvas {
     position:absolute;
     left:50%;
     top:50%;
     margin:-188px 0 0 -320px;
 }
 */
-#codeDiv {
-color: black;
-word-wrap: break-word;
-width: 350px;
-height:438px;
-display:none;
+
+body{
+    margin: 0;
+    background-color: #000;
 }
 
+/*
+    End of Main Content
+*/
 
-#editModeUI {
+/*
+    Edit Mode
+*/
+
+#editor-code {
+    color: #bbb;
+    width: 350px;
+    height:438px;
+    border: 3px solid #333;
+    outline: none;
+    display:none;
+    padding: 5px;
+    word-wrap: break-word;
+    background-color: #222;
+}
+
+#editor-side {
     position: fixed;
     top:0;
     right:0;
     height:100%;
     width:200px;
-    background: #FFF;
+    color: #ccc;
     display:none;
-}
-#editModeUI div {
-    width:100px;
-    height:25px;
-    background: #dadada;
-    cursor:pointer;
-    margin-bottom:4px;
-
+    background: #222;
+    overflow-y: scroll;
 }
 
-#editModeUI ul li {
+#editor-side .button{
     cursor: pointer;
+    padding: 5px;
+    transition: .3s;
+    text-align: center;
+    font-weight: bold;
+    background-color: #044;
 }
+
+#editor-side .button:hover{
+    color: #fff;
+    background-color: #066;
+}
+
+#editor-side .inputs{
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#editor-side .inputs label{
+    font-weight: bold;
+}
+
+#editor-side .inputs input{
+    width: 100%;
+    margin-top: 4px;
+    box-sizing: border-box;
+}
+
+#editor-side .inputs input:focus{
+    outline: none;
+}
+
+#editor-side .header{
+    font-size: 24px;
+    font-weight: bold;
+    padding: 0 6px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #444;
+}
+
+#editor-side ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#editor-side li{
+    padding: 5px;
+    transition: .3s;
+    background-color: #444;
+    border-bottom: 1px solid #333;
+}
+
+#editor-side li:hover{
+    color: #fff;
+    cursor: pointer;
+    background-color: #151515;
+}
+
+/*
+    End of Edit Mode
+*/

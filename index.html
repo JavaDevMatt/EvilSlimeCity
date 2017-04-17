@@ -1,33 +1,65 @@
 <!doctype html>
-<html>
+<html lang="pl">
+
     <head>
         <meta charset="UTF-8" />
-        <title>Evil Slime City v0.3</title>
-        <link rel="stylesheet" type="text/css" href="css/main.css">
-        <script src="phaser.min.js"></script>
-        <script src="gyro.min.js"></script>
-    </head>
-    <body bgcolor="#000000">
+        <meta name="robots" content="index, follow">
+        <meta name="description" content="Evil Slime City - Platformer game made for „Daj Się Poznać 2017” - Slime rule the world!">
 
-    	<div id="gameDiv"> </div>
-        <textarea id="codeDiv"> {} </textarea>
-        <div id="editModeUI">
-            <div id="save"> save level </div>
-            levelName: <input type="text" id="levelName"> </input>
+        <title>Evil Slime City - Slime rule the world! - v0.3</title>
+
+        <!-- Open Graph -->
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Evil Slime City - Slime rule the world!">
+        <meta property="og:description" content="Evil Slime City - Platformer game made for „Daj Się Poznać 2017” - Slime rule the world!">
+        <meta property="og:image" content="assets/img/og_meta.png">
+        <meta property="og:image:width" content="600">
+        <meta property="og:image:height" content="315">
+
+        <!-- Favicons -->
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" href="assets/favicons/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="assets/favicons/favicon-16x16.png" sizes="16x16">
+        <link rel="manifest" href="assets/favicons/manifest.json">
+        <link rel="shortcut icon" href="assets/favicons/favicon.ico">
+        <meta name="msapplication-config" content="assets/favicons/browserconfig.xml">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <script src="assets/js/phaser.min.js"></script>
+        <script src="assets/js/gyro.min.js"></script>
+    </head>
+
+    <body>
+        <main>
+    	    <div id="gameDiv"></div>
+        </main>
+
+        <!-- Level Editor -->
+        <textarea id="editor-code"></textarea>
+
+        <div id="editor-side">
+            <div id="save" class="button">Save level</div>
+            <div class="inputs">
+                <label for="levelName">Level name:</label>
+                <input type="text" id="levelName" placeholder="level name">
+            </div>
+            <div class="header">Objects</div>
             <ul>
-                <li data-element = 'platform1' onclick="addElementClick( event)"> platfrom1 </li>
-                <li data-element = 'platform2' onclick="addElementClick( event)"> platform2 </li>
-                <li data-element = 'tower' onclick="addElementClick( event)"> tower </li>
-                <li data-element = 'slime' onclick="addElementClick( event)"> redSlime </li>
-                <li data-element = 'lava' onclick="addElementClick( event)"> lava </li>
-                <li data-element = 'lava2' onclick="addElementClick( event)"> lava2 </li>
-                <li data-element = 'arrow' onclick="addElementClick( event)"> arrow </li>
-                <li data-element = 'faller' onclick="addElementClick( event)"> faller </li>
-                <li data-element = 'trampoline' onclick="addElementClick( event)"> trampoline </li>
-                <li data-element = 'tnt' onclick="addElementClick( event)"> tnt </li>
+                <li data-element='platform1' onclick="addElementClick(event)">platfrom1</li>
+                <li data-element='platform2' onclick="addElementClick(event)">platform2</li>
+                <li data-element='tower' onclick="addElementClick(event)">tower</li>
+                <li data-element='slime' onclick="addElementClick(event)">redSlime</li>
+                <li data-element='lava' onclick="addElementClick(event)">lava</li>
+                <li data-element='lava2' onclick="addElementClick(event)">lava2</li>
+                <li data-element='arrow' onclick="addElementClick(event)">arrow</li>
+                <li data-element='faller' onclick="addElementClick(event)">faller</li>
+                <li data-element='trampoline' onclick="addElementClick(event)">trampoline</li>
+                <li data-element='tnt' onclick="addElementClick(event)">tnt</li>
             </ul>
         </div>
+
+        <script src="/dist/js/app.js"></script>
     </body>
 
-    <script src="/dist/js/app.js"></script>
 </html>
