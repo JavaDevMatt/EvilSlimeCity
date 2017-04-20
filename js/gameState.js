@@ -22,6 +22,7 @@ let defaultState = {
 		hasPlayerWon : false
 	},
 	cursors: {},
+	gamePad: {}, 
 }
 let instance = null;
 
