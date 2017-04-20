@@ -4,8 +4,8 @@ let gState = new GameState().state;
 let _ = require( "lodash" );
 
 let lvl = require( "./../structures/level05.js" );
-let music1ChangeFlag = true;
-let music2ChangeFlag = true;
+let levelFlag1 = true;
+let levelFlag2 = true;
 let spectrumFlag = true;
 let endingFlag = true;
 
@@ -19,8 +19,8 @@ export class Level5 extends LevelPrototype {
 	}
 
 	resetFancyLevelStuff(){
-		music1ChangeFlag = true;
- 		music2ChangeFlag = true;
+		levelFlag1 = true;
+ 		levelFlag2 = true;
  		spectrumFlag = true;
         endingFlag = true;
 
@@ -30,10 +30,10 @@ export class Level5 extends LevelPrototype {
     }
 
     handleSpecialLevelEvents(){
-        if(music1ChangeFlag && gState.player.x > 200 ){
+        if(levelFlag1 && gState.player.x > 200 ){
         	game.camera.shake(0.01, 1000, true);
 
-        	music1ChangeFlag = false;
+        	levelFlag1 = false;
 
 
         	var levelLabel = game.add.text(100, 110, 'Huh?',
@@ -44,8 +44,8 @@ export class Level5 extends LevelPrototype {
         }
 
 
-        if(music2ChangeFlag && gState.player.x > 700 ){
-        	music2ChangeFlag = false;
+        if(levelFlag2 && gState.player.x > 700 ){
+        	levelFlag2 = false;
         	game.camera.shake(0.01, 1000, true);
 
 
@@ -94,7 +94,7 @@ export class Level5 extends LevelPrototype {
                 {font: '30px Courier', fill: '#fff'});
 	        	gState.flags.hasPlayerWon = true;
 	        	
-	        	game.global.gameLevel++;
+	        	game.global.gameLevel = 0; // TODO make level++
 		        
 	        	setTimeout(function(){
 		                game.state.start('play');
