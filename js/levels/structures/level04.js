@@ -48,7 +48,7 @@ module.exports = {
         }
     ],
     "redSlimes": [
-        {x: 719, y: 256, type: 'monster2' }
+        {x: 739, y: 256, type: 'monster2' }
     ],
     "fallers": [],
     "slowFallers": [],
