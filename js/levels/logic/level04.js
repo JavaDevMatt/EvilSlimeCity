@@ -22,7 +22,7 @@ export class Level4 extends LevelPrototype {
     addEndingText(){
         game.add.text(360, 100, 'Woah!',
                 {font: '40px Courier', fill: '#fff'});
-                game.add.text(360, 136, 'Smart slime!',
+                game.add.text(360, 136, 'Kinda smart... or just lucky?',
                 {font: '20px Courier', fill: '#fff'});
     }
 
