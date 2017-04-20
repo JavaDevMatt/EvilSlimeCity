@@ -22,17 +22,57 @@ module.exports = {
     "platforms": [
         {
             "x": -9,
-            "y": 347,
+            "y": 325,
+            "type": "platform",
+            "id": 1408244779348
+        },
+        {
+            "x": 131,
+            "y": 325,
+            "type": "platform"
+        },
+        {
+            "x": 525,
+            "y": 278,
+            "type": "tower1"
+        },
+        { 
+            "x": 658,
+            "y": 312,
+            "type": "platform"
+        },
+        {
+            "x": 799,
+            "y": 312,
             "type": "platform"
         }
     ],
-    "redSlimes": [],
+    "redSlimes": [
+        {x: 719, y: 256, type: 'monster2' }
+    ],
     "fallers": [],
     "slowFallers": [],
     "trampolines": [],
-    "lava": [],
+    "lava": [
+        {
+            "x": 271,
+            "y": 355,
+            "type": "lava2"
+        }
+    ],
     "tnt": [],
     "switchFallers": [],
     "riders": [],
-    "arrows": []
+    "arrows": [
+        {
+            "x": 191,
+            "y": 292,
+            "type": "arrow"
+        },
+        {
+            "x": 826,
+            "y": 281,
+            "type": "arrow"
+        }
+    ]
 }
