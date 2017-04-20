@@ -40,6 +40,15 @@ module.exports = {
         ]
     },
     "platforms": [
+        
+    ],
+    "redSlimes": [],
+    "fallers": [],
+    "slowFallers": [],
+    "trampolines": [],
+    "lava": [],
+    "tnt": [],
+    "switchFallers": [
         {
             "x": 0,
             "y": 300,
@@ -102,13 +111,6 @@ module.exports = {
             "type": "platform"
         }
     ],
-    "redSlimes": [],
-    "fallers": [],
-    "slowFallers": [],
-    "trampolines": [],
-    "lava": [],
-    "tnt": [],
-    "switchFallers": [],
     "riders": [],
     "arrows": [
       

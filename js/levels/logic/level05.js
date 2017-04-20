@@ -53,9 +53,16 @@ export class Level5 extends LevelPrototype {
 
         if(spectrumFlag && gState.player.x > 1200){
         	game.sound.play('scary1'); 
-        	game.camera.shake(0.04, 7000, true);
+        	game.camera.shake(0.03, 4000, true);
 
         	spectrumFlag = false
+
+        	setTimeout(function(){
+	                gState.envObjects.switchFallers.forEachAlive(function(item) {
+        			item.body.immovable = false;
+				}, this);
+	        }, 1000);
+        	
 
 			setTimeout(function(){
 				game.global.gameLevel--;
