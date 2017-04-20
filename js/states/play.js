@@ -146,8 +146,8 @@ var playState = {
 		 	game.sound.play('splash-death');
 		 	gState.player.kill();
 		 	setTimeout(function(){
-		 		level.resetFancyLevelStuff();
 		 		game.state.start('play');
+		 		level.resetFancyLevelStuff();
 			}, 600);
 	 	}
 	 },

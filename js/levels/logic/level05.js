@@ -7,6 +7,7 @@ let lvl = require( "./../structures/level05.js" );
 let music1ChangeFlag = true;
 let music2ChangeFlag = true;
 let spectrumFlag = true;
+let endingFlag = true;
 
 
 
@@ -21,6 +22,8 @@ export class Level5 extends LevelPrototype {
 		music1ChangeFlag = true;
  		music2ChangeFlag = true;
  		spectrumFlag = true;
+        endingFlag = true;
+
 	}
 
 	addStartingText(){
@@ -85,15 +88,19 @@ export class Level5 extends LevelPrototype {
         }
 
         if(!spectrumFlag && gState.player.x < 150){
-        	var levelLabel = game.add.text(20, 110, 'We said be careful!',
+        	if(endingFlag){
+        		endingFlag = false;
+        		var levelLabel = game.add.text(20, 110, 'We said be careful!',
                 {font: '30px Courier', fill: '#fff'});
-        	gState.flags.hasPlayerWon = true;
+	        	gState.flags.hasPlayerWon = true;
+	        	
+	        	game.global.gameLevel++;
+		        
+	        	setTimeout(function(){
+		                game.state.start('play');
+		        	}, 3000);
+        	}
         	
-        	game.global.gameLevel++;
-	        
-        	setTimeout(function(){
-	                game.state.start('play');
-	        	}, 3000);
         }
 
      }
