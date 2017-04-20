@@ -31,6 +31,11 @@ module.exports = {
                 "x": 1280,
                 "y": 0,
                 "type": "game-background"
+            },
+            {
+                "x": 1120,
+                "y": -70,
+                "type": "big-green"
             }
         ]
     },

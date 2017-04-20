@@ -6,6 +6,8 @@ let _ = require( "lodash" );
 let lvl = require( "./../structures/level05.js" );
 let music1ChangeFlag = true;
 let music2ChangeFlag = true;
+let spectrumFlag = true;
+
 
 let filter;
 let fragmentSrc;
@@ -39,15 +41,15 @@ export class Level5 extends LevelPrototype {
 
 	        "void main() {",
 
-	            "vec3 color = vec3(1.5, 0.5, 10.0);",
-	            "color = color == vec3(0.0)? vec3(10.5, 0.5, 1.0) : color;",
+	            "vec3 color = vec3(1.5, 0.5, 0.0);",
+	            "color = color == vec3(0.0)? vec3(0.0, 0.0, 0.0) : color;",
 	            "vec2 pos = (gl_FragCoord.xy / resolution.xy);",
 	            "pos.y += - 0.5;",
 	            "float spectrum = 0.0;",
-	            "const float lim = 28.0;",
+	            "const float lim = 3.0;",
 	            "#define time time*0.037 + pos.x*10.",
 	            "for(float i = 0.0; i < lim; i++){",
-	                "spectrum += band(pos, 1.0*sin(time*0.1/PI), 1.0*sin(time*i/lim))/pow(lim, 0.25);",
+	                "//spectrum += band(pos, 1.0*sin(time*0.1/PI), 1.0*sin(time*i/lim))/pow(lim, 0.25);",
 	            "}",
 
 	            "spectrum += band(pos, cos(10.7), 2.5);",
@@ -70,6 +72,8 @@ export class Level5 extends LevelPrototype {
 
     handleSpecialLevelEvents(){
         if(music1ChangeFlag && gState.player.x > 200 ){
+        	game.camera.shake(0.01, 1000, true);
+
         	music1ChangeFlag = false;
         	game.global.music.stop();
 
@@ -85,6 +89,8 @@ export class Level5 extends LevelPrototype {
         if(music2ChangeFlag && gState.player.x > 700 ){
         	music2ChangeFlag = false;
         	game.global.music2.play();
+        	game.camera.shake(0.01, 1000, true);
+
 
         	var levelLabel = game.add.text(600, 110, 'be careful',
                 {font: '30px Courier', fill: '#fff'});
@@ -92,14 +98,31 @@ export class Level5 extends LevelPrototype {
 	                levelLabel.kill();
 	        }, 3000);
 
-	        let sprite = game.add.sprite();
+	       
+        }
+
+        if(spectrumFlag && gState.player.x > 1200){
+        	game.sound.play('scary1'); 
+        	game.camera.shake(0.04, 7000, true);
+
+        	spectrumFlag = false
+        	 let sprite = game.add.sprite();
 		    sprite.width = 800;
 		    sprite.height = 600;
 
 		    sprite.filters = [ filter ];
+
+		    setTimeout(function(){
+	 			sprite.kill();
+			}, 7000);
+
+			setTimeout(function(){
+				game.global.gameLevel--;
+				game.state.start('play');
+			}, 8000);
         }
 
-        if(!music2ChangeFlag){
+        if(!spectrumFlag){
         	filter.update();
         }
      }

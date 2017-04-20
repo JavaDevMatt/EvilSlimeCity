@@ -17,6 +17,8 @@ var initState = {
 		game.load.audio('ding', 'assets/sound/ding.mp3'); // http://freesound.org/people/gloriaeffect/sounds/108428/
 		game.load.audio('tnt', 'assets/sound/tnt.mp3'); // http://freesound.org/people/ryansnook/sounds/110111/
 		// http://freesound.org/people/theneedle.tv/sounds/316682/
+		game.load.audio('scary1', 'assets/sound/scary1.mp3'); // https://www.freesound.org/people/tyops/sounds/234226/
+
 
 
 		game.load.image('menu-background', 'assets/img/menu-background.png'); // http://opengameart.org/content/industrial-parallax-background
