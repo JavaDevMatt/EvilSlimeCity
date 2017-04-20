@@ -13,6 +13,8 @@ var level,
 
 
 let gState = new GameState().state;
+let gamePad;
+
 var playState = {
 
 	resetState: function(){
@@ -56,6 +58,8 @@ var playState = {
 		this.initRain();
 		this.initMobileControls();
 
+		game.input.gamepad.start();
+        gamePad = game.input.gamepad.pad1;
 		gState.cursors = game.input.keyboard.createCursorKeys();
 
         game.camera.follow( gState.player);
@@ -99,7 +103,9 @@ var playState = {
 	        gState.player.body.velocity.x = 150;
 	    }
 	    // jump!
-	    if ( (gState.cursors.up.isDown || mobileControlsHandler.isJumpDown()) && gState.player.body.touching.down){
+	    if ( (gState.cursors.up.isDown || 
+	    	  mobileControlsHandler.isJumpDown() || 
+	    	  gamePad.justPressed(Phaser.Gamepad.XBOX360_A)) && gState.player.body.touching.down){
 	    	game.add.tween( gState.player).to( { angle: 360 }, 600, Phaser.Easing.Linear.None, true);
 
 	    	gState.emitters.juiceEmitters.spawnJumpEmitters();
@@ -122,6 +128,14 @@ var playState = {
 
 		level.handleRidersLogic();
 		level.handleSpecialLevelEvents();
+
+		// gamepad controlls
+	    if (gamePad.isDown(Phaser.Gamepad.XBOX360_DPAD_LEFT) || gamePad.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) < -0.1) {
+	        gState.player.body.velocity.x = -150;
+	    }
+	    else if (gamePad.isDown(Phaser.Gamepad.XBOX360_DPAD_RIGHT) || gamePad.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) > 0.1) {
+	        gState.player.body.velocity.x = 150;
+	    }
 	},
 
 	arrowBoost: function( slime, arrow ){
