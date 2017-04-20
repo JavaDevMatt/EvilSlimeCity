@@ -50,14 +50,14 @@ export class JuiceEmitters{
 		this.emitterRed.start(true, 3000, null, 20);
 	}
 
-	spawnPlayerBoostEmitters(){
+	spawnBoostEmitters(slime){
 		this.emitter3 = game.add.emitter(0, 0, 100);
    		this.emitter3.makeParticles('particle2');
 		this.emitter3.gravity = 50;
 		this.emitter3.setScale(1.0, 0, 1.0, 0, 2000);
 
-  		this.emitter3.x = g.player.x;
-    	this.emitter3.y = g.player.y;
+  		this.emitter3.x = slime.x;
+    	this.emitter3.y = slime.y;
 		this.emitter3.start(true, 5000, null, 500);
 	}
 

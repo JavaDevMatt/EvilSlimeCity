@@ -32,7 +32,7 @@ export class ArrowBooster{
 	    		game.add.tween(g.player).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true);
 
 		 		l3.kill();
-		 		g.emitters.juiceEmitters.spawnPlayerBoostEmitters();
+		 		g.emitters.juiceEmitters.spawnBoostEmitters(g.player);
 
 		 		g.flags.canBoostFlag = true;
 		 		g.player.body.velocity.y = -500;
@@ -70,7 +70,7 @@ export class ArrowBooster{
 	    		game.add.tween(slime).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true);
 
 		 		l3.kill();
-		 		//g.emitters.juiceEmitters.spawnPlayerBoostEmitters();
+		 		g.emitters.juiceEmitters.spawnBoostEmitters(slime);
 
 		 		g.flags.canBoostFlag = true;
 		 		slime.body.velocity.y = -500;
