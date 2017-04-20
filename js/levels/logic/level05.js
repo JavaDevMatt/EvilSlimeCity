@@ -46,8 +46,6 @@ export class Level5 extends LevelPrototype {
 
         if(levelFlag2 && gState.player.x > 700 ){
         	levelFlag2 = false;
-        	game.camera.shake(0.01, 1000, true);
-
 
         	var levelLabel = game.add.text(600, 110, 'be careful...',
                 {font: '30px Courier', fill: '#fff'});
