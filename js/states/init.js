@@ -6,7 +6,6 @@ var initState = {
 			{font: '40px Courier', fill: '#fff'});
 
 		game.load.audio('music', 'assets/sound/music.mp3'); // http://opengameart.org/content/rise-of-spirit
-		game.load.audio('music2', 'assets/sound/music2.mp3'); // https://opengameart.org/content/creepy-forest-f
 		game.load.audio('jump', 'assets/sound/jump.mp3');
 		game.load.audio('trampoline_jump', 'assets/sound/trampoline_jump.mp3'); // http://freesound.org/people/arteffect/sounds/349854/
 

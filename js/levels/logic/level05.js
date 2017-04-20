@@ -17,6 +17,12 @@ export class Level5 extends LevelPrototype {
 		this.levelObj = _.merge( protoLevel, lvl );
 	}
 
+	resetFancyLevelStuff(){
+		music1ChangeFlag = true;
+ 		music2ChangeFlag = true;
+ 		spectrumFlag = true;
+	}
+
 	addStartingText(){
     }
 
@@ -25,7 +31,6 @@ export class Level5 extends LevelPrototype {
         	game.camera.shake(0.01, 1000, true);
 
         	music1ChangeFlag = false;
-        	game.global.music.stop();
 
 
         	var levelLabel = game.add.text(100, 110, 'Huh?',
@@ -38,11 +43,10 @@ export class Level5 extends LevelPrototype {
 
         if(music2ChangeFlag && gState.player.x > 700 ){
         	music2ChangeFlag = false;
-        	game.global.music2.play();
         	game.camera.shake(0.01, 1000, true);
 
 
-        	var levelLabel = game.add.text(600, 110, 'be careful',
+        	var levelLabel = game.add.text(600, 110, 'be careful...',
                 {font: '30px Courier', fill: '#fff'});
 	        setTimeout(function(){
 	                levelLabel.kill();
@@ -52,22 +56,44 @@ export class Level5 extends LevelPrototype {
         }
 
         if(spectrumFlag && gState.player.x > 1200){
-        	game.sound.play('scary1'); 
-        	game.camera.shake(0.03, 4000, true);
-
         	spectrumFlag = false
 
+        	var levelLabel = game.add.text(900, 110, 'RUN BACK!',
+                {font: '60px Courier', fill: '#fff'});
+
+
         	setTimeout(function(){
-	                gState.envObjects.switchFallers.forEachAlive(function(item) {
-        			item.body.immovable = false;
-				}, this);
-	        }, 1000);
+	                var levelLabel = game.add.text(850, 210, 'JUMP!',
+               		 {font: '40px Courier', fill: '#fff'});
+	        	}, 800);
+        	
+
+        	game.sound.play('scary1'); 
         	
 
 			setTimeout(function(){
-				game.global.gameLevel--;
-				game.state.start('play');
-			}, 8000);
+				game.camera.shake(0.03, 4000, true);
+
+
+        		setTimeout(function(){
+	                gState.envObjects.switchFallers.forEachAlive(function(item) {
+        			item.body.immovable = false;
+					}, this);
+	        	}, 1000);
+
+			}, 1000);
+        }
+
+        if(!spectrumFlag && gState.player.x < 150){
+        	var levelLabel = game.add.text(20, 110, 'We said be careful!',
+                {font: '30px Courier', fill: '#fff'});
+        	gState.flags.hasPlayerWon = true;
+        	
+        	game.global.gameLevel++;
+	        
+        	setTimeout(function(){
+	                game.state.start('play');
+	        	}, 3000);
         }
 
      }
