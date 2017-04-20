@@ -12,8 +12,8 @@ export class Level5 extends LevelPrototype {
 	}
 
 	addStartingText(){
-                var levelLabel = game.add.text(290, 310, 'Time to be smart!',
-                        {font: '20px Courier', fill: '#fff'});
+                var levelLabel = game.add.text(100, 110, 'Huh?',
+                        {font: '50px Courier', fill: '#fff'});
                 setTimeout(function(){
                         levelLabel.kill();
                 }, 3000);
