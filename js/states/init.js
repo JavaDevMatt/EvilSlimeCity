@@ -21,6 +21,8 @@ var initState = {
 
 		game.load.image('menu-background', 'assets/img/menu-background.png'); // http://opengameart.org/content/industrial-parallax-background
 		game.load.image('game-background', 'assets/img/game-background.png'); // http://opengameart.org/content/industrial-parallax-background
+		game.load.image('big-green', 'assets/img/big-green.png'); 
+		game.load.image('big-red', 'assets/img/big-red.png'); 
 	    game.load.image('platform', 'assets/img/platform.png');
 		game.load.image('platform2', 'assets/img/platform2.png');
 		game.load.image('tower1', 'assets/img/tower1.png');
