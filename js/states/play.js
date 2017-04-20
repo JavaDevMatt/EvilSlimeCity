@@ -113,7 +113,7 @@ var playState = {
 	    arcadePhysics.overlap( gState.player, gState.envObjects.lava, this.killPlayer, null, this);
 		arcadePhysics.overlap( gState.player, gState.envObjects.trampolines, this.trampolinePlayer, null, this);
 		arcadePhysics.overlap( gState.player, gState.envObjects.arrows, this.arrowBoost, null, this);
-		arcadePhysics.overlap( gState.envObjects.redSlimes, gState.envObjects.arrows, this.arrowBoostRedSlime, null, this);
+		arcadePhysics.overlap( gState.envObjects.redSlimes, gState.envObjects.arrows, this.arrowBoost, null, this);
 
 		arcadePhysics.overlap( gState.envObjects.redSlimes, gState.envObjects.trampolines, this.trampolineSlime, null, this);
 		arcadePhysics.overlap( gState.envObjects.redSlimes, gState.envObjects.lava, this.killRedSlime, null, this);
@@ -123,12 +123,8 @@ var playState = {
 		level.handleRidersLogic();
 	},
 
-	arrowBoost: function( player, arrow ){
-	 	arrowBooster.boost( arrow );
-	 },
-
-	 arrowBoostRedSlime: function( slime, arrow ){
-	 	arrowBooster.boostRedSlime( slime, arrow );
+	arrowBoost: function( slime, arrow ){
+	 	arrowBooster.boost( slime, arrow );
 	 },
 
 	 initTnt: function(){
