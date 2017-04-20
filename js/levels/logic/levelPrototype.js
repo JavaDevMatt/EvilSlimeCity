@@ -102,6 +102,9 @@ export class LevelPrototype{
     handleRidersLogic(){
     }
 
+    handleSpecialLevelEvents(){
+    }
+
     checkForCoolKillText(){
      }
 

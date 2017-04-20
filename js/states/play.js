@@ -121,6 +121,7 @@ var playState = {
 	    arcadePhysics.overlap( gState.envObjects.redSlimes, gState.envObjects.tnt, this.tntExplode, null, this);
 
 		level.handleRidersLogic();
+		level.handleSpecialLevelEvents();
 	},
 
 	arrowBoost: function( slime, arrow ){
