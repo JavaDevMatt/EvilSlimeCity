@@ -92,7 +92,7 @@ export class Level5 extends LevelPrototype {
                 {font: '30px Courier', fill: '#fff'});
 	        	gState.flags.hasPlayerWon = true;
 	        	
-	        	game.global.gameLevel = 0; // TODO make level++
+	        	game.global.gameLevel++;
 		        
 	        	setTimeout(function(){
 		                game.state.start('play');
