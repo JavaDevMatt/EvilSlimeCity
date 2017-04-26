@@ -73,6 +73,11 @@ module.exports = {
             "x": 1664,
             "y": 243,
             "type": "monster2"
+        },
+        {
+            "x": 1500,
+            "y": 47,
+            "type": "monster2"
         }
     ],
     "fallers": [
@@ -87,11 +92,6 @@ module.exports = {
         {
             "x": 94,
             "y": 291,
-            "type": "trampoline"
-        },
-        {
-            "x": 1500,
-            "y": 47,
             "type": "trampoline"
         }
     ],
