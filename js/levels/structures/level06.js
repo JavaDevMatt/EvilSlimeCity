@@ -30,11 +30,16 @@ module.exports = {
             "x": 132,
             "y": 228,
             "type": "tower1"
+        },
+        {
+            "x": 732,
+            "y": 228,
+            "type": "tower1"
         }
     ],
     "redSlimes": [
         {
-            "x": 10,
+            "x": 30,
             "y": 256,
             "type": "monster2",
             "id": 798204092174
