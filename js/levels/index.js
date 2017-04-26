@@ -4,6 +4,8 @@ import {Level3} from './logic/level03'
 import {Level4} from './logic/level04'
 import {Level5} from './logic/level05'
 import {Level6} from './logic/level06'
+import {Level7} from './logic/level07'
 
 
-export{ Level1, Level2, Level3, Level4, Level5, Level6 }
+
+export{ Level1, Level2, Level3, Level4, Level5, Level6, Level7 }
