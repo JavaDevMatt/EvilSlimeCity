@@ -69,6 +69,12 @@ module.exports = {
     ],
     "tnt": [],
     "switchFallers": [],
-    "riders": [],
+    "riders": [
+        {
+            "x": 500,
+            "y": 220,
+            "type": "faller"
+        }
+    ],
     "arrows": []
 }
