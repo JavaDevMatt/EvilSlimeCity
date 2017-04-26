@@ -8,7 +8,8 @@ export class Level6 extends LevelPrototype {
 	constructor() {
 		super();
 
-
+        this.playerStartingX = 10;
+        this.playerStartingY = 10;
 		let protoLevel = _.cloneDeep( this.prototypeLevel );
 		this.levelObj = _.merge( protoLevel, lvl );
 	}
