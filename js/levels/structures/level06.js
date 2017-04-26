@@ -24,55 +24,51 @@ module.exports = {
             "x": -9,
             "y": 325,
             "type": "platform",
-            "id": 1408244779348
+            "id": 376397722070
         },
         {
-            "x": 131,
-            "y": 325,
-            "type": "platform"
-        },
-        {
-            "x": 525,
-            "y": 278,
+            "x": 132,
+            "y": 228,
             "type": "tower1"
-        },
-        { 
-            "x": 658,
-            "y": 312,
-            "type": "platform"
-        },
-        {
-            "x": 799,
-            "y": 312,
-            "type": "platform"
         }
     ],
     "redSlimes": [
-        {x: 739, y: 256, type: 'monster2' }
+        {
+            "x": 10,
+            "y": 256,
+            "type": "monster2",
+            "id": 798204092174
+        }
     ],
-    "fallers": [],
+    "fallers": [
+        {
+            "x": 310,
+            "y": 231,
+            "type": "faller"
+        }
+    ],
     "slowFallers": [],
-    "trampolines": [],
+    "trampolines": [
+        {
+            "x": 94,
+            "y": 291,
+            "type": "trampoline"
+        }
+    ],
     "lava": [
         {
-            "x": 271,
-            "y": 355,
+            "x": 261,
+            "y": 344,
+            "type": "lava2"
+        },
+        {
+            "x": 507,
+            "y": 344,
             "type": "lava2"
         }
     ],
     "tnt": [],
     "switchFallers": [],
     "riders": [],
-    "arrows": [
-        {
-            "x": 191,
-            "y": 292,
-            "type": "arrow"
-        },
-        {
-            "x": 826,
-            "y": 281,
-            "type": "arrow"
-        }
-    ]
+    "arrows": []
 }
