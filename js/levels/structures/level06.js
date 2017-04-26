@@ -2,7 +2,7 @@ module.exports = {
     "world": {
         "bounds": {
             "x1": 0,
-            "x2": 1585,
+            "x2": 1785,
             "y1": 0,
             "y2": 376
         },
@@ -47,9 +47,20 @@ module.exports = {
             "type": "platform2"
         },
         {
-            "x": 1405,
+            "x": 1605,
             "y": 289,
             "type": "tower1"
+        },
+
+        {
+            "x": 1456,
+            "y": 256,
+            "type": "platform2"
+        },
+        {
+            "x": 1512,
+            "y": 256,
+            "type": "platform2"
         }
     ],
     "redSlimes": [
@@ -59,7 +70,7 @@ module.exports = {
             "type": "monster2"
         },
         {
-            "x": 1464,
+            "x": 1664,
             "y": 243,
             "type": "monster2"
         }
@@ -76,6 +87,11 @@ module.exports = {
         {
             "x": 94,
             "y": 291,
+            "type": "trampoline"
+        },
+        {
+            "x": 1500,
+            "y": 47,
             "type": "trampoline"
         }
     ],
@@ -104,6 +120,11 @@ module.exports = {
             "x": 1354,
             "y": 343,
             "type": "lava2"
+        },
+        {
+            "x": 1739,
+            "y": 342,
+            "type": "lava"
         }
     ],
     "tnt": [
@@ -153,6 +174,21 @@ module.exports = {
             "x": 1272,
             "y": 127,
             "type": "faller"
+        },
+        {
+            "x": 1342,
+            "y": 256,
+            "type": "platform2"
+        },
+        {
+            "x": 1399,
+            "y": 256,
+            "type": "platform2"
+        },
+        {
+            "x": 1439,
+            "y": 69,
+            "type": "tower1"
         }
 
     ],

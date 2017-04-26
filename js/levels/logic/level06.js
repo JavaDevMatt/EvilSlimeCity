@@ -8,14 +8,14 @@ export class Level6 extends LevelPrototype {
 	constructor() {
 		super();
 
-        this.playerStartingX = 1000;
+        this.playerStartingX = 20;
         this.playerStartingY = 10;
 		let protoLevel = _.cloneDeep( this.prototypeLevel );
 		this.levelObj = _.merge( protoLevel, lvl );
 	}
 
 	addStartingText(){
-                var levelLabel = game.add.text(290, 310, 'lvl6!',
+                var levelLabel = game.add.text(290, 310, 'Ready for more?',
                         {font: '20px Courier', fill: '#fff'});
                 setTimeout(function(){
                         levelLabel.kill();
@@ -34,6 +34,15 @@ export class Level6 extends LevelPrototype {
            } 
         
      }
+
+     addEndingText(){
+        window.game.add.text(
+                gState.player.x - 200, 100, 'Nice!',
+                {font: '40px Courier', fill: '#fff'});
+                window.game.add.text(gState.player.x - 200, 136, 'You learn quickly....',
+                {font: '20px Courier', fill: '#fff'}
+        );
+    }
 
    
 }
