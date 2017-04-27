@@ -49,6 +49,7 @@ var initState = {
 		game.load.image('touch_segment', 'assets/img/touch_segment.png');
 		game.load.image('touch', 'assets/img/touch.png');
 
+		game.load.image('menu-button', 'assets/img/menu-button.png');
 	},
 
 	init: function () {
