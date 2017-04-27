@@ -195,7 +195,7 @@ module.exports = {
     "riders": [
         {
             "x": 500,
-            "y": 220,
+            "y": 231,
             "type": "raider"
         }
     ],
