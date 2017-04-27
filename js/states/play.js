@@ -1,16 +1,13 @@
 import {Level1, Level2, Level3, Level4, Level5, Level6, Level7} from '../levels'
 import {ArrowBooster} from '../utils/booster'
 import {CollisionsHandler} from '../utils/collisions'
-import {MobileControlsHandler} from '../utils/mobilecontrols'
 import {RainEmitter, JuiceEmitters} from '../utils/emitters'
 import {TntHandler} from '../utils/tnt'
 import {GameState} from '../gameState'
 var level,
 	collisionsHandler,
 	arrowBooster,
-	tntHandler,
-	mobileControlsHandler;
-
+	tntHandler;
 
 let gState = new GameState().state;
 
@@ -34,7 +31,6 @@ var playState = {
 		this.resetState();
 
 		collisionsHandler = new CollisionsHandler();
-		mobileControlsHandler = new MobileControlsHandler();
 		gState.emitters.juiceEmitters = new JuiceEmitters();
 		arrowBooster = new ArrowBooster();
 		tntHandler = new TntHandler();
@@ -63,10 +59,6 @@ var playState = {
 		gState.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
         game.camera.follow( gState.player);
-
-        game.touchControl = game.plugins.add(Phaser.Plugin.TouchControl);
-        game.touchControl.inputEnable();
-        game.touchControl.settings.singleDirection = false
 	},
 
 	update: function() {
@@ -99,18 +91,19 @@ var playState = {
 		}, this);
 
 	    // controls
+	    let controlThreshold = 20;
 
 	    if ( gState.cursors.left.isDown || 
-	    	(game.touchControl.cursors.left && (game.touchControl.speed.x > 20))){
+	    	(game.touchControl.cursors.left && (game.touchControl.speed.x > controlThreshold))){
 	        gState.player.body.velocity.x = -150;
 	    }
 	    else if ( gState.cursors.right.isDown || 
-	    	(game.touchControl.cursors.right && (game.touchControl.speed.x < -20))){
+	    	(game.touchControl.cursors.right && (game.touchControl.speed.x < -controlThreshold))){
 	        gState.player.body.velocity.x = 150;
 	    }
 	    // jump!
 	    if ( (gState.cursors.up.isDown || 
-	    	  (game.touchControl.cursors.up && (game.touchControl.speed.y > 20)) || 
+	    	  (game.touchControl.cursors.up && (game.touchControl.speed.y > controlThreshold)) || 
 	    	  gState.spaceKey.isDown || 
 	    	  gState.gamePad.justPressed(Phaser.Gamepad.XBOX360_A)) && gState.player.body.touching.down){
 	    	game.add.tween( gState.player).to( { angle: 360 }, 600, Phaser.Easing.Linear.None, true);
@@ -315,22 +308,9 @@ var playState = {
 	 },
 
 	 initMobileControls: function(){
-        if (!game.device.desktop){
- 			// mobileControlsHandler.initButtons();
-
- 			// // setting gyroscope update frequency
-    //     	gyro.frequency = 10;
-    //    		gyro.startTracking(function(o) {
-    //            // updating player velocity
-    //            if(o.y < -0.4){
-    //            		gState.player.body.velocity.x = 150;
-    //            } else if(o.y > 0.4){
-    //            		gState.player.body.velocity.x = -150;
-    //            } else {
-    //            		gState.player.body.velocity.x = 0;
-    //            }
-    //         });
-        }
+ 			game.touchControl = game.plugins.add(Phaser.Plugin.TouchControl);
+        	game.touchControl.inputEnable();
+        	game.touchControl.settings.singleDirection = false;
 	},
 
 };
