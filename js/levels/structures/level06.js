@@ -196,7 +196,7 @@ module.exports = {
         {
             "x": 500,
             "y": 220,
-            "type": "faller"
+            "type": "raider"
         }
     ],
     "arrows": []

@@ -39,5 +39,5 @@ module.exports = {
 		{x: 1510, y: 352, type: 'lava2' }
 	],
 	arrows: [ {x: 1230, y: 240, type: 'arrow' } ],
-	riders: [ {x: 490, y: 200, type: 'faller' } ]
+	riders: [ {x: 490, y: 200, type: 'raider' } ]
 }

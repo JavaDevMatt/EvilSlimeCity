@@ -28,6 +28,7 @@ var initState = {
 		game.load.image('platform2', 'assets/img/platform2.png');
 		game.load.image('tower1', 'assets/img/tower1.png');
 		game.load.image('faller', 'assets/img/faller.png');
+		game.load.image('raider', 'assets/img/raider.png');
 		game.load.image('trampoline', 'assets/img/trampoline.png');
 		game.load.image('arrow', 'assets/img/arrow.png');
 		game.load.image('tnt', 'assets/img/tnt.png');
