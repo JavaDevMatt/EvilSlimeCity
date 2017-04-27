@@ -45,7 +45,9 @@ var initState = {
 		game.load.spritesheet('monster1', 'assets/img/monster1.png', 30, 23); // http://opengameart.org/content/scifi-creature-tileset-mini-32x32-scifi-creature-icons
 		game.load.spritesheet('monster2', 'assets/img/monster2.png', 30, 23); // http://opengameart.org/content/scifi-creature-tileset-mini-32x32-scifi-creature-icons
 
-
+		game.load.image('compass', 'assets/img/compass_rose.png');
+		game.load.image('touch_segment', 'assets/img/touch_segment.png');
+		game.load.image('touch', 'assets/img/touch.png');
 
 	},
 

@@ -63,6 +63,10 @@ var playState = {
 		gState.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
         game.camera.follow( gState.player);
+
+        game.touchControl = game.plugins.add(Phaser.Plugin.TouchControl);
+        game.touchControl.inputEnable();
+        game.touchControl.settings.singleDirection = false
 	},
 
 	update: function() {
@@ -81,9 +85,8 @@ var playState = {
 
 
 	 	// preventing "free move"
-	 	if (game.device.desktop){
-	    	gState.player.body.velocity.x = 0;
-	 	}
+	    gState.player.body.velocity.x = 0;
+	 	
 	    gState.envObjects.trampolines.forEachAlive(function(item) {
 	    	item.body.velocity.x = 0;
 		}, this);
@@ -96,16 +99,19 @@ var playState = {
 		}, this);
 
 	    // controls
-	    if ( gState.cursors.left.isDown ){
+
+	    if ( gState.cursors.left.isDown || 
+	    	(game.touchControl.cursors.left && (game.touchControl.speed.x > 20))){
 	        gState.player.body.velocity.x = -150;
 	    }
-	    else if ( gState.cursors.right.isDown ){
+	    else if ( gState.cursors.right.isDown || 
+	    	(game.touchControl.cursors.right && (game.touchControl.speed.x < -20))){
 	        gState.player.body.velocity.x = 150;
 	    }
 	    // jump!
 	    if ( (gState.cursors.up.isDown || 
+	    	  (game.touchControl.cursors.up && (game.touchControl.speed.y > 20)) || 
 	    	  gState.spaceKey.isDown || 
-	    	  mobileControlsHandler.isJumpDown() || 
 	    	  gState.gamePad.justPressed(Phaser.Gamepad.XBOX360_A)) && gState.player.body.touching.down){
 	    	game.add.tween( gState.player).to( { angle: 360 }, 600, Phaser.Easing.Linear.None, true);
 
@@ -310,20 +316,20 @@ var playState = {
 
 	 initMobileControls: function(){
         if (!game.device.desktop){
- 			mobileControlsHandler.initButtons();
+ 			// mobileControlsHandler.initButtons();
 
- 			// setting gyroscope update frequency
-        	gyro.frequency = 10;
-       		gyro.startTracking(function(o) {
-               // updating player velocity
-               if(o.y < -0.4){
-               		gState.player.body.velocity.x = 150;
-               } else if(o.y > 0.4){
-               		gState.player.body.velocity.x = -150;
-               } else {
-               		gState.player.body.velocity.x = 0;
-               }
-            });
+ 			// // setting gyroscope update frequency
+    //     	gyro.frequency = 10;
+    //    		gyro.startTracking(function(o) {
+    //            // updating player velocity
+    //            if(o.y < -0.4){
+    //            		gState.player.body.velocity.x = 150;
+    //            } else if(o.y > 0.4){
+    //            		gState.player.body.velocity.x = -150;
+    //            } else {
+    //            		gState.player.body.velocity.x = 0;
+    //            }
+    //         });
         }
 	},
 
