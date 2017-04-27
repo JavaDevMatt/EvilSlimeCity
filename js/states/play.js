@@ -60,6 +60,7 @@ var playState = {
 		game.input.gamepad.start();
         gState.gamePad = game.input.gamepad.pad1;
 		gState.cursors = game.input.keyboard.createCursorKeys();
+		gState.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
         game.camera.follow( gState.player);
 	},
@@ -103,6 +104,7 @@ var playState = {
 	    }
 	    // jump!
 	    if ( (gState.cursors.up.isDown || 
+	    	  gState.spaceKey.isDown || 
 	    	  mobileControlsHandler.isJumpDown() || 
 	    	  gState.gamePad.justPressed(Phaser.Gamepad.XBOX360_A)) && gState.player.body.touching.down){
 	    	game.add.tween( gState.player).to( { angle: 360 }, 600, Phaser.Easing.Linear.None, true);
