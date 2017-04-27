@@ -8,6 +8,9 @@ export class ArrowBooster{
 
 			game.sound.play('ding')
 	 		g.flags.canBoostFlag = false;
+	 		let tempArrowX = arrow.x;
+	 		let tempArrowY = arrow.y;
+
 	 		arrow.kill();
 
 	 		var l1 = game.add.text(slime.x - 8, slime.y - 30, '3!',
@@ -45,7 +48,12 @@ export class ArrowBooster{
 
 		 		g.flags.canBoostFlag = true;
 		 		slime.body.velocity.y = -500;
+
 			}, 3000);
+
+			setTimeout(function(){
+		 		arrow.reset(tempArrowX, tempArrowY);
+			}, 6000);
 		 }
 	}
 
