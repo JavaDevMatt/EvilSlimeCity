@@ -54,4 +54,11 @@ export class Level7 extends LevelPrototype {
     	
     }
 
+    addEndingText(){
+        game.add.text(gState.player.x - 300, 100, 'Another one down!',
+                {font: '40px Courier', fill: '#fff'});
+                game.add.text(gState.player.x - 300, 136, 'What a cruel slimy world...',
+                {font: '20px Courier', fill: '#fff'});
+    }
+
 }
