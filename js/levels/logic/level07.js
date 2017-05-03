@@ -5,7 +5,7 @@ let _ = require( "lodash" );
 
 let lvl = require( "./../structures/level07.js" );
 
-let levelFlag1 = true;
+let levelSwitchFallerFlag = true;
 
 export class Level7 extends LevelPrototype {
 	constructor() {
@@ -30,8 +30,8 @@ export class Level7 extends LevelPrototype {
 
     handleSpecialLevelEvents(){
 
-    	if(levelFlag1 && gState.player.x > 1000){
-    		levelFlag1 = false;
+    	if(levelSwitchFallerFlag && gState.player.x > 1000){
+    		levelSwitchFallerFlag = false;
     		gState.envObjects.switchFallers.forEachAlive(function(item) {
         			item.body.immovable = false;
 					}, this);
