@@ -6,22 +6,25 @@ let _ = require( "lodash" );
 let lvl = require( "./../structures/level07.js" );
 
 let levelSwitchFallerFlag = true;
+let levelMidTextFlag = true;
+
 
 export class Level7 extends LevelPrototype {
 	constructor() {
 		super();
 		let protoLevel = _.cloneDeep( this.prototypeLevel );
 		this.levelObj = _.merge( protoLevel, lvl );
-		this.playerStartingX = 897;
+		this.playerStartingX = 10;
 	}
 
 	resetFancyLevelStuff(){
-		levelFlag1 = true;
+		levelSwitchFallerFlag = true;
+		levelMidTextFlag = true;
 	}
 
 
 	addStartingText(){
-        var loadingLabel = window.game.add.text(80, 278, 'Thats all for now! Thanks for testing!', {font: '20px Courier', fill: '#fff'});
+        var loadingLabel = window.game.add.text(150, 298, 'Timing is everything', {font: '20px Courier', fill: '#fff'});
         setTimeout(function(){
                 loadingLabel.kill();
         }, 5000);
@@ -38,6 +41,15 @@ export class Level7 extends LevelPrototype {
 
     		game.sound.play('scary1'); 
     		game.camera.shake(0.03, 4000, true);
+    	}
+
+    	if(levelMidTextFlag && gState.player.x > 800){
+    		levelMidTextFlag = false;
+
+    		 var loadingLabel = window.game.add.text(800, 20, 'Watch out!', {font: '60px Courier', fill: '#fff'});
+       		 setTimeout(function(){
+                loadingLabel.kill();
+       			 }, 3000);
     	}
     	
     }
