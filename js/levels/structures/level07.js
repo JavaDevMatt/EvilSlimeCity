@@ -91,12 +91,6 @@ module.exports = {
             "y": 246,
             "type": "faller",
             "id": 825140467296
-        },
-        {
-            "x": 762,
-            "y": 246,
-            "type": "faller",
-            "id": 615987335359
         }
     ],
     "slowFallers": [],
