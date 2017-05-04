@@ -1,4 +1,5 @@
 var monster1, monster2;
+let muteButton
 var menuState = {
 
 	create: function() {
@@ -25,6 +26,8 @@ var menuState = {
 
 		let spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 		spaceKey.onDown.addOnce(this.startGame, this);
+
+		muteButton = game.add.button(270, 140, 'mute-button', this.muteSound, this, 0, 0, 1);
 	},
 
 	update: function() {
@@ -37,6 +40,15 @@ var menuState = {
 		game.global.music.volume = 0.3;
 
 		game.state.start('play');
+	},
+
+	muteSound: function(){
+		if(game.sound.mute){
+			muteButton.setFrames(0, 0, 1);
+		} else {
+			muteButton.setFrames(1, 1, 0);
+		}
+		game.sound.mute = !game.sound.mute;
 	},
 
 };
