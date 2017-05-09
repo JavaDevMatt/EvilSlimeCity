@@ -3,12 +3,17 @@ import {LevelPrototype} from './levelPrototype'
 let gState = new GameState().state;
 let _ = require( "lodash" );
 
+let levelLightsFlag = true;
+let undergroundSprite;
+
 let lvl = require( "./../structures/level08.js" );
 export class Level8 extends LevelPrototype {
 	constructor() {
 		super();
 		let protoLevel = _.cloneDeep( this.prototypeLevel );
 		this.levelObj = _.merge( protoLevel, lvl );
+
+
 	}
 
 	addStartingText(){
@@ -16,6 +21,30 @@ export class Level8 extends LevelPrototype {
         setTimeout(function(){
                 loadingLabel.kill();
         }, 5000);
+        undergroundSprite = game.add.sprite(0,376,'underground-background');
+        undergroundSprite.visible = false;
+    }
+
+    resetFancyLevelStuff(){
+		levelLightsFlag = true;
+	}
+
+    handleSpecialLevelEvents(){
+    	if(levelLightsFlag && gState.player.y > 550){
+    		levelLightsFlag = false;
+    		let txt1 = window.game.add.text(50, 400, 'Wait a sec...', {font: '40px Courier', fill: '#fff'});
+    		let txt2 = window.game.add.text(70, 480, 'let me put the lights on', {font: '18px Courier', fill: '#fff'});
+       		 setTimeout(function(){
+                txt1.kill();
+                txt2.kill();
+       		}, 5000);
+       		 setTimeout(function(){
+       		 undergroundSprite.visible = true;
+               game.sound.play('switch');
+       		}, 1500);
+
+
+    	}
     }
 
 }
