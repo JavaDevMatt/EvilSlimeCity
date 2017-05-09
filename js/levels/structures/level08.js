@@ -14,11 +14,6 @@ module.exports = {
             },
             {
                 "x": 640,
-                "y": 376,
-                "type": "underground-background"
-            },
-            {
-                "x": 640,
                 "y": 0,
                 "type": "game-background"
             }
@@ -39,6 +34,18 @@ module.exports = {
         },
         {
             "x": 141,
+            "y": 575,
+            "type": "platform",
+            "id": 1197849158954
+        },
+        {
+            "x": 282,
+            "y": 575,
+            "type": "platform",
+            "id": 1197849158954
+        },
+        {
+            "x": 423,
             "y": 575,
             "type": "platform",
             "id": 1197849158954

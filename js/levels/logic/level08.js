@@ -4,7 +4,7 @@ let gState = new GameState().state;
 let _ = require( "lodash" );
 
 let levelLightsFlag = true;
-let undergroundSprite;
+let undergroundSprite, undergroundSprite2;
 
 let lvl = require( "./../structures/level08.js" );
 export class Level8 extends LevelPrototype {
@@ -23,6 +23,8 @@ export class Level8 extends LevelPrototype {
         }, 5000);
         undergroundSprite = game.add.sprite(0,376,'underground-background');
         undergroundSprite.visible = false;
+        undergroundSprite2 = game.add.sprite(640,376,'underground-background');
+        undergroundSprite2.visible = false;
     }
 
     resetFancyLevelStuff(){
@@ -40,8 +42,9 @@ export class Level8 extends LevelPrototype {
        		}, 5000);
        		 setTimeout(function(){
        		 undergroundSprite.visible = true;
+       		 undergroundSprite2.visible = true;
                game.sound.play('switch');
-       		}, 1500);
+       		}, 1000);
 
 
     	}
