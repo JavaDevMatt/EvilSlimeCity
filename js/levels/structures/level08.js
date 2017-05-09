@@ -24,58 +24,56 @@ module.exports = {
             "x": 0,
             "y": 300,
             "type": "platform",
-            "id": 1197849158954
+            "id": 801310340631
         },
         {
             "x": 0,
             "y": 575,
             "type": "platform",
-            "id": 1197849158954
+            "id": 958521258141
         },
         {
             "x": 141,
             "y": 575,
             "type": "platform",
-            "id": 1197849158954
+            "id": 500788132934
         },
         {
             "x": 282,
             "y": 575,
             "type": "platform",
-            "id": 1197849158954
+            "id": 1277141951477
         },
         {
             "x": 423,
             "y": 575,
             "type": "platform",
-            "id": 1197849158954
+            "id": 241479363013
         },
         {
             "x": 564,
             "y": 575,
             "type": "platform",
-            "id": 1197849158954
+            "id": 1111592443943
         },
         {
             "x": 705,
             "y": 575,
             "type": "platform",
-            "id": 1197849158954
+            "id": 1196418256731
         },
         {
             "x": 846,
             "y": 575,
             "type": "platform",
-            "id": 1197849158954
+            "id": 1274911733966
         }
     ],
     "redSlimes": [],
-    "fallers": [],
+    "fallers": [], 
     "slowFallers": [],
     "trampolines": [],
-    "lava": [
-      
-    ],
+    "lava": [],
     "tnt": [],
     "switchFallers": [],
     "riders": [],

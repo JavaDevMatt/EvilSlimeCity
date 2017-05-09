@@ -36,6 +36,8 @@ export class Level8 extends LevelPrototype {
 
     handleSpecialLevelEvents(){
     	if(levelLightsFlag && gState.player.y > 550){
+
+
     		levelLightsFlag = false;
     		let txt1 = window.game.add.text(80, 400, 'Wait a sec...', {font: '40px Courier', fill: '#fff'});
     		let txt2 = window.game.add.text(100, 480, 'let me put the lights on', {font: '18px Courier', fill: '#fff'});
@@ -52,6 +54,8 @@ export class Level8 extends LevelPrototype {
                setTimeout(function(){
                 	let txt3 = window.game.add.text(70, 480, 'Hello there little slime....', {font: '18px Courier', fill: '#fff'});
        				setTimeout(function(){
+       					gState.envObjects[ 'arrows' ].create( 254 , 507,'arrow');
+
        					txt3.kill();
        				}, 3000);
        			}, 1000);
