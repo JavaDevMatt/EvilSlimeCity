@@ -2,7 +2,7 @@ module.exports = {
     "world": {
         "bounds": {
             "x1": 0,
-            "x2": 885,
+            "x2": 700,
             "y1": 0,
             "y2": 576
         },
@@ -74,30 +74,7 @@ module.exports = {
     "slowFallers": [],
     "trampolines": [],
     "lava": [
-        {
-            "x": 412,
-            "y": 209,
-            "type": "lava",
-            "id": 718933074048
-        },
-        {
-            "x": 388,
-            "y": 268,
-            "type": "lava",
-            "id": 1487685832303
-        },
-        {
-            "x": 254,
-            "y": 332,
-            "type": "lava2",
-            "id": 1034131507670
-        },
-        {
-            "x": 700,
-            "y": 332,
-            "type": "lava2",
-            "id": 454070128489
-        }
+      
     ],
     "tnt": [],
     "switchFallers": [],
