@@ -49,6 +49,24 @@ module.exports = {
             "y": 575,
             "type": "platform",
             "id": 1197849158954
+        },
+        {
+            "x": 564,
+            "y": 575,
+            "type": "platform",
+            "id": 1197849158954
+        },
+        {
+            "x": 705,
+            "y": 575,
+            "type": "platform",
+            "id": 1197849158954
+        },
+        {
+            "x": 846,
+            "y": 575,
+            "type": "platform",
+            "id": 1197849158954
         }
     ],
     "redSlimes": [],
