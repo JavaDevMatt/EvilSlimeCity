@@ -6,7 +6,8 @@ export class ArrowBooster{
 		if( g.flags.canBoostFlag){
 			var boostTween = game.add.tween(slime).to( { alpha: 0 }, 50, Phaser.Easing.Linear.None, true, 0, 1000, true);
 
-			game.sound.play('ding')
+			game.sound.play('ding');
+
 	 		g.flags.canBoostFlag = false;
 	 		let tempArrowX = arrow.x;
 	 		let tempArrowY = arrow.y;
@@ -44,16 +45,17 @@ export class ArrowBooster{
 
 		 		if(!g.flags.isPlayerDead && !g.flags.canBoostFlag){
 		 			g.emitters.juiceEmitters.spawnBoostEmitters(slime);
+					game.sound.play('ding-end');
 		 		}
 
 		 		g.flags.canBoostFlag = true;
 		 		slime.body.velocity.y = -500;
 
-			}, 3000);
+			}, 2950);
 
 			setTimeout(function(){
 		 		arrow.reset(tempArrowX, tempArrowY);
-			}, 6000);
+			}, 8000);
 		 }
 	}
 

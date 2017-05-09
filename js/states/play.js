@@ -139,7 +139,9 @@ var playState = {
 	},
 
 	arrowBoost: function( slime, arrow ){
-	 	arrowBooster.boost( slime, arrow );
+		if(!gState.flags.hasPlayerWon){
+	 		arrowBooster.boost( slime, arrow );
+		}
 	 },
 
 	 initTnt: function(){
