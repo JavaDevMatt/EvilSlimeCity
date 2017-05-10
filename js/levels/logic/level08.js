@@ -66,8 +66,7 @@ export class Level8 extends LevelPrototype {
        					
 
        					txt3.kill();
-
-       					window.game.add.text(150, 510, 'Use this:', {font: '18px Courier', fill: '#fff'});
+       					window.game.add.text(130, 510, 'Use this ->', {font: '18px Courier', fill: '#fff'});
        					gState.envObjects[ 'arrows' ].create( 254 , 507,'arrow');
        				}, 3000);
        			}, 1000);
