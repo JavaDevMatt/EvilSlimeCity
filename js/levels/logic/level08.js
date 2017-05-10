@@ -34,6 +34,15 @@ export class Level8 extends LevelPrototype {
 		levelLightsFlag = true;
 	}
 
+	addEndingText(){
+        window.game.add.text(
+                gState.player.x - 300, 100, 'Splash!',
+                {font: '40px Courier', fill: '#fff'});
+                window.game.add.text(gState.player.x - 300, 136, '...a really juicy splash!',
+                {font: '20px Courier', fill: '#fff'}
+        );
+    }
+
     handleSpecialLevelEvents(){
     	if(levelLightsFlag && gState.player.y > 550){
 
@@ -54,9 +63,12 @@ export class Level8 extends LevelPrototype {
                setTimeout(function(){
                 	let txt3 = window.game.add.text(70, 480, 'Hello there little slime....', {font: '18px Courier', fill: '#fff'});
        				setTimeout(function(){
-       					gState.envObjects[ 'arrows' ].create( 254 , 507,'arrow');
+       					
 
        					txt3.kill();
+
+       					window.game.add.text(150, 510, 'Use this:', {font: '18px Courier', fill: '#fff'});
+       					gState.envObjects[ 'arrows' ].create( 254 , 507,'arrow');
        				}, 3000);
        			}, 1000);
        		}, 3000);
