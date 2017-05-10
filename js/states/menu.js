@@ -28,6 +28,8 @@ var menuState = {
 		spaceKey.onDown.addOnce(this.startGame, this);
 
 		muteButton = game.add.button(270, 140, 'mute-button', this.muteSound, this, 0, 0, 1);
+
+		game.global.time = 0;
 	},
 
 	update: function() {

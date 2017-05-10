@@ -7,7 +7,8 @@ game.global = {
  gameLevel : 0,
  music : null,
  music2 : null,
- rainSound : null
+ rainSound : null,
+ time : null,
 }
 //make the game a global object
 window.game = game;

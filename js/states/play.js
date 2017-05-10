@@ -59,9 +59,19 @@ var playState = {
 		gState.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
         game.camera.follow( gState.player);
+
+    	// init dummy timer
+        game.time.events.loop(Phaser.Timer.SECOND, this.timerTick, this);
+	},
+
+	timerTick: function() {
+		// TODO dummy timer - remove later time from console
+		game.global.time++;
+		console.log("tick! " + game.global.time);
 	},
 
 	update: function() {
+
 
 		// collisios
 	 	collisionsHandler.update();
