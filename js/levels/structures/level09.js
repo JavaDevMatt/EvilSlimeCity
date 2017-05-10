@@ -8,13 +8,7 @@ module.exports ={
 	],
 	slowFallers: [],
 	trampolines: [],
-	lava: [
-	{ x:141, y: 332, type: 'lava' },
-	{ x:191, y: 332, type: 'lava' },
-
-		{ x:254, y: 332, type: 'lava2' },
-		{ x:700, y: 332, type: 'lava2' }
-	],
+	lava: [],
 	tnt: [],
 	riders: [],
 	switchFallers: []
