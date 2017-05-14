@@ -84,6 +84,9 @@ var playState = {
 		gState.envObjects.redSlimes.forEachAlive(function(item) {
        	 	item.animations.play('stand');
 		}, this);
+		gState.envObjects.arrows.forEachAlive(function(item) {
+       	 	item.animations.play('stand', 10, true);
+		}, this);
 
 
 	 	// preventing "free move"
@@ -232,6 +235,7 @@ var playState = {
 	 	level.addArrows( env.arrows );
    		env.arrows.forEachAlive(function(item) {
        	 	item.body.immovable = true;
+       	 	item.animations.add('stand', [0, 1, 2, 3, 4, 5, 6, 7]);
 		}, this);
 	 },
 
