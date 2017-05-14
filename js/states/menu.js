@@ -27,7 +27,7 @@ var menuState = {
 		let spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 		spaceKey.onDown.addOnce(this.startGame, this);
 
-		muteButton = game.add.button(270, 140, 'mute-button', this.muteSound, this, 0, 0, 1);
+		muteButton = game.add.button(520, 40, 'mute-button', this.muteSound, this, 0, 0, 1);
 
 		game.global.time = 0;
 	},
