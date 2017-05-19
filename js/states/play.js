@@ -88,6 +88,15 @@ var playState = {
        	 	item.animations.play('stand', 10, true);
 		}, this);
 
+		if(tntHandler.isExploding()){
+			gState.envObjects.tnt.forEachAlive(function(item) {
+       			 item.animations.play('exploding', 2, true);
+			}, this);
+		} else {
+			gState.envObjects.tnt.forEachAlive(function(item) {
+       			 item.animations.play('stand', 0, true);
+			}, this);
+		}
 
 	 	// preventing "free move"
 	    gState.player.body.velocity.x = 0;

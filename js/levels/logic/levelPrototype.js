@@ -92,7 +92,11 @@ export class LevelPrototype{
             item.body.bounce.y = 0.2;
             item.body.gravity.y = 300;
             item.body.collideWorldBounds = true;
-        }, this );
+            item.animations.add('exploding', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]);
+            item.animations.add('stand', [0]); 
+
+
+        }, this ); 
     }
 
     addRiders(){

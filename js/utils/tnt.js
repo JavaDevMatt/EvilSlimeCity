@@ -1,9 +1,12 @@
 import {GameState} from '../gameState'
 let g = new GameState().state;
+let exploding = false;
 export class TntHandler{
 
 	explode(tnt){
 		if(g.flags.canTntExplode){
+			exploding = true;
+			
 			game.add.tween(tnt).to( { alpha: 0 }, 700, Phaser.Easing.Linear.None, true, 0, 1000, true);
 	 		game.sound.play('tnt')
 	 		g.flags.canTntExplode = false;
@@ -22,6 +25,7 @@ export class TntHandler{
 	 			l2.kill();
 	 			l3 = game.add.text(tnt.x + 11, tnt.y - 30, '1!',
                 {font: '20px Courier', fill: '#fff'});
+	 			
 			}, 2000);
 
 		 	setTimeout(function(){
@@ -29,6 +33,7 @@ export class TntHandler{
 		 		l3.kill();
 
 				setTimeout(function(){
+					exploding = false;
 		 			tnt.kill();
 				}, 1000);
 
@@ -38,6 +43,10 @@ export class TntHandler{
 
 			}, 3000);
 		 }
+	}
+
+	isExploding(){
+		return exploding; 
 	}
 
 }

@@ -130,7 +130,7 @@ module.exports = {
     "tnt": [
         {
             "x": 921,
-            "y": 213,
+            "y": 100,
             "type": "tnt"
         }
     ],
