@@ -235,7 +235,7 @@ var playState = {
 	 	level.addArrows( env.arrows );
    		env.arrows.forEachAlive(function(item) {
        	 	item.body.immovable = true;
-       	 	item.animations.add('stand', [0, 1, 2, 3, 4, 5, 6, 7]);
+       	 	item.animations.add('stand', [0, 1, 2, 3, 4, 5, 6]);
 		}, this);
 	 },
 
