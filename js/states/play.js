@@ -1,13 +1,16 @@
 import {Level1, Level2, Level3, Level4, Level5, Level6, Level7, Level8, Level9} from '../levels'
 import {ArrowBooster} from '../utils/booster'
 import {CollisionsHandler} from '../utils/collisions'
+import {HardModeHandler} from '../utils/hardmode'
 import {RainEmitter, JuiceEmitters} from '../utils/emitters'
 import {TntHandler} from '../utils/tnt'
 import {GameState} from '../gameState'
 var level,
 	collisionsHandler,
 	arrowBooster,
-	tntHandler;
+	tntHandler,
+	hardModeHandler;
+
 
 let gState = new GameState().state;
 
@@ -34,6 +37,8 @@ var playState = {
 		gState.emitters.juiceEmitters = new JuiceEmitters();
 		arrowBooster = new ArrowBooster();
 		tntHandler = new TntHandler();
+		hardModeHandler = new HardModeHandler();
+		hardModeHandler.setJumpLimit(4);
 
 		level.createBackground(game);
 		level.addStartingText(game);
@@ -72,6 +77,9 @@ var playState = {
 
 	update: function() {
 
+		if(hardModeHandler.getJumpLimit() <= 0 && !gState.flags.isPlayerDead){
+			this.killPlayer();
+		}
 
 		// collisios
 	 	collisionsHandler.update();
@@ -133,6 +141,8 @@ var playState = {
 	    	gState.emitters.juiceEmitters.spawnJumpEmitters();
 	    	game.sound.play('jump');
 	        gState.player.body.velocity.y = -150;
+
+	        hardModeHandler.minusOne();
 	    }
 
 	    // overlaps
