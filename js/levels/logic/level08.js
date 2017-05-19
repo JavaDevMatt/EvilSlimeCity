@@ -44,9 +44,12 @@ export class Level8 extends LevelPrototype {
     }
 
     handleSpecialLevelEvents(){
+      if(levelLightsFlag && gState.player.y > 100){
+        gState.envObjects.arrows.forEach(function(item) {
+                 item.kill();
+          } , this);
+      }
     	if(levelLightsFlag && gState.player.y > 550){
-
-
     		levelLightsFlag = false;
     		let txt1 = window.game.add.text(80, 400, 'Wait a sec...', {font: '40px Courier', fill: '#fff'});
     		let txt2 = window.game.add.text(100, 480, 'let me put the lights on', {font: '18px Courier', fill: '#fff'});
@@ -67,7 +70,10 @@ export class Level8 extends LevelPrototype {
 
        					txt3.kill();
        					window.game.add.text(130, 510, 'Use this ->', {font: '18px Courier', fill: '#fff'});
-       					gState.envObjects[ 'arrows' ].create( 254 , 507,'arrow');
+       					
+                gState.envObjects.arrows.forEach(function(item) {
+                 item.reset(254, 507);
+                } , this);
        				}, 3000);
        			}, 1000);
        		}, 3000);
