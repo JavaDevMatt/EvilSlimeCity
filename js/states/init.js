@@ -35,7 +35,7 @@ var initState = {
 		game.load.image('raider', 'assets/img/raider.png');
 		game.load.image('trampoline', 'assets/img/trampoline.png');
 		game.load.spritesheet('arrow', 'assets/img/arrow.png', 22, 25);
-		game.load.image('tnt', 'assets/img/tnt.png'); // https://openclipart.org/detail/165734/dynamite
+		game.load.spritesheet('tnt', 'assets/img/tnt.png', 50, 50); // https://openclipart.org/detail/165734/dynamite
 		game.load.image('mobile_direction', 'assets/img/mobile_direction.png');
 		game.load.image('mobile_jump', 'assets/img/mobile_jump.png');
 		game.load.spritesheet('lava', 'assets/img/lava.png', 56, 32);
