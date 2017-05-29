@@ -11,6 +11,10 @@ export class Level4 extends LevelPrototype {
 		this.levelObj = _.merge( protoLevel, lvl );
 	}
 
+    getHardModeJumpLimit(){
+        return 0;
+    }
+
 	addStartingText(){
                 var levelLabel = game.add.text(290, 310, 'Time to be smart!',
                         {font: '20px Courier', fill: '#fff'});

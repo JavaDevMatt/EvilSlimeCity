@@ -18,6 +18,10 @@ export class Level5 extends LevelPrototype {
 		this.levelObj = _.merge( protoLevel, lvl );
 	}
 
+    getHardModeJumpLimit(){
+        return 5;
+    }
+
 	resetFancyLevelStuff(){
 		levelFlag1 = true;
  		levelFlag2 = true;

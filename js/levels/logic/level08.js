@@ -16,6 +16,10 @@ export class Level8 extends LevelPrototype {
 
 	}
 
+  getHardModeJumpLimit(){
+        return 1;
+    }
+
 	addStartingText(){
         var loadingLabel = window.game.add.text(150, 298, 'Don\'t be afraid of the dark', {font: '20px Courier', fill: '#fff'});
         setTimeout(function(){

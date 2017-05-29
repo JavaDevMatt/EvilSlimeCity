@@ -17,6 +17,10 @@ export class Level7 extends LevelPrototype {
 		this.playerStartingX = 10;
 	}
 
+    getHardModeJumpLimit(){
+        return 9;
+    }
+
 	resetFancyLevelStuff(){
 		levelSwitchFallerFlag = true;
 		levelMidTextFlag = true;
