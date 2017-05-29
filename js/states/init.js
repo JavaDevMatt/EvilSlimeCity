@@ -26,6 +26,7 @@ var initState = {
 		game.load.image('game-background', 'assets/img/game-background.png'); // http://opengameart.org/content/industrial-parallax-background
 		game.load.image('underground-background', 'assets/img/underground-background.png');
 		game.load.spritesheet('mute-button', 'assets/img/mute-button.png', 90, 90); 
+		game.load.spritesheet('hardmode-button', 'assets/img/hardmode-button.png', 90, 90); 
 		game.load.image('big-green', 'assets/img/big-green.png'); 
 		game.load.image('big-red', 'assets/img/big-red.png'); 
 	    game.load.image('platform', 'assets/img/platform.png');

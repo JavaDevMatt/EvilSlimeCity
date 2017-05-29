@@ -1,5 +1,5 @@
 var monster1, monster2;
-let muteButton
+let muteButton, hardModeButton;
 
 var menuState = {
 
@@ -29,6 +29,7 @@ var menuState = {
 		spaceKey.onDown.addOnce(this.startGame, this);
 
 		muteButton = game.add.button(520, 40, 'mute-button', this.muteSound, this, 0, 0, 1);
+		hardModeButton = game.add.button(270, 140, 'hardmode-button', this.hardModeSwitch, this, 0, 0, 1);
 
 		game.global.time = 0;
 	},
@@ -45,13 +46,21 @@ var menuState = {
 		game.state.start('play');
 	},
 
+	hardModeSwitch: function(){
+		if(!game.global.isHardMode){
+			game.global.isHardMode = true;
+			hardModeButton.setFrames(0, 0, 1);
+		} else {
+			game.global.isHardMode = false;
+			hardModeButton.setFrames(1, 1, 0);
+		}
+	},
+
 	muteSound: function(){
 		if(game.sound.mute){
 			muteButton.setFrames(0, 0, 1);
-			game.global.isHardMode = false;
 		} else {
 			muteButton.setFrames(1, 1, 0);
-			game.global.isHardMode = true;
 		}
 		game.sound.mute = !game.sound.mute;
 	},
