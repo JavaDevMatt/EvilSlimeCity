@@ -12,6 +12,6 @@ export class Level1 extends LevelPrototype {
 	}
 
 	getHardModeJumpLimit(){
-        return 5;
+        return 4;
     }
 }

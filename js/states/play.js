@@ -13,6 +13,7 @@ var level,
 
 
 let gState = new GameState().state;
+let hardModeJumpCounter;
 
 var playState = {
 
@@ -67,6 +68,10 @@ var playState = {
 
     	// init dummy timer
         game.time.events.loop(Phaser.Timer.SECOND, this.timerTick, this);
+
+        hardModeJumpCounter = game.add.text(10, 30, 'Jumps left: ' + hardModeHandler.getJumpLimit(), {font: '20px Courier', fill: '#fff'});
+        hardModeJumpCounter.fixedToCamera = true
+
 	},
 
 	timerTick: function() {
@@ -77,7 +82,7 @@ var playState = {
 
 	update: function() {
 
-		if(hardModeHandler.getJumpLimit() <= 0 && !gState.flags.isPlayerDead){
+		if(hardModeHandler.getJumpLimit() < 0 && !gState.flags.isPlayerDead){
 			this.killPlayer();
 		}
 
@@ -168,6 +173,13 @@ var playState = {
 	    else if (gState.gamePad.isDown(Phaser.Gamepad.XBOX360_DPAD_RIGHT) || gState.gamePad.axis(Phaser.Gamepad.XBOX360_STICK_LEFT_X) > 0.1) {
 	        gState.player.body.velocity.x = 150;
 	    }
+
+	    if(hardModeHandler.getJumpLimit() >= 0){
+        	hardModeJumpCounter.setText('Jumps left: ' + hardModeHandler.getJumpLimit());
+	    } else if(!gState.flags.isPlayerDead && !gState.flags.hasPlayerWon) {
+	    	hardModeJumpCounter.setText('DEAD!');
+	    }
+
 	},
 
 	arrowBoost: function( slime, arrow ){
