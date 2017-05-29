@@ -10,4 +10,8 @@ export class Level1 extends LevelPrototype {
 		let protoLevel = _.cloneDeep( this.prototypeLevel );
 		this.levelObj = _.merge( protoLevel, lvl );
 	}
+
+	getHardModeJumpLimit(){
+        return 5;
+    }
 }

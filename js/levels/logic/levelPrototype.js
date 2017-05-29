@@ -28,6 +28,10 @@ export class LevelPrototype{
         }, 5000);
     }
 
+    getHardModeJumpLimit(){
+        return 10;
+    }
+
  	 createBackground(){
         window.game.world.setBounds(
             this.levelObj.world.bounds.x1,

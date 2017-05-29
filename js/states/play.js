@@ -38,7 +38,7 @@ var playState = {
 		arrowBooster = new ArrowBooster();
 		tntHandler = new TntHandler();
 		hardModeHandler = new HardModeHandler();
-		hardModeHandler.setJumpLimit(4);
+		hardModeHandler.setJumpLimit(level.getHardModeJumpLimit());
 
 		level.createBackground(game);
 		level.addStartingText(game);
