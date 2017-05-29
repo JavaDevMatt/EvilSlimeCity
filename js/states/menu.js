@@ -49,10 +49,10 @@ var menuState = {
 	hardModeSwitch: function(){
 		if(!game.global.isHardMode){
 			game.global.isHardMode = true;
-			hardModeButton.setFrames(0, 0, 1);
+			hardModeButton.setFrames(1, 1, 0);
 		} else {
 			game.global.isHardMode = false;
-			hardModeButton.setFrames(1, 1, 0);
+			hardModeButton.setFrames(0, 0, 1);
 		}
 	},
 

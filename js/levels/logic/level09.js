@@ -13,6 +13,8 @@ export class Level9 extends LevelPrototype {
 
 	addStartingText(){
         var loadingLabel = window.game.add.text(80, 278, 'Thats all for now! Thanks for testing!', {font: '20px Courier', fill: '#fff'});
+
+   
         setTimeout(function(){
                 loadingLabel.kill();
         }, 5000);
@@ -20,7 +22,11 @@ export class Level9 extends LevelPrototype {
         let time = game.global.time; 
         let minutes = Math.round(time / 60); 
         let seconds = time % 60;
-        window.game.add.text(80, 178, 'Your time: ' + minutes + ' minutes, ' + seconds + ' seconds', {font: '20px Courier', fill: '#fff'});
+        if(game.global.isHardMode){
+             window.game.add.text(80, 178, 'Your time (hard mode): ' + minutes + ' minutes, ' + seconds + ' seconds', {font: '20px Courier', fill: '#fff'});
+        } else {
+             window.game.add.text(80, 178, 'Your time (easy mode): ' + minutes + ' minutes, ' + seconds + ' seconds', {font: '20px Courier', fill: '#fff'});
+        }
     }
 
 }
