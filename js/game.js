@@ -9,6 +9,7 @@ game.global = {
  music2 : null,
  rainSound : null,
  time : null,
+ isHardMode : false,
 }
 //make the game a global object
 window.game = game;

@@ -38,7 +38,7 @@ var playState = {
 		gState.emitters.juiceEmitters = new JuiceEmitters();
 		arrowBooster = new ArrowBooster();
 		tntHandler = new TntHandler();
-		hardModeHandler = new HardModeHandler();
+		hardModeHandler = new HardModeHandler(game.global.isHardMode); // get this "true" from setting in menu
 		hardModeHandler.setJumpLimit(level.getHardModeJumpLimit());
 
 		level.createBackground(game);

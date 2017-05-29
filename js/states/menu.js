@@ -1,5 +1,6 @@
 var monster1, monster2;
 let muteButton
+
 var menuState = {
 
 	create: function() {
@@ -47,8 +48,10 @@ var menuState = {
 	muteSound: function(){
 		if(game.sound.mute){
 			muteButton.setFrames(0, 0, 1);
+			game.global.isHardMode = false;
 		} else {
 			muteButton.setFrames(1, 1, 0);
+			game.global.isHardMode = true;
 		}
 		game.sound.mute = !game.sound.mute;
 	},
