@@ -47,6 +47,7 @@ var menuState = {
 	},
 
 	hardModeSwitch: function(){
+		game.sound.play('splash');
 		if(!game.global.isHardMode){
 			game.global.isHardMode = true;
 			hardModeButton.setFrames(1, 1, 0);
