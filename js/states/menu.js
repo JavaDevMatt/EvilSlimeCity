@@ -8,29 +8,29 @@ var menuState = {
 
 		if (game.device.desktop){
 			// desktop
-			let startLabel = game.add.text(200, game.world.height-60, 'Press Space to start',{font: '25px Arial', fill: '#ffffff'});
+			let startLabel = game.add.text(90, game.world.height-60, 'Press Space to start',{font: '25px Arial', fill: '#ffffff'});
 		} else {
 			// mobile
 			let mobileStartButton = game.add.button(0, 0, 'menu-background', this.startGame, this, 2, 1, 0);
-			let startLabel = game.add.text(200, game.world.height-60, 'Tap screen to start', {font: '25px Arial', fill: '#ffffff'});
+			let startLabel = game.add.text(90, game.world.height-60, 'Tap screen to start', {font: '25px Arial', fill: '#ffffff'});
 		}
 
 		game.global.music.play();
 		game.global.music.volume = 1.0
 
-		monster1 = game.add.sprite(160, game.world.height-60, 'monster1');
+		monster1 = game.add.sprite(50, game.world.height-60, 'monster1');
 		monster1.animations.add('stand', [0, 1, 2], 5, true);
 
-		monster2 = game.add.sprite(430, game.world.height-60, 'monster1');
+		monster2 = game.add.sprite(320, game.world.height-60, 'monster1');
 		monster2.animations.add('stand', [0, 1, 2], 5, true);
 
 
 		let spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 		spaceKey.onDown.addOnce(this.startGame, this);
 
-		muteButton = game.add.button(520, 40, 'mute-button', this.muteSound, this, 0, 0, 1);
-		hardModeButton = game.add.button(270, 140, 'hardmode-button', this.hardModeSwitch, this, 0, 0, 1);
-
+		muteButton = game.add.button(480, 60, 'mute-button', this.muteSound, this, 0, 0, 1);
+		hardModeButton = game.add.button(400, 160, 'hardmode-button', this.hardModeSwitch, this, 0, 0, 1);
+ 
 		game.global.time = 0;
 	},
 
