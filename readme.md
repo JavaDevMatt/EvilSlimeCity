@@ -1,5 +1,7 @@
 # Evil Slime City
 
+Play the current game version here: http://mkupilas.civ.pl/esc/devlog11/
+
 ## System requirements
 This app require `npm >= 6.9`
 
