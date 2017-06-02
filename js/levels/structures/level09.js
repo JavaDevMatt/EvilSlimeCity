@@ -2,7 +2,7 @@ module.exports = {
     "world": {
         "bounds": {
             "x1": 0,
-            "x2": 1585,
+            "x2": 1785,
             "y1": 0,
             "y2": 376
         },
@@ -19,6 +19,11 @@ module.exports = {
             },
             {
                 "x": 1024,
+                "y": 0,
+                "type": "game-background"
+            },
+            {
+                "x": 1648,
                 "y": 0,
                 "type": "game-background"
             }
@@ -43,8 +48,8 @@ module.exports = {
             "type": "tower1"
         },
         {
-            "x": 1272,
-            "y": 43,
+            "x": 1502,
+            "y": 143,
             "type": "faller"
         }
 
@@ -52,7 +57,7 @@ module.exports = {
     ],
     "redSlimes": [
         {
-            "x": 1298,
+            "x": 1550,
             "y": 14,
             "type": "monster2"
         }
@@ -134,6 +139,11 @@ module.exports = {
             "y": 345,
             "type": "lava2",
 
+        },
+        {
+            "x": 1576,
+            "y": 345,
+            "type": "lava2",
         }
     ],
     "tnt": [],
