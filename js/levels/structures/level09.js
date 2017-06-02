@@ -2,7 +2,7 @@ module.exports = {
     "world": {
         "bounds": {
             "x1": 0,
-            "x2": 1785,
+            "x2": 1585,
             "y1": 0,
             "y2": 376
         },
@@ -16,6 +16,11 @@ module.exports = {
                 "x": 640,
                 "y": 0,
                 "type": "game-background"
+            },
+            {
+                "x": 1024,
+                "y": 0,
+                "type": "game-background"
             }
         ]
     },
@@ -24,42 +29,64 @@ module.exports = {
             "x": 349,
             "y": 228,
             "type": "tower1",
-            "id": 180193379521
+            "id": 504934655792
         },
         {
             "x": 0,
             "y": 230,
             "type": "tower1",
-            "id": 748435845721
+            "id": 1388478993286
+        },
+        {
+            "x": 1250,
+            "y": 214,
+            "type": "tower1"
+        },
+        {
+            "x": 1272,
+            "y": 43,
+            "type": "faller"
+        }
+
+
+    ],
+    "redSlimes": [
+        {
+            "x": 1298,
+            "y": 14,
+            "type": "monster2"
         }
     ],
-    "redSlimes": [],
     "fallers": [
         {
             "x": 212,
             "y": 224,
             "type": "faller",
-            "id": 352369827987
+            "id": 691966402436
         },
         {
             "x": 683,
             "y": 215,
-            "type": "faller"
+            "type": "faller",
+            "id": 11662451897
         },
         {
             "x": 805,
             "y": 215,
-            "type": "faller"
+            "type": "faller",
+            "id": 754061279506
         },
         {
             "x": 955,
             "y": 215,
-            "type": "faller"
+            "type": "faller",
+            "id": 530603943683
         },
         {
             "x": 1105,
             "y": 215,
-            "type": "faller"
+            "type": "faller",
+            "id": 595284808168
         }
     ],
     "slowFallers": [],
@@ -67,7 +94,8 @@ module.exports = {
         {
             "x": 456,
             "y": 213,
-            "type": "trampoline"
+            "type": "trampoline",
+            "id": 139063441184
         }
     ],
     "lava": [
@@ -75,18 +103,37 @@ module.exports = {
             "x": 105,
             "y": 348,
             "type": "lava2",
-            "id": 1063940134325
+            "id": 773572155358
         },
         {
             "x": 476,
             "y": 345,
             "type": "lava2",
-            "id": 1271735599372
+            "id": 176870635368
         },
         {
             "x": 726,
             "y": 344,
-            "type": "lava2"
+            "type": "lava2",
+            "id": 802674778620
+        },
+        {
+            "x": 926,
+            "y": 344,
+            "type": "lava2",
+            "id": 802674778620
+        },
+        {
+            "x": 1126,
+            "y": 344,
+            "type": "lava2",
+            "id": 802674778620
+        },
+        {
+            "x": 1376,
+            "y": 345,
+            "type": "lava2",
+
         }
     ],
     "tnt": [],
@@ -95,8 +142,15 @@ module.exports = {
         {
             "x": 806,
             "y": 201,
-            "type": "raider"
+            "type": "raider",
+            "id": 237522340012
         }
     ],
-    "arrows": []
+    "arrows": [
+       {
+            "x": 1184,
+            "y": 151,
+            "type": "arrow"
+        }
+    ]
 }
