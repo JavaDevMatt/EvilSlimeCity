@@ -12,11 +12,18 @@ export class Level9 extends LevelPrototype {
 	}
 
 	addStartingText(){
-         let levelLabel = game.add.text(90, 110, 'No slowing down Mr. Fancy Slime!',
+         let levelLabel = game.add.text(90, 110, 'Be Quick or Be Dead!',
                         {font: '20px Courier', fill: '#fff'});
                 setTimeout(function(){
                         levelLabel.kill();
                 }, 3000);
     }
+
+    handleRidersLogic(){
+        this.rider1 = gState.envObjects.riders.children[0];
+        if(this.rider1.x < 50){
+            this.rider1.body.velocity.x = 0;
+        }
+     }
 
 }
