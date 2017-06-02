@@ -2,7 +2,7 @@ module.exports = {
     "world": {
         "bounds": {
             "x1": 0,
-            "x2": 885,
+            "x2": 1785,
             "y1": 0,
             "y2": 376
         },
@@ -50,6 +50,16 @@ module.exports = {
             "x": 805,
             "y": 215,
             "type": "faller"
+        },
+        {
+            "x": 955,
+            "y": 215,
+            "type": "faller"
+        },
+        {
+            "x": 1105,
+            "y": 215,
+            "type": "faller"
         }
     ],
     "slowFallers": [],
@@ -83,7 +93,7 @@ module.exports = {
     "switchFallers": [],
     "riders": [
         {
-            "x": 1056,
+            "x": 806,
             "y": 201,
             "type": "raider"
         }
