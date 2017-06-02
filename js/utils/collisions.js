@@ -24,6 +24,7 @@ export class CollisionsHandler{
 	 	game.physics.arcade.collide(g.envObjects.redSlimes, g.envObjects.slowFallers);
 	 	game.physics.arcade.collide(g.envObjects.slowFallers, g.envObjects.trampolines);
 	 	game.physics.arcade.collide(g.envObjects.redSlimes, g.envObjects.riders);
+	 	game.physics.arcade.collide(g.envObjects.trampolines, g.envObjects.riders);
 	 	game.physics.arcade.collide(g.envObjects.trampolines, g.envObjects.switchFallers);
 	 	game.physics.arcade.collide(g.envObjects.switchFallers, g.envObjects.switchFallers);
 	}
