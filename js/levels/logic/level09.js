@@ -30,4 +30,13 @@ export class Level9 extends LevelPrototype {
         return 6;
     }
 
+    addEndingText(){
+        window.game.add.text(
+                gState.player.x - 270, 70, 'You are quick!',
+                {font: '40px Courier', fill: '#fff'});
+                window.game.add.text(gState.player.x - 270, 106, '...for a fancy slime.',
+                {font: '20px Courier', fill: '#fff'}
+        );
+    }
+
 }
