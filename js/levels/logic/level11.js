@@ -27,6 +27,10 @@ export class Level11 extends LevelPrototype {
         } else {
              window.game.add.text(80, 178, 'Your time (easy mode): ' + minutes + ' minutes, ' + seconds + ' seconds', {font: '20px Courier', fill: '#fff'});
         }
+
+
+        game.add.plugin(PhaserInput.Plugin);
+
     }
 
 }
