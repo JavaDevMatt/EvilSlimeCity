@@ -31,6 +31,10 @@ export class Level11 extends LevelPrototype {
 
         game.add.plugin(PhaserInput.Plugin);
         let input = game.add.inputField(10, 90);
+
+        setTimeout(function(){
+                console.log("Input: " + input.value);
+        }, 5000);
     }
 
 }
