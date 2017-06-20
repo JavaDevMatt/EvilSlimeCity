@@ -39,4 +39,8 @@ export class Level10 extends LevelPrototype {
                 {font: '20px Courier', fill: '#fff'});
     }
 
+    getHardModeJumpLimit(){
+        return 4;
+    }
+
 }
