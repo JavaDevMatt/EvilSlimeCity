@@ -4,6 +4,8 @@ let gState = new GameState().state;
 let _ = require( "lodash" );
 
 let lvl = require( "./../structures/level11.js" );
+let txtInput = null;
+
 export class Level11 extends LevelPrototype {
 	constructor() {
 		super();
@@ -27,7 +29,7 @@ export class Level11 extends LevelPrototype {
 
 
         game.add.plugin(PhaserInput.Plugin);
-        let input = game.add.inputField(340, 120, { 
+        txtInput = game.add.inputField(340, 120, { 
             font: '18px Arial',
             fill: '#212121',
             fontWeight: 'bold',
@@ -38,12 +40,24 @@ export class Level11 extends LevelPrototype {
             borderRadius: 6,
         });
 
-        setTimeout(function(){
-                console.log("Input: " + input.value);
-        }, 5000);
- 
-
+        // TODO replace temp mute-button with actual button asset
         let restartButton = game.add.button(100, 120, 'mute-button', this.restartGame, this, 0, 0, 1);
+        let sendScoreButton = game.add.button(410, 180, 'mute-button', this.sendScore, this, 0, 0, 1);
+
+    }
+
+    sendScore(){
+          App42.initialize("id","pass");
+        
+          let gameName = "Evil Slime City";  
+          let userName = txtInput.value;
+          if(userName == ""){
+               userName = "Guest";
+          }  
+          let gameScore = 100000 - game.global.time;  
+          let result;
+          var scoreBoardService = new App42ScoreBoard()    
+          scoreBoardService.saveUserScore(gameName,userName,gameScore,{ success: function(object){} });
     }
 
     restartGame(){
