@@ -22,4 +22,21 @@ export class Level10 extends LevelPrototype {
     
     }
 
+    checkForCoolKillText(){
+        if( gState.envObjects.redSlimes.countLiving() == 1 ){
+                var infoLabel = game.add.text(gState.player.x - 200, 278, 'Almost done!',
+                        {font: '20px Courier', fill: '#fff'});
+                setTimeout(function(){
+                        infoLabel.kill();
+                }, 3000);
+            }
+    }
+
+    addEndingText(){
+        game.add.text(gState.player.x - 300, 100, 'Another one',
+                {font: '40px Courier', fill: '#fff'});
+                game.add.text(gState.player.x - 200, 136, 'bites the lava!',
+                {font: '20px Courier', fill: '#fff'});
+    }
+
 }
