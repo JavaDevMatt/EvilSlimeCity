@@ -47,17 +47,27 @@ export class Level11 extends LevelPrototype {
     }
 
     sendScore(){
-          App42.initialize("id","pass");
+          App42.initialize("id","secret");
         
-          let gameName = "Evil Slime City";  
-          let userName = txtInput.value;
-          if(userName == ""){
-               userName = "Guest";
-          }  
-          let gameScore = 100000 - game.global.time;  
-          let result;
-          var scoreBoardService = new App42ScoreBoard()    
-          scoreBoardService.saveUserScore(gameName,userName,gameScore,{ success: function(object){} });
+          setTimeout(function(){
+              let gameName = "Evil Slime City";  
+              let userName = txtInput.value;
+              if(userName == ""){
+                   userName = "Slimy Guest";
+              }  
+              let gameScore = 100000 - game.global.time;  
+              let result;
+              var scoreBoardService = new App42ScoreBoard()    
+              scoreBoardService.saveUserScore(gameName,userName,gameScore,{ 
+                success: function(object){
+                    console.log("Success!");
+                    // TODO: load top scores
+                },
+                error: function(object){
+                    console.log("Error!");
+                    // make a message to send scroe again
+                } });
+        }, 200);
     }
 
     restartGame(){
