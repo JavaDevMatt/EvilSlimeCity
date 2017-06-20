@@ -26,40 +26,34 @@ module.exports = {
     },
     "platforms": [
         {
-            "x": 0,
-            "y": 300,
-            "type": "platform",
-            "id": 289342531373
-        },
-        {
             "x": 1385,
             "y": 176,
             "type": "platform2",
-            "id": 395549923607
+            "id": 473611523139
         },
         {
             "x": 1329,
             "y": 176,
             "type": "platform2",
-            "id": 1313743866216
+            "id": 514652253717
         },
         {
             "x": 1386,
             "y": 328,
             "type": "tower1",
-            "id": 1298656454384
+            "id": 1122092224161
         },
         {
             "x": 1254,
             "y": 318,
             "type": "tower1",
-            "id": 950470225840
+            "id": 419433402842
         },
         {
             "x": 1127,
             "y": 265,
             "type": "tower1",
-            "id": 1173010127204
+            "id": 1352082629749
         }
     ],
     "redSlimes": [
@@ -67,13 +61,13 @@ module.exports = {
             "x": 1382,
             "y": 134,
             "type": "monster2",
-            "id": 509356217166
+            "id": 1313390460194
         },
         {
             "x": 1323,
             "y": 291,
             "type": "monster2",
-            "id": 395585653313
+            "id": 944089560433
         }
     ],
     "fallers": [
@@ -81,49 +75,49 @@ module.exports = {
             "x": 30,
             "y": 107,
             "type": "faller",
-            "id": 1363060290501
+            "id": 810953299617
         },
         {
             "x": 130,
             "y": 136,
             "type": "faller",
-            "id": 248286886500
+            "id": 1144213776183
         },
         {
             "x": 230,
             "y": 164,
             "type": "faller",
-            "id": 282841116279
+            "id": 681019071010
         },
         {
             "x": 330,
             "y": 197,
             "type": "faller",
-            "id": 6667424991
+            "id": 433047704950
         },
         {
             "x": 430,
             "y": 244,
             "type": "faller",
-            "id": 939809197253
+            "id": 1136118178588
         },
         {
             "x": 530,
             "y": 287,
             "type": "faller",
-            "id": 232603027837
+            "id": 454962043489
         },
         {
             "x": 630,
             "y": 308,
             "type": "faller",
-            "id": 496532221890
+            "id": 225493354669
         },
         {
             "x": 730,
             "y": 287,
             "type": "faller",
-            "id": 1391444259990
+            "id": 25434769026
         }
     ],
     "slowFallers": [],
@@ -131,40 +125,73 @@ module.exports = {
         {
             "x": 851,
             "y": 243,
-            "type": "trampoline"
+            "type": "trampoline",
+            "id": 265554488279
         },
         {
             "x": 851,
             "y": 211,
-            "type": "trampoline"
+            "type": "trampoline",
+            "id": 253362356498
         },
         {
             "x": 851,
             "y": 161,
-            "type": "trampoline"
+            "type": "trampoline",
+            "id": 243883972553
         },
         {
             "x": 851,
             "y": 121,
-            "type": "trampoline"
+            "type": "trampoline",
+            "id": 1310294097186
         },
         {
             "x": 851,
-            "y": 101,
-            "type": "trampoline"
+            "y": 91,
+            "type": "trampoline",
+            "id": 1133517836626
         },
         {
             "x": 851,
-            "y": 81,
-            "type": "trampoline"
+            "y": 71,
+            "type": "trampoline",
+            "id": 705002830893
         },
         {
             "x": 851,
-            "y": 61,
-            "type": "trampoline"
+            "y": 31,
+            "type": "trampoline",
+            "id": 125168926106
         }
     ],
-    "lava": [],
+    "lava": [
+        {
+            "x": 0,
+            "y": 345,
+            "type": "lava2"
+        },
+        {
+            "x": 250,
+            "y": 345,
+            "type": "lava2"
+        },
+        {
+            "x": 500,
+            "y": 345,
+            "type": "lava2"
+        },
+        {
+            "x": 750,
+            "y": 345,
+            "type": "lava2"
+        },
+        {
+            "x": 1000,
+            "y": 345,
+            "type": "lava2"
+        }
+    ],
     "tnt": [],
     "switchFallers": [],
     "riders": [],
@@ -173,7 +200,7 @@ module.exports = {
             "x": 1470,
             "y": 296,
             "type": "arrow",
-            "id": 340418140388
+            "id": 495983088899
         }
     ]
 }
