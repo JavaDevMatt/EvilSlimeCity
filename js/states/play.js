@@ -79,9 +79,7 @@ var playState = {
 	},
 
 	timerTick: function() {
-		// TODO dummy timer - remove later time from console
 		game.global.time++;
-		console.log("tick! " + game.global.time);
 	},
 
 	update: function() {
