@@ -44,6 +44,7 @@ export class Level11 extends LevelPrototype {
         let restartButton = game.add.button(100, 120, 'mute-button', this.restartGame, this, 0, 0, 1);
         let sendScoreButton = game.add.button(410, 180, 'mute-button', this.sendScore, this, 0, 0, 1);
 
+        App42.initialize("id","secret");
     }
 
     sendScore(){
@@ -61,7 +62,31 @@ export class Level11 extends LevelPrototype {
               scoreBoardService.saveUserScore(gameName,userName,gameScore,{ 
                 success: function(object){
                     console.log("Success!");
-                    // TODO: load top scores
+                    this.loadTopScores();
+                },
+                loadTopScores: function(object){
+                                     scoreBoardService.getTopRankings(gameName,{    
+                                        success: function(object)   
+                                        {    
+                                            let game = JSON.parse(object);    
+                                            result = game.app42.response.games.game;  
+                                            console.log("gameName is : " + result.name)  
+                                            let scoreList = result.scores.score;  
+                                            if (scoreList instanceof Array) {  
+                                                    for (let i = 0; i < scoreList.length; i++) {  
+                                                        console.log("userName is : " + scoreList[i].userName)  
+                                                        console.log("scoreId is : " + scoreList[i].scoreId)  
+                                                        console.log("value is : " + scoreList[i].value)  
+                                                    }  
+                                                } else {  
+                                                    console.log("userName is : " + scoreList.userName)  
+                                                    console.log("scoreId is : " + scoreList.scoreId)  
+                                                    console.log("value is : " + scoreList.value)  
+                                                }  
+                                        },    
+                                        error: function(error) {    
+                                        }    
+                                    });       
                 },
                 error: function(object){
                     console.log("Error!");
@@ -69,6 +94,7 @@ export class Level11 extends LevelPrototype {
                 } });
         }, 200);
     }
+
 
     restartGame(){
         game.global.gameLevel = 0;
