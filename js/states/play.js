@@ -44,6 +44,7 @@ var playState = {
 
 		level.createBackground(game);
 		level.addStartingText(game);
+		level.addOptionalEndingScreen(game);
 
 
 		this.initTnt();

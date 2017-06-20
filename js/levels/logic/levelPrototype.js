@@ -28,6 +28,10 @@ export class LevelPrototype{
         }, 5000);
     }
 
+    addOptionalEndingScreen(){
+        // default no ending screen
+    }
+
     getHardModeJumpLimit(){
         return 10;
     }
