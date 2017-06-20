@@ -41,6 +41,14 @@ export class Level11 extends LevelPrototype {
         setTimeout(function(){
                 console.log("Input: " + input.value);
         }, 5000);
+ 
+
+        let restartButton = game.add.button(100, 120, 'mute-button', this.doStuff, this, 0, 0, 1);
+    }
+
+    doStuff(){
+        game.global.gameLevel = 0;
+        game.state.start('menu');
     }
 
 }

@@ -16,6 +16,7 @@ export class Level5 extends LevelPrototype {
 		super();
 		let protoLevel = _.cloneDeep( this.prototypeLevel );
 		this.levelObj = _.merge( protoLevel, lvl );
+        this.resetFancyLevelStuff(); 
 	}
 
     getHardModeJumpLimit(){

@@ -32,6 +32,10 @@ export class LevelPrototype{
         // default no ending screen
     }
 
+    resetFancyLevelStuff(){
+        // default do nothing
+    }
+
     getHardModeJumpLimit(){
         return 10;
     }
