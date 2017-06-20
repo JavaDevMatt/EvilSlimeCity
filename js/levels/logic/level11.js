@@ -43,10 +43,10 @@ export class Level11 extends LevelPrototype {
         }, 5000);
  
 
-        let restartButton = game.add.button(100, 120, 'mute-button', this.doStuff, this, 0, 0, 1);
+        let restartButton = game.add.button(100, 120, 'mute-button', this.restartGame, this, 0, 0, 1);
     }
 
-    doStuff(){
+    restartGame(){
         game.global.gameLevel = 0;
         game.state.start('menu');
     }
