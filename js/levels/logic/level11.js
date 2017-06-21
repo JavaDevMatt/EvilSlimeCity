@@ -5,6 +5,8 @@ let _ = require( "lodash" );
 
 let lvl = require( "./../structures/level11.js" );
 let txtInput = null;
+let finalScore = null;
+const BIG = 100000;
 
 export class Level11 extends LevelPrototype {
 	constructor() {
@@ -14,9 +16,9 @@ export class Level11 extends LevelPrototype {
 	}
 
 	addStartingText(){
-        let time = game.global.time; 
-        let minutes = Math.round(time / 60); 
-        let seconds = time % 60;
+        finalScore = game.global.time;
+        let minutes = Math.round(finalScore / 60);
+        let seconds = finalScore % 60;
         if(game.global.isHardMode){
              window.game.add.text(80, 30, 'Your time (hard mode): ' + minutes + ' minutes, ' + seconds + ' seconds', {font: '20px Courier', fill: '#fff'});
         } else {
@@ -44,11 +46,12 @@ export class Level11 extends LevelPrototype {
         let restartButton = game.add.button(100, 120, 'mute-button', this.restartGame, this, 0, 0, 1);
         let sendScoreButton = game.add.button(410, 180, 'mute-button', this.sendScore, this, 0, 0, 1);
 
-        App42.initialize("id","secret");
+        App42.initialize("x","x");
     }
 
     sendScore(){
-          App42.initialize("id","secret");
+        App42.initialize("x","x");
+
         
           setTimeout(function(){
               let gameName = "Evil Slime City";  
@@ -56,7 +59,7 @@ export class Level11 extends LevelPrototype {
               if(userName == ""){
                    userName = "Slimy Guest";
               }  
-              let gameScore = 100000 - game.global.time;  
+              let gameScore = BIG - finalScore;  
               let result;
               var scoreBoardService = new App42ScoreBoard()    
               scoreBoardService.saveUserScore(gameName,userName,gameScore,{ 
@@ -74,14 +77,16 @@ export class Level11 extends LevelPrototype {
                                             let scoreList = result.scores.score;  
                                             if (scoreList instanceof Array) {  
                                                     for (let i = 0; i < scoreList.length; i++) {  
-                                                        console.log("userName is : " + scoreList[i].userName)  
-                                                        console.log("scoreId is : " + scoreList[i].scoreId)  
-                                                        console.log("value is : " + scoreList[i].value)  
+                                                        let t = BIG - scoreList[i].value; 
+                                                        let m = Math.round(t / 60); 
+                                                        let s = t % 60;
+                                                        console.log(scoreList[i].userName + " - " + m + "m, " + s + "s");
                                                     }  
                                                 } else {  
-                                                    console.log("userName is : " + scoreList.userName)  
-                                                    console.log("scoreId is : " + scoreList.scoreId)  
-                                                    console.log("value is : " + scoreList.value)  
+                                                        let t = BIG - scoreList[i].value; 
+                                                        let m = Math.round(t / 60); 
+                                                        let s = t % 60;
+                                                        console.log(scoreList[i].userName + " - " + m + "m, " + s + "s");;
                                                 }  
                                         },    
                                         error: function(error) {    
@@ -91,6 +96,7 @@ export class Level11 extends LevelPrototype {
                 error: function(object){
                     console.log("Error!");
                     // make a message to send scroe again
+                    // "sending failed... pls try again"
                 } });
         }, 200);
     }
