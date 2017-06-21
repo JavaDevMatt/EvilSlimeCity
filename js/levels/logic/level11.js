@@ -7,6 +7,8 @@ let lvl = require( "./../structures/level11.js" );
 let txtInput = null;
 let finalScore = null;
 const BIG = 100000;
+const API_KEY = "";
+const SECRET_KEY = "";
 
 export class Level11 extends LevelPrototype {
 	constructor() {
@@ -46,11 +48,11 @@ export class Level11 extends LevelPrototype {
         let restartButton = game.add.button(100, 120, 'mute-button', this.restartGame, this, 0, 0, 1);
         let sendScoreButton = game.add.button(410, 180, 'mute-button', this.sendScore, this, 0, 0, 1);
 
-        App42.initialize("x","x");
+        App42.initialize(API_KEY, SECRET_KEY);
     }
 
     sendScore(){
-        App42.initialize("x","x");
+        App42.initialize(API_KEY, SECRET_KEY);
 
         
           setTimeout(function(){
