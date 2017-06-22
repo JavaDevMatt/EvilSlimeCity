@@ -71,7 +71,7 @@ var playState = {
     	// init dummy timer
         game.time.events.loop(Phaser.Timer.SECOND, this.timerTick, this);
 
-        if(game.global.isHardMode){
+        if(game.global.isHardMode && !level.isScoreLvl()){
         	hardModeJumpCounter = game.add.text(10, 30, 'Jumps left: ' + hardModeHandler.getJumpLimit(), {font: '20px Courier', fill: '#fff'});
         	hardModeJumpCounter.fixedToCamera = true;
         }
@@ -177,7 +177,7 @@ var playState = {
 	        gState.player.body.velocity.x = 150;
 	    }
 
-	    if(game.global.isHardMode){
+	    if(game.global.isHardMode && !level.isScoreLvl()){
 	    	if(hardModeHandler.getJumpLimit() >= 0){
         		hardModeJumpCounter.setText('Jumps left: ' + hardModeHandler.getJumpLimit());
 		    } else if(!gState.flags.isPlayerDead && !gState.flags.hasPlayerWon) {

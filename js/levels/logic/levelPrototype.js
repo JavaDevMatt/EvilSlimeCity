@@ -40,6 +40,10 @@ export class LevelPrototype{
         return 10;
     }
 
+    isScoreLvl(){
+        return false;
+    }
+
  	 createBackground(){
         window.game.world.setBounds(
             this.levelObj.world.bounds.x1,

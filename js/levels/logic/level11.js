@@ -50,8 +50,8 @@ export class Level11 extends LevelPrototype {
         });
 
         // TODO replace temp mute-button with actual button asset
-        let restartButton = game.add.button(100, 80, 'mute-button', this.restartGame, this, 0, 0, 1);
-        sendScoreButton = game.add.button(410, 130, 'mute-button', this.sendScore, this, 0, 0, 1);
+        let restartButton = game.add.button(100, 80, 'restart-button', this.restartGame, this, 0, 0, 1);
+        sendScoreButton = game.add.button(410, 130, 'sendscore-button', this.sendScore, this, 0, 0, 1);
 
         App42.initialize(API_KEY, SECRET_KEY);
     }
@@ -143,8 +143,6 @@ export class Level11 extends LevelPrototype {
                          sendingScroeTxt.kill();
                     }
                  
-                    // make a message to send scroe again
-                    // "sending failed... pls try again"
                 } });
         }, 200);
     }
@@ -157,6 +155,10 @@ export class Level11 extends LevelPrototype {
 
     getHardModeJumpLimit(){
         return 999999;
+    }
+
+    isScoreLvl(){
+        return true;
     }
 
 }

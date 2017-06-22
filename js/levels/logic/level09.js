@@ -27,7 +27,7 @@ export class Level9 extends LevelPrototype {
      }
 
      getHardModeJumpLimit(){
-        return 6;
+        return 7;
     }
 
     addEndingText(){
