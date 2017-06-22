@@ -104,7 +104,9 @@ export class Level11 extends LevelPrototype {
                                                         let m = Math.round(t / 60); 
                                                         let s = t % 60;
                                                         console.log(scoreList[i].userName + " - " + m + "m, " + s + "s");
-                                                        leaderboardTxt += ((i+1) + ". " + scoreList[i].userName + " - " + m + "m, " + s + "s \n");
+                                                        if(i < 6){
+                                                            leaderboardTxt += ((i+1) + ". " + scoreList[i].userName + " - " + m + "m, " + s + "s \n");
+                                                        }
                                                     }  
                                                 } else {  
                                                         let t = BIG - scoreList.value; 
