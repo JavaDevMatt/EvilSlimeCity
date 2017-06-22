@@ -12,6 +12,8 @@ const SECRET_KEY = "x";
 let errorTxt = null;
 let sendingScroeTxt = null;
 let sendScoreButton = null;
+let youAreOnPlaceTxt = null;
+
 
 export class Level11 extends LevelPrototype {
 	constructor() {
@@ -83,6 +85,9 @@ export class Level11 extends LevelPrototype {
                     if(sendingScroeTxt != null){
                         sendingScroeTxt.kill();
                     }
+                    youAreOnPlaceTxt = window.game.add.text(340, 120, 'Your palce: ToDo', {font: '17px Courier', fill: '#fff'});
+                    youAreOnPlaceTxt.fontWeight = 'bold';
+
                     this.loadTopScores();
                 },
                 loadTopScores: function(object){
@@ -101,10 +106,10 @@ export class Level11 extends LevelPrototype {
                                                         console.log(scoreList[i].userName + " - " + m + "m, " + s + "s");
                                                     }  
                                                 } else {  
-                                                        let t = BIG - scoreList[i].value; 
+                                                        let t = BIG - scoreList.value; 
                                                         let m = Math.round(t / 60); 
                                                         let s = t % 60;
-                                                        console.log(scoreList[i].userName + " - " + m + "m, " + s + "s");;
+                                                        console.log(scoreList.userName + " - " + m + "m, " + s + "s");;
                                                 }  
                                         },    
                                         error: function(error) {    
