@@ -7,8 +7,11 @@ let lvl = require( "./../structures/level11.js" );
 let txtInput = null;
 let finalScore = null;
 const BIG = 100000;
-const API_KEY = "";
-const SECRET_KEY = "";
+const API_KEY = "x";
+const SECRET_KEY = "x";
+let errorTxt = null;
+let sendingScroeTxt = null;
+let sendScoreButton = null;
 
 export class Level11 extends LevelPrototype {
 	constructor() {
@@ -46,12 +49,22 @@ export class Level11 extends LevelPrototype {
 
         // TODO replace temp mute-button with actual button asset
         let restartButton = game.add.button(100, 120, 'mute-button', this.restartGame, this, 0, 0, 1);
-        let sendScoreButton = game.add.button(410, 180, 'mute-button', this.sendScore, this, 0, 0, 1);
+        sendScoreButton = game.add.button(410, 180, 'mute-button', this.sendScore, this, 0, 0, 1);
 
         App42.initialize(API_KEY, SECRET_KEY);
     }
 
     sendScore(){
+        if(errorTxt != null){
+            errorTxt.kill(); 
+        }
+        if(sendScoreButton != null){
+            sendScoreButton.kill();
+        }
+
+        sendingScroeTxt = window.game.add.text(320, 200, 'Sending score...', {font: '22px Courier', fill: '#fff'});
+                   
+
         App42.initialize(API_KEY, SECRET_KEY);
 
         
@@ -67,6 +80,9 @@ export class Level11 extends LevelPrototype {
               scoreBoardService.saveUserScore(gameName,userName,gameScore,{ 
                 success: function(object){
                     console.log("Success!");
+                    if(sendingScroeTxt != null){
+                        sendingScroeTxt.kill();
+                    }
                     this.loadTopScores();
                 },
                 loadTopScores: function(object){
@@ -97,6 +113,15 @@ export class Level11 extends LevelPrototype {
                 },
                 error: function(object){
                     console.log("Error!");
+                    errorTxt = window.game.add.text(290, 160, 'Connection error... pls try again.', {font: '17px Courier', fill: '#ff0000'});
+                    errorTxt.fontWeight = 'bold';
+
+                    sendScoreButton.reset(410, 180);
+
+                    if(sendingScroeTxt != null){
+                         sendingScroeTxt.kill();
+                    }
+                 
                     // make a message to send scroe again
                     // "sending failed... pls try again"
                 } });
