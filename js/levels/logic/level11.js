@@ -13,7 +13,7 @@ let errorTxt = null;
 let sendingScroeTxt = null;
 let sendScoreButton = null;
 let youAreOnPlaceTxt = null;
-
+let leaderboardTxt = "";
 
 export class Level11 extends LevelPrototype {
 	constructor() {
@@ -104,13 +104,16 @@ export class Level11 extends LevelPrototype {
                                                         let m = Math.round(t / 60); 
                                                         let s = t % 60;
                                                         console.log(scoreList[i].userName + " - " + m + "m, " + s + "s");
+                                                        leaderboardTxt += ((i+1) + ". " + scoreList[i].userName + " - " + m + "m, " + s + "s \n");
                                                     }  
                                                 } else {  
                                                         let t = BIG - scoreList.value; 
                                                         let m = Math.round(t / 60); 
                                                         let s = t % 60;
                                                         console.log(scoreList.userName + " - " + m + "m, " + s + "s");;
-                                                }  
+                                                } 
+
+                                            window.game.add.text(290, 150, leaderboardTxt, {font: '17px Courier', fill: '#fff'}); 
                                         },    
                                         error: function(error) {    
                                         }    
