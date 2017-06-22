@@ -85,12 +85,12 @@ export class Level11 extends LevelPrototype {
                     if(sendingScroeTxt != null){
                         sendingScroeTxt.kill();
                     }
-                    youAreOnPlaceTxt = window.game.add.text(340, 120, 'Your palce: ToDo', {font: '17px Courier', fill: '#fff'});
-                    youAreOnPlaceTxt.fontWeight = 'bold';
+                    
 
                     this.loadTopScores();
                 },
                 loadTopScores: function(object){
+                                    let userPlace = 0;
                                      scoreBoardService.getTopRankings(gameName,{    
                                         success: function(object)   
                                         {    
@@ -99,7 +99,12 @@ export class Level11 extends LevelPrototype {
                                             console.log("gameName is : " + result.name)  
                                             let scoreList = result.scores.score;  
                                             if (scoreList instanceof Array) {  
-                                                    for (let i = 0; i < scoreList.length; i++) {  
+                                                    for (let i = 0; i < scoreList.length; i++) {
+
+                                                        if(userName == scoreList[i].userName){
+                                                            userPlace = i + 1;
+                                                        }
+
                                                         let t = BIG - scoreList[i].value; 
                                                         let m = Math.round(t / 60); 
                                                         let s = t % 60;
@@ -116,6 +121,12 @@ export class Level11 extends LevelPrototype {
                                                 } 
 
                                             window.game.add.text(290, 150, leaderboardTxt, {font: '17px Courier', fill: '#fff'}); 
+
+                                            youAreOnPlaceTxt = window.game.add.text(340, 120, 'Your palce: ' + userPlace, {font: '17px Courier', fill: '#fff'});
+                                            youAreOnPlaceTxt.fontWeight = 'bold';
+
+                                            let top6Txt = window.game.add.text(140, 180, '  THE\nTOP 6 ->', {font: '25px Courier', fill: '#fff'});
+                                            top6Txt.fontWeight = 'bold';
                                         },    
                                         error: function(error) {    
                                         }    
@@ -142,6 +153,10 @@ export class Level11 extends LevelPrototype {
     restartGame(){
         game.global.gameLevel = 0;
         game.state.start('menu');
+    }
+
+    getHardModeJumpLimit(){
+        return 999999;
     }
 
 }
