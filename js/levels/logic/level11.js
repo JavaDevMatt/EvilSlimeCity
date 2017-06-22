@@ -32,11 +32,11 @@ export class Level11 extends LevelPrototype {
     }
 
     addOptionalEndingScreen(){
-    window.game.add.text(280, 126, 'Name: ', {font: '20px Courier', fill: '#fff'});
+    window.game.add.text(280, 86, 'Name: ', {font: '20px Courier', fill: '#fff'});
 
 
         game.add.plugin(PhaserInput.Plugin);
-        txtInput = game.add.inputField(340, 120, { 
+        txtInput = game.add.inputField(340, 80, { 
             font: '18px Arial',
             fill: '#212121',
             fontWeight: 'bold',
@@ -48,8 +48,8 @@ export class Level11 extends LevelPrototype {
         });
 
         // TODO replace temp mute-button with actual button asset
-        let restartButton = game.add.button(100, 120, 'mute-button', this.restartGame, this, 0, 0, 1);
-        sendScoreButton = game.add.button(410, 180, 'mute-button', this.sendScore, this, 0, 0, 1);
+        let restartButton = game.add.button(100, 80, 'mute-button', this.restartGame, this, 0, 0, 1);
+        sendScoreButton = game.add.button(410, 130, 'mute-button', this.sendScore, this, 0, 0, 1);
 
         App42.initialize(API_KEY, SECRET_KEY);
     }
@@ -62,7 +62,7 @@ export class Level11 extends LevelPrototype {
             sendScoreButton.kill();
         }
 
-        sendingScroeTxt = window.game.add.text(320, 200, 'Sending score...', {font: '22px Courier', fill: '#fff'});
+        sendingScroeTxt = window.game.add.text(320, 160, 'Sending score...', {font: '22px Courier', fill: '#fff'});
                    
 
         App42.initialize(API_KEY, SECRET_KEY);
@@ -113,10 +113,10 @@ export class Level11 extends LevelPrototype {
                 },
                 error: function(object){
                     console.log("Error!");
-                    errorTxt = window.game.add.text(290, 160, 'Connection error... pls try again.', {font: '17px Courier', fill: '#ff0000'});
+                    errorTxt = window.game.add.text(290, 120, 'Connection error... pls try again.', {font: '17px Courier', fill: '#ff0000'});
                     errorTxt.fontWeight = 'bold';
 
-                    sendScoreButton.reset(410, 180);
+                    sendScoreButton.reset(410, 130);
 
                     if(sendingScroeTxt != null){
                          sendingScroeTxt.kill();
