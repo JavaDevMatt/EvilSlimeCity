@@ -23,6 +23,7 @@ export class Level11 extends LevelPrototype {
 	}
 
 	addStartingText(){
+        leaderboardTxt = "";
         finalScore = game.global.time;
         let minutes = Math.round(finalScore / 60);
         let seconds = finalScore % 60;
@@ -91,7 +92,7 @@ export class Level11 extends LevelPrototype {
                 },
                 loadTopScores: function(object){
                                     let userPlace = 0;
-                                     scoreBoardService.getTopRankings(gameName,{    
+                                     scoreBoardService.getTopNRankers(gameName, 1000, {    
                                         success: function(object)   
                                         {    
                                             let game = JSON.parse(object);    
@@ -122,7 +123,7 @@ export class Level11 extends LevelPrototype {
 
                                             window.game.add.text(290, 150, leaderboardTxt, {font: '17px Courier', fill: '#fff'}); 
 
-                                            youAreOnPlaceTxt = window.game.add.text(340, 120, 'Your palce: ' + userPlace, {font: '17px Courier', fill: '#fff'});
+                                            youAreOnPlaceTxt = window.game.add.text(340, 120, 'Your place: ' + userPlace, {font: '17px Courier', fill: '#fff'});
                                             youAreOnPlaceTxt.fontWeight = 'bold';
 
                                             let top6Txt = window.game.add.text(140, 180, '  THE\nTOP 6 ->', {font: '25px Courier', fill: '#fff'});
