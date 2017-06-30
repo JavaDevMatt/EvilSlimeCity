@@ -72,7 +72,13 @@ export class Level11 extends LevelPrototype {
 
         
           setTimeout(function(){
-              let gameName = "Evil Slime City";  
+              let gameName = "";
+              if(game.global.isHardMode){
+                gameName = "Evil Slime City Hard";
+              } else {
+                gameName = "Evil Slime City";
+              }
+
               let userName = txtInput.value;
               if(userName == ""){
                    userName = "Slimy Guest";
@@ -126,8 +132,17 @@ export class Level11 extends LevelPrototype {
                                             youAreOnPlaceTxt = window.game.add.text(340, 120, 'Your place: ' + userPlace, {font: '17px Courier', fill: '#fff'});
                                             youAreOnPlaceTxt.fontWeight = 'bold';
 
-                                            let top6Txt = window.game.add.text(140, 180, '  THE\nTOP 6 ->', {font: '25px Courier', fill: '#fff'});
+                                            let modeText = "";
+                                            if(window.game.global.isHardMode){
+                                                modeText = "(Hard Mode)";
+                                            } else {
+                                                modeText = "(Easy Mode)";
+                                            }
+
+                                            let top6Txt = window.game.add.text(140, 180, '  THE\nTOP 6 -> \n', {font: '25px Courier', fill: '#fff'});
                                             top6Txt.fontWeight = 'bold';
+                                            let top6ModeTxt = window.game.add.text(140, 240,  modeText, {font: '18px Courier', fill: '#fff'});
+
                                         },    
                                         error: function(error) {    
                                         }    
