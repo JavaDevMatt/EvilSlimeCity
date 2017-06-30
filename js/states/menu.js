@@ -28,15 +28,26 @@ var menuState = {
 		let spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 		spaceKey.onDown.addOnce(this.startGame, this);
 
+		let enterKey = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+		enterKey.onDown.addOnce(this.startScoreScreen, this);
+
 		muteButton = game.add.button(480, 60, 'mute-button', this.muteSound, this, 0, 0, 1);
 		hardModeButton = game.add.button(400, 160, 'hardmode-button', this.hardModeSwitch, this, 0, 0, 1);
  
 		game.global.time = 0;
+		game.global.isCheckScroeMode = false;
+		game.global.isHardMode = false;
 	},
 
 	update: function() {
 		monster1.animations.play('stand');
 		monster2.animations.play('stand');
+	},
+
+	startScoreScreen: function(){
+		game.global.gameLevel = 10; // last game level
+		game.global.isCheckScroeMode = true;
+		this.startGame();
 	},
 
 	startGame: function(){

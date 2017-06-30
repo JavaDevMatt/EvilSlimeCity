@@ -29,6 +29,7 @@ var initState = {
 		game.load.spritesheet('restart-button', 'assets/img/restart-button.png', 90, 90); 
 		game.load.spritesheet('hardmode-button', 'assets/img/hardmode-button.png', 250, 145); 
 		game.load.spritesheet('sendscore-button', 'assets/img/sendscore-button.png', 90, 90); 
+		game.load.spritesheet('loadscore-button', 'assets/img/loadscore-button.png', 90, 90); 
 		game.load.image('big-green', 'assets/img/big-green.png'); 
 		game.load.image('big-red', 'assets/img/big-red.png'); 
 	    game.load.image('platform', 'assets/img/platform.png');

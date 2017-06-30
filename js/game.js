@@ -10,6 +10,7 @@ game.global = {
  rainSound : null,
  time : null,
  isHardMode : false,
+ isCheckScroeMode : false,
 }
 //make the game a global object
 window.game = game;

@@ -27,32 +27,46 @@ export class Level11 extends LevelPrototype {
         finalScore = game.global.time;
         let minutes = Math.round(finalScore / 60);
         let seconds = finalScore % 60;
-        if(game.global.isHardMode){
+
+        if(!game.global.isCheckScroeMode){
+             if(game.global.isHardMode){
              window.game.add.text(80, 30, 'Your time (hard mode): ' + minutes + ' minutes, ' + seconds + ' seconds', {font: '20px Courier', fill: '#fff'});
+            } else {
+                 window.game.add.text(80, 30, 'Your time (easy mode): ' + minutes + ' minutes, ' + seconds + ' seconds', {font: '20px Courier', fill: '#fff'});
+            }
         } else {
-             window.game.add.text(80, 30, 'Your time (easy mode): ' + minutes + ' minutes, ' + seconds + ' seconds', {font: '20px Courier', fill: '#fff'});
+            if(game.global.isHardMode){
+             window.game.add.text(80, 30, 'Check score (hard mode)', {font: '20px Courier', fill: '#fff'});
+            } else {
+                 window.game.add.text(80, 30, 'Check score (easy mode): ', {font: '20px Courier', fill: '#fff'});
+            }
         }
+       
     }
 
     addOptionalEndingScreen(){
-    window.game.add.text(280, 86, 'Name: ', {font: '20px Courier', fill: '#fff'});
+        if(!game.global.isCheckScroeMode){
+             window.game.add.text(280, 86, 'Name: ', {font: '20px Courier', fill: '#fff'});
 
+             game.add.plugin(PhaserInput.Plugin);
+            txtInput = game.add.inputField(340, 80, { 
+                font: '18px Arial',
+                fill: '#212121',
+                fontWeight: 'bold',
+                width: 250,
+                padding: 8,
+                borderWidth: 1,
+                borderColor: '#000',
+                borderRadius: 6,
+            });
+        }
 
-        game.add.plugin(PhaserInput.Plugin);
-        txtInput = game.add.inputField(340, 80, { 
-            font: '18px Arial',
-            fill: '#212121',
-            fontWeight: 'bold',
-            width: 250,
-            padding: 8,
-            borderWidth: 1,
-            borderColor: '#000',
-            borderRadius: 6,
-        });
-
-        // TODO replace temp mute-button with actual button asset
         let restartButton = game.add.button(100, 80, 'restart-button', this.restartGame, this, 0, 0, 1);
-        sendScoreButton = game.add.button(410, 130, 'sendscore-button', this.sendScore, this, 0, 0, 1);
+        if(game.global.isCheckScroeMode){
+            sendScoreButton = game.add.button(410, 130, 'loadscore-button', this.sendScore, this, 0, 0, 1);
+        } else {
+            sendScoreButton = game.add.button(410, 130, 'sendscore-button', this.sendScore, this, 0, 0, 1);
+        }
 
         App42.initialize(API_KEY, SECRET_KEY);
     }
@@ -65,7 +79,13 @@ export class Level11 extends LevelPrototype {
             sendScoreButton.kill();
         }
 
-        sendingScroeTxt = window.game.add.text(320, 160, 'Sending score...', {font: '22px Courier', fill: '#fff'});
+        let requestTxt = "";
+        if(window.game.global.isCheckScroeMode){
+            requestTxt = "Reading score...";
+        } else {
+            requestTxt = "Sending score...";
+        }
+        sendingScroeTxt = window.game.add.text(320, 160, requestTxt, {font: '22px Courier', fill: '#fff'});
                    
 
         App42.initialize(API_KEY, SECRET_KEY);
@@ -79,13 +99,24 @@ export class Level11 extends LevelPrototype {
                 gameName = "Evil Slime City";
               }
 
-              let userName = txtInput.value;
-              if(userName == ""){
-                   userName = "Slimy Guest";
-              }  
+              let userName = "";
+
               let gameScore = BIG - finalScore;  
               let result;
-              var scoreBoardService = new App42ScoreBoard()    
+
+              if(game.global.isCheckScroeMode){
+                    userName = "Score check";
+                    gameScore = 100;
+                    finalScore = 100;
+              } else {
+                    userName = txtInput.value;
+                    if(userName == ""){
+                        userName = "Slimy Guest";
+                    }  
+              }
+
+              var scoreBoardService = new App42ScoreBoard();    
+
               scoreBoardService.saveUserScore(gameName,userName,gameScore,{ 
                 success: function(object){
                     console.log("Success!");
@@ -96,6 +127,7 @@ export class Level11 extends LevelPrototype {
 
                     this.loadTopScores();
                 },
+
                 loadTopScores: function(object){
                                     let userPlace = 0;
                                      scoreBoardService.getTopNRankers(gameName, 1000, {    
@@ -129,8 +161,10 @@ export class Level11 extends LevelPrototype {
 
                                             window.game.add.text(290, 150, leaderboardTxt, {font: '17px Courier', fill: '#fff'}); 
 
-                                            youAreOnPlaceTxt = window.game.add.text(340, 120, 'Your place: ' + userPlace, {font: '17px Courier', fill: '#fff'});
-                                            youAreOnPlaceTxt.fontWeight = 'bold';
+                                            if(!window.game.global.isCheckScroeMode){
+                                                    youAreOnPlaceTxt = window.game.add.text(340, 120, 'Your place: ' + userPlace, {font: '17px Courier', fill: '#fff'});
+                                                    youAreOnPlaceTxt.fontWeight = 'bold';
+                                            }
 
                                             let modeText = "";
                                             if(window.game.global.isHardMode){
@@ -148,6 +182,7 @@ export class Level11 extends LevelPrototype {
                                         }    
                                     });       
                 },
+
                 error: function(object){
                     console.log("Error!");
                     errorTxt = window.game.add.text(290, 120, 'Connection error... pls try again.', {font: '17px Courier', fill: '#ff0000'});
