@@ -12,7 +12,7 @@ const SECRET_KEY = "x";
 let errorTxt = null;
 let sendingScroeTxt = null;
 let sendScoreButton = null;
-let youAreOnPlaceTxt = null;
+let youAreOnPlaceTxt = null; 
 let leaderboardTxt = "";
 
 export class Level11 extends LevelPrototype {
@@ -145,7 +145,7 @@ export class Level11 extends LevelPrototype {
                                                         }
 
                                                         let t = BIG - scoreList[i].value; 
-                                                        let m = Math.round(t / 60); 
+                                                        let m = Math.floor(t / 60); 
                                                         let s = t % 60;
                                                         console.log(scoreList[i].userName + " - " + m + "m, " + s + "s");
                                                         if(i < 6){
@@ -154,7 +154,7 @@ export class Level11 extends LevelPrototype {
                                                     }  
                                                 } else {  
                                                         let t = BIG - scoreList.value; 
-                                                        let m = Math.round(t / 60); 
+                                                        let m = Math.floor(t / 60);  
                                                         let s = t % 60;
                                                         console.log(scoreList.userName + " - " + m + "m, " + s + "s");;
                                                 } 
