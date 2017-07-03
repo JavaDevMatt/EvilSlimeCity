@@ -20,19 +20,25 @@ module.exports = {
         ]
     },
     "platforms": [],
-    "redSlimes": [],
+    "redSlimes": [
+        {
+            "x": 360,
+            "y": 100,
+            "type": "monster2",
+        },
+    ],
     "fallers": [],
     "slowFallers": [
         {
-            "x": 359,
-            "y": 304,
+            "x": 379,
+            "y": 320,
             "type": "faller",
             "id": 1493951447256
         }
     ],
     "trampolines": [
         {
-            "x": 381,
+            "x": 401,
             "y": 247,
             "type": "trampoline",
             "id": 1190398022126
@@ -58,7 +64,13 @@ module.exports = {
             "y": 300,
             "type": "raider",
             "id": 492057308254
-        }
+        },
+
+        {
+            "x": 380,
+            "y": 140,
+            "type": "raider",
+        },
     ],
     "arrows": []
 }

@@ -17,9 +17,14 @@ export class Level12 extends LevelPrototype {
 
     handleRidersLogic(){
         this.rider1 = gState.envObjects.riders.children[0];
-        if(this.rider1.x > 250){
+        if(this.rider1.x > 180){
             this.rider1.body.velocity.x = -100;
         }
-     }
 
+        this.rider2 = gState.envObjects.riders.children[1];
+        if(this.rider2.x > 500){
+            this.rider2.body.velocity.x = -100;
+        }
+     }
+ 
 }
