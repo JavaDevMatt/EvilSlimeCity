@@ -4,11 +4,14 @@ let gState = new GameState().state;
 let _ = require( "lodash" );
 
 let lvl = require( "./../structures/level12.js" );
+let levelFlag1 = true;
+
 export class Level12 extends LevelPrototype {
     constructor() {
         super();
         let protoLevel = _.cloneDeep( this.prototypeLevel );
         this.levelObj = _.merge( protoLevel, lvl );
+        levelFlag1 = true;
     }
 
     addStartingText(){
@@ -26,5 +29,17 @@ export class Level12 extends LevelPrototype {
             this.rider2.body.velocity.x = -100;
         }
      }
+
+    handleSpecialLevelEvents(){
+        if(levelFlag1 && gState.player.x > 880){ 
+            levelFlag1 = false;
+            game.sound.play('scary1'); 
+            game.camera.shake(0.03, 3000, true);
+            gState.envObjects.switchFallers.forEachAlive(function(item) {
+                    item.body.immovable = false;
+                 }, this);
+        }
+    }
+
  
 }
