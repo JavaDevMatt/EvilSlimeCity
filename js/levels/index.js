@@ -11,6 +11,7 @@ import {Level10} from './logic/level10'
 import {Level11} from './logic/level11'
 import {Level12} from './logic/level12'
 import {Level13} from './logic/level13'
+import {Level14} from './logic/level14'
 
 
 
@@ -20,4 +21,5 @@ import {Level13} from './logic/level13'
 
 
 
-export{ Level1, Level2, Level3, Level4, Level5, Level6, Level7, Level8, Level9, Level10, Level11, Level12, Level13 }
+
+export{ Level1, Level2, Level3, Level4, Level5, Level6, Level7, Level8, Level9, Level10, Level11, Level12, Level13, Level14 }

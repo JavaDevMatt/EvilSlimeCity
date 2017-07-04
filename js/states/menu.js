@@ -45,7 +45,7 @@ var menuState = {
 	},
 
 	startScoreScreen: function(){
-		game.global.gameLevel = 12; // last game level
+		game.global.gameLevel = 13; // last game level
 		game.global.isCheckScroeMode = true;
 		this.startGame();
 	},
