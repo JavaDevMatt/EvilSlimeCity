@@ -11,8 +11,12 @@ const API_KEY = "x";
 const SECRET_KEY = "x";
 let errorTxt = null;
 let sendingScroeTxt = null;
+let evilSlimesTxt = null;
+let evilSlimesTxt2 = null;
+
 let sendScoreButton = null;
 let youAreOnPlaceTxt = null; 
+
 let leaderboardTxt = "";
 
 export class Level16 extends LevelPrototype {
@@ -41,6 +45,16 @@ export class Level16 extends LevelPrototype {
                  window.game.add.text(80, 30, 'Check score (easy mode): ', {font: '20px Courier', fill: '#fff'});
             }
         }
+
+        if(!game.global.isCheckScroeMode){
+            game.global.music.stop();
+            game.global.music2.volume = 0.3;
+            game.global.music2.play(); 
+
+            evilSlimesTxt = window.game.add.text(40, 220, 'You defeated the red evil slimes!', {font: '20px Courier', fill: '#fff'});
+            evilSlimesTxt2 = window.game.add.text(40, 240, 'The city is free again!', {font: '20px Courier', fill: '#fff'});
+        }
+
        
     }
 
@@ -123,6 +137,14 @@ export class Level16 extends LevelPrototype {
                     if(sendingScroeTxt != null){
                         sendingScroeTxt.kill();
                     }
+
+                    if(evilSlimesTxt != null){
+                        evilSlimesTxt.kill();
+                    }
+
+                    if(evilSlimesTxt2 != null){
+                        evilSlimesTxt2.kill();
+                    }
                     
 
                     this.loadTopScores();
@@ -200,6 +222,10 @@ export class Level16 extends LevelPrototype {
 
 
     restartGame(){
+        if(!game.global.isCheckScroeMode){
+          game.global.music2.stop();
+        }
+
         game.global.gameLevel = 0;
         game.state.start('menu');
     }

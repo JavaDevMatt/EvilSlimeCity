@@ -6,6 +6,7 @@ var initState = {
 			{font: '40px Courier', fill: '#fff'});
 
 		game.load.audio('music', 'assets/sound/music.mp3'); // http://opengameart.org/content/rise-of-spirit
+		game.load.audio('happy', 'assets/sound/happy.mp3'); // https://opengameart.org/content/cheer-up-psg-version
 		game.load.audio('jump', 'assets/sound/jump.mp3');
 		game.load.audio('trampoline_jump', 'assets/sound/trampoline_jump.mp3'); // http://freesound.org/people/arteffect/sounds/349854/
 
@@ -62,7 +63,7 @@ var initState = {
 	init: function () {
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		game.global.music = game.add.audio('music',1,true);
-		game.global.music2 = game.add.audio('music2',1,true);
+		game.global.music2 = game.add.audio('happy',1,true);
 		game.global.rainSound = game.add.audio('rain',1,true);
 
 		// playing around with scaling on mobile
