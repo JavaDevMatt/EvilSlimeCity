@@ -15,7 +15,11 @@ export class Level12 extends LevelPrototype {
     }
 
     addStartingText(){
-     
+        let levelLabel = game.add.text(20, 210, 'The order is sometimes important',
+                        {font: '20px Courier', fill: '#fff'});
+                setTimeout(function(){
+                        levelLabel.kill();
+                }, 3000);
     }
 
     handleRidersLogic(){
@@ -30,6 +34,16 @@ export class Level12 extends LevelPrototype {
         }
      }
 
+     checkForCoolKillText(){
+        if( gState.envObjects.redSlimes.countLiving() == 1 ){
+                var infoLabel = game.add.text(310, 278, 'Half way through!',
+                        {font: '20px Courier', fill: '#fff'});
+                setTimeout(function(){
+                        infoLabel.kill();
+                }, 3000);
+            }
+    }
+
     handleSpecialLevelEvents(){
         if(levelFlag1 && gState.player.x > 880){ 
             levelFlag1 = false;
@@ -39,6 +53,19 @@ export class Level12 extends LevelPrototype {
                     item.body.immovable = false;
                  }, this);
         }
+    }
+
+    addEndingText(){
+        window.game.add.text(
+                gState.player.x - 200, 100, 'Tasty!',
+                {font: '40px Courier', fill: '#fff'});
+                window.game.add.text(gState.player.x - 200, 146, '...getting hungry yet?',
+                {font: '20px Courier', fill: '#fff'}
+        );
+    }
+
+    getHardModeJumpLimit(){
+        return 6; 
     }
 
  
