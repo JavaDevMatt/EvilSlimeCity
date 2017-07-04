@@ -72,7 +72,7 @@ var playState = {
         game.time.events.loop(Phaser.Timer.SECOND, this.timerTick, this);
 
         if(game.global.isHardMode && !level.isScoreLvl()){
-        	hardModeJumpCounter = game.add.text(10, 30, 'Jumps left: ' + hardModeHandler.getJumpLimit(), {font: '20px Courier', fill: '#fff'});
+        	hardModeJumpCounter = game.add.text(10, 10, 'Jumps left: ' + hardModeHandler.getJumpLimit(), {font: '20px Courier', fill: '#fff'});
         	hardModeJumpCounter.fixedToCamera = true;
         }
 
