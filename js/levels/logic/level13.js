@@ -31,8 +31,8 @@ export class Level13 extends LevelPrototype {
      addEndingText(){
         window.game.add.text(
                 gState.player.x - 200, 100, 'What a wise slime!',
-                {font: '30px Courier', fill: '#fff'});
-                window.game.add.text(gState.player.x - 180, 136, 'So wise! So slimy!',
+                {font: '40px Courier', fill: '#fff'});
+                window.game.add.text(gState.player.x - 200, 136, 'So wise! So slimy!',
                 {font: '22px Courier', fill: '#fff'}
         );
     }
