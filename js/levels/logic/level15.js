@@ -3,8 +3,8 @@ import {LevelPrototype} from './levelPrototype'
 let gState = new GameState().state;
 let _ = require( "lodash" );
 
-let lvl = require( "./../structures/level14.js" );
-export class Level14 extends LevelPrototype {
+let lvl = require( "./../structures/level15.js" );
+export class Level15 extends LevelPrototype {
     constructor() {
         super();
         let protoLevel = _.cloneDeep( this.prototypeLevel );
@@ -12,7 +12,7 @@ export class Level14 extends LevelPrototype {
     }
 
     addStartingText(){
-       
+   
     }
 
 }
