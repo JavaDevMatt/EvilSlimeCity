@@ -15,7 +15,7 @@ export class Level12 extends LevelPrototype {
     }
 
     addStartingText(){
-        let levelLabel = game.add.text(20, 210, 'The order is sometimes important',
+        let levelLabel = game.add.text(20, 210, 'First things first...',
                         {font: '20px Courier', fill: '#fff'});
                 setTimeout(function(){
                         levelLabel.kill();
