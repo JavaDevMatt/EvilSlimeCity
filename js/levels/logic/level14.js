@@ -55,6 +55,9 @@ export class Level14 extends LevelPrototype {
 
      }
 
+     getHardModeJumpLimit(){
+        return 8; 
+    }
 
 
 }
