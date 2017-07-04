@@ -24,8 +24,8 @@ export class Level14 extends LevelPrototype {
 
 	addStartingText(){
         leaderboardTxt = "";
-        finalScore = game.global.time;
-        let minutes = Math.round(finalScore / 60);
+        finalScore = game.global.time; 
+        let minutes = Math.floor(finalScore / 60);
         let seconds = finalScore % 60;
 
         if(!game.global.isCheckScroeMode){

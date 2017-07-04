@@ -75,8 +75,11 @@ var playState = {
         	hardModeJumpCounter = game.add.text(10, 30, 'Jumps left: ' + hardModeHandler.getJumpLimit(), {font: '20px Courier', fill: '#fff'});
         	hardModeJumpCounter.fixedToCamera = true;
         }
-        timeCounterLabel = game.add.text(570, 10, game.global.time, {font: '20px Courier', fill: '#fff'});
-        timeCounterLabel.fixedToCamera = true;
+
+        if(!level.isScoreLvl()){
+        	timeCounterLabel = game.add.text(570, 10, game.global.time, {font: '20px Courier', fill: '#fff'});
+       		timeCounterLabel.fixedToCamera = true;
+        }
 
 	},
 
@@ -185,11 +188,29 @@ var playState = {
 		    	hardModeJumpCounter.setText('DEAD!');
 		    }
 	    }
-	    this.updateTimerLabel();
+	    if(!level.isScoreLvl()){
+	    	this.updateTimerLabel();
+	    }
 	},
 
 	updateTimerLabel: function(){
-	    timeCounterLabel.setText('00:0' + game.global.time);
+		let minutes = Math.floor(game.global.time / 60);
+        let seconds = game.global.time % 60;
+
+        let secondsString = '';
+        if(seconds < 10){
+        	secondsString = '0' + seconds;
+        } else {
+        	secondsString = '' + seconds;
+        }
+
+        let minutesString = '';
+        if(minutes < 10){
+        	minutesString = '0' + minutes;
+        } else {
+        	minutesString = '' + minutes;
+        }
+	    timeCounterLabel.setText(minutesString +':' + secondsString);
 	},
 
 	arrowBoost: function( slime, arrow ){
