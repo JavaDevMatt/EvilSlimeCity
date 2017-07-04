@@ -12,6 +12,11 @@ export class Level13 extends LevelPrototype {
     }
 
     addStartingText(){
+        let levelLabel = game.add.text(20, 210, 'Patience is the companion of wisdom...',
+                        {font: '20px Courier', fill: '#fff'});
+                setTimeout(function(){
+                        levelLabel.kill();
+                }, 3000);
     }
 
     handleRidersLogic(){
@@ -21,5 +26,19 @@ export class Level13 extends LevelPrototype {
         }
 
      }
+
+
+     addEndingText(){
+        window.game.add.text(
+                gState.player.x - 200, 100, 'What a wise slime!',
+                {font: '30px Courier', fill: '#fff'});
+                window.game.add.text(gState.player.x - 180, 136, 'So wise! So slimy!',
+                {font: '22px Courier', fill: '#fff'}
+        );
+    }
+
+    getHardModeJumpLimit(){
+        return 4; 
+    }
 
 }
