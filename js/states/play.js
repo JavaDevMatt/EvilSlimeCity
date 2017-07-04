@@ -13,7 +13,7 @@ var level,
 
 
 let gState = new GameState().state;
-let hardModeJumpCounter;
+let hardModeJumpCounter, timeCounterLabel;
 
 var playState = {
 
@@ -75,7 +75,8 @@ var playState = {
         	hardModeJumpCounter = game.add.text(10, 30, 'Jumps left: ' + hardModeHandler.getJumpLimit(), {font: '20px Courier', fill: '#fff'});
         	hardModeJumpCounter.fixedToCamera = true;
         }
-        
+        timeCounterLabel = game.add.text(570, 10, game.global.time, {font: '20px Courier', fill: '#fff'});
+        timeCounterLabel.fixedToCamera = true;
 
 	},
 
@@ -184,8 +185,11 @@ var playState = {
 		    	hardModeJumpCounter.setText('DEAD!');
 		    }
 	    }
-	    
+	    this.updateTimerLabel();
+	},
 
+	updateTimerLabel: function(){
+	    timeCounterLabel.setText('00:0' + game.global.time);
 	},
 
 	arrowBoost: function( slime, arrow ){
