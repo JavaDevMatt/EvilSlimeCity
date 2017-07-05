@@ -130,7 +130,7 @@ module.exports = {
     ],
     "arrows": [
         {
-            "x": 527,
+            "x": 580,
             "y": 211,
             "type": "arrow",
             "id": 790224261728
