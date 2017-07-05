@@ -13,7 +13,7 @@ var level,
 
 
 let gState = new GameState().state;
-let hardModeJumpCounter, timeCounterLabel;
+let hardModeJumpCounter, timeCounterLabel, lvlNumberLabel;
 
 var playState = {
 
@@ -79,6 +79,9 @@ var playState = {
         if(!level.isScoreLvl()){
         	timeCounterLabel = game.add.text(570, 10, game.global.time, {font: '20px Courier', fill: '#fff'});
        		timeCounterLabel.fixedToCamera = true;
+
+       		lvlNumberLabel = game.add.text(240, 10, "Level: " + (game.global.gameLevel + 1) + " / 15", {font: '20px Courier', fill: '#fff'});
+       		lvlNumberLabel.fixedToCamera = true;
         }
 
 	},

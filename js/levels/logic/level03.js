@@ -17,7 +17,7 @@ export class Level3 extends LevelPrototype{
     }
 
  	 addStartingText(){
-                var levelLabel = game.add.text(0, 0, 'Time to blow some shit up!',
+                var levelLabel = game.add.text(0, 50, 'Time to blow some shit up!',
                         {font: '20px Courier', fill: '#fff'});
                 setTimeout(function(){
                         levelLabel.kill();
