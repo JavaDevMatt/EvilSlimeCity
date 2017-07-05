@@ -27,7 +27,7 @@ module.exports = {
     "platforms": [
         {
             "x": 1269,
-            "y": 264,
+            "y": 294,
             "type": "tower1",
             "id": 188448142620
         }
@@ -135,7 +135,7 @@ module.exports = {
         },
         {
             "x": 1074,
-            "y": 269,
+            "y": 289,
             "type": "tower1",
             "id": 1278322894253
         },

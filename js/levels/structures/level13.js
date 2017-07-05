@@ -35,7 +35,7 @@ module.exports = {
     ],
     "redSlimes": [
         {
-            "x": 1112,
+            "x": 1012,
             "y": 78,
             "type": "monster2",
             "id": 1037917020607
@@ -122,7 +122,7 @@ module.exports = {
     "switchFallers": [],
     "riders": [
         {
-            "x": 1127,
+            "x": 957,
             "y": 111,
             "type": "raider",
             "id": 72011193556
