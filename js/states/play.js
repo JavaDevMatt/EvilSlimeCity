@@ -84,6 +84,14 @@ var playState = {
        		lvlNumberLabel.fixedToCamera = true;
         }
 
+		let rKey = game.input.keyboard.addKey(Phaser.Keyboard.R);
+		rKey.onDown.addOnce(this.restartGame, this);
+
+	},
+
+	restartGame: function(){
+		game.global.gameLevel = 0;
+        game.state.start('menu');
 	},
 
 	timerTick: function() {
