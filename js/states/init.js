@@ -68,11 +68,11 @@ var initState = {
 		game.global.rainSound = game.add.audio('rain',1,true);
 
 		// playing around with scaling on mobile
-		if (!game.device.desktop){
+		//if (!game.device.desktop){
 			game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
         	game.scale.pageAlignHorizontally = true;
         	game.scale.pageAlignVertically = true;
-		}
+		//}
 
 	},
 
