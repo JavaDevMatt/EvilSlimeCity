@@ -17,6 +17,8 @@ let evilSlimesTxt2 = null;
 let sendScoreButton = null;
 let youAreOnPlaceTxt = null; 
 
+const MOVE_LEFT = 50;
+
 let leaderboardTxt = "";
 
 export class Level16 extends LevelPrototype {
@@ -156,8 +158,7 @@ export class Level16 extends LevelPrototype {
                                         success: function(object)   
                                         {    
                                             let game = JSON.parse(object);    
-                                            result = game.app42.response.games.game;  
-                                            console.log("gameName is : " + result.name)  
+                                            result = game.app42.response.games.game;
                                             let scoreList = result.scores.score;  
                                             if (scoreList instanceof Array) {  
                                                     for (let i = 0; i < scoreList.length; i++) {
@@ -169,7 +170,7 @@ export class Level16 extends LevelPrototype {
                                                         let t = BIG - scoreList[i].value; 
                                                         let m = Math.floor(t / 60); 
                                                         let s = t % 60;
-                                                        console.log(scoreList[i].userName + " - " + m + "m, " + s + "s");
+                                                        //console.log(scoreList[i].userName + " - " + m + "m, " + s + "s");
                                                         if(i < 6){
                                                             leaderboardTxt += ((i+1) + ". " + scoreList[i].userName + " - " + m + "m, " + s + "s \n");
                                                         }
@@ -178,10 +179,10 @@ export class Level16 extends LevelPrototype {
                                                         let t = BIG - scoreList.value; 
                                                         let m = Math.floor(t / 60);  
                                                         let s = t % 60;
-                                                        console.log(scoreList.userName + " - " + m + "m, " + s + "s");;
+                                                        //console.log(scoreList.userName + " - " + m + "m, " + s + "s");;
                                                 } 
 
-                                            window.game.add.text(290, 150, leaderboardTxt, {font: '17px Courier', fill: '#fff'}); 
+                                            window.game.add.text(290 - MOVE_LEFT, 150, leaderboardTxt, {font: '17px Courier', fill: '#fff'}); 
 
                                             if(!window.game.global.isCheckScroeMode){
                                                     youAreOnPlaceTxt = window.game.add.text(340, 120, 'Your place: ' + userPlace, {font: '17px Courier', fill: '#fff'});
@@ -195,9 +196,9 @@ export class Level16 extends LevelPrototype {
                                                 modeText = "(Easy Mode)";
                                             }
 
-                                            let top6Txt = window.game.add.text(140, 180, '  THE\nTOP 6 -> \n', {font: '25px Courier', fill: '#fff'});
+                                            let top6Txt = window.game.add.text(140 - MOVE_LEFT, 180, '  THE\nTOP 6 -> \n', {font: '25px Courier', fill: '#fff'});
                                             top6Txt.fontWeight = 'bold';
-                                            let top6ModeTxt = window.game.add.text(140, 240,  modeText, {font: '18px Courier', fill: '#fff'});
+                                            let top6ModeTxt = window.game.add.text(140 - MOVE_LEFT, 240,  modeText, {font: '18px Courier', fill: '#fff'});
 
                                         },    
                                         error: function(error) {    
